@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">peAk</string>
+    <string name="resortsInfoDrop">Resorts Drop Down</string>
+    <string name="resortsInfo">Resorts</string>
+    <string name="weatherDrop">Weather Drop Down</string>
+    <string name="weather">Weather</string>
+    <string name="groupsDrop">groups Drop Down</string>
+    <string name="groups">groups</string>
 </resources>
