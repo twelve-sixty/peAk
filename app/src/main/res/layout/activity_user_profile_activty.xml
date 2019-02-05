@@ -6,19 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".UserProfileActivty">
 
+    <Button
+        android:id="@+id/button_Edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Edit Profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.865"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.458" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="395dp"
         android:layout_height="715dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:gravity="center">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView_Username"
@@ -26,16 +43,16 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:textSize="20dp"
             android:text="Username"
-            android:textStyle="bold|italic"/>
+            android:textSize="20dp"
+            android:textStyle="bold|italic" />
 
         <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        app:srcCompat="@drawable/anonymous_profilepic_small" />
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            app:srcCompat="@drawable/anonymous_profilepic_small" />
 
         <TextView
             android:id="@+id/textView_Name"
@@ -43,8 +60,8 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="20dp"
-            android:text="Name" />
+            android:text="Name"
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/textView_Age"
@@ -70,8 +87,8 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="20dp"
-            android:text="Favorite Resort" />
+            android:text="Favorite Resort"
+            android:textSize="20dp" />
 
 
     </LinearLayout>
