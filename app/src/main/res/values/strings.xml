@@ -11,4 +11,5 @@
     <string name="dd_mm_yy_time"><![CDATA[DD/MM/YY & Time]]></string>
     <string name="meeting_on">Meeting on:</string>
     <string name="status_enum">Status enum</string>
+    <string name="send_button">Send</string>
 </resources>
