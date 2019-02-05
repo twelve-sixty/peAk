@@ -9,10 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class DrawersFragment extends Fragment {
+public class ResortDetailFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return (inflater.inflate(R.layout.nav_drawer_layout, container));
+        return inflater.inflate(R.layout.resort_detail_layout, container, false);
     }
 }
