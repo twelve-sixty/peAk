@@ -26,14 +26,14 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:text="Username" />
 
         <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         app:srcCompat="@drawable/anonymous_profilepic_small" />
 
         <TextView
@@ -42,17 +42,8 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:text="Name" />
-
-        <TextView
-            android:id="@+id/textView_Bio"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:textSize="30dp"
-            android:text="Bio" />
 
         <TextView
             android:id="@+id/textView_Age"
@@ -60,8 +51,26 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="30dp"
-            android:text="Age" />
+            android:text="Age"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textView_Bio"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Bio: Powder Surfer"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textView_favoriteResort"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="Favorite Resort" />
 
 
     </LinearLayout>
