@@ -17,5 +17,52 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/textView_Username"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:textSize="30dp"
+            android:text="Username" />
+
+        <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/anonymous_profilepic_small" />
+
+        <TextView
+            android:id="@+id/textView_Name"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="30dp"
+            android:text="Name" />
+
+        <TextView
+            android:id="@+id/textView_Bio"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="30dp"
+            android:text="Bio" />
+
+        <TextView
+            android:id="@+id/textView_Age"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textSize="30dp"
+            android:text="Age" />
+
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
