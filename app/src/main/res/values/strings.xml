@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">peAk</string>
+    <string name="nav_header_title">USERNAME</string>
 </resources>
