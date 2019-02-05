@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--Code for the right side nav drawer-->
-<!--TODO: turn this into a separate fragment for reuse on group detail-->
 <com.google.android.material.navigation.NavigationView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/right_side"
     android:layout_width="wrap_content"

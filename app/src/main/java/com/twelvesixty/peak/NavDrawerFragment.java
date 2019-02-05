@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+//Class to inflate and place the navigation drawer
 public class NavDrawerFragment extends Fragment {
     @Nullable
     @Override

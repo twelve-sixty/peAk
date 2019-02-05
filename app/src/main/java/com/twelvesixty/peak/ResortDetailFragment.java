@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+//Class that will be used to inflate and place the resort detail view
 public class ResortDetailFragment extends Fragment {
     @Nullable
     @Override

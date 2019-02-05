@@ -2,6 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!--This is where items for the toolbar go-->
     <item
         android:id="@+id/action_openRight"
         android:orderInCategory="100"

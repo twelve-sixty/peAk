@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+//Class to be able to inflate and place the right hand drawer
 public class RightDrawerFragment extends Fragment {
     @Nullable
     @Override

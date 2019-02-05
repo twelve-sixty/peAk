@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
+    <!--Grouping of items in nav drawer-->
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/profile"
@@ -13,12 +14,6 @@
             android:id="@+id/groups"
             android:icon="@mipmap/ic_launcher"
             android:title="My Groups" />
-
-        <!--<item-->
-            <!--android:id="@+id/logout"-->
-            <!--android:icon="@mipmap/ic_launcher"-->
-            <!--android:title="Logout"-->
-            <!--android:gravity="bottom"/>-->
     </group>
 
 
