@@ -14,11 +14,11 @@
             android:icon="@mipmap/ic_launcher"
             android:title="My Groups" />
 
-        <item
-            android:id="@+id/logout"
-            android:icon="@mipmap/ic_launcher"
-            android:title="Logout"
-            android:gravity="end"/>
+        <!--<item-->
+            <!--android:id="@+id/logout"-->
+            <!--android:icon="@mipmap/ic_launcher"-->
+            <!--android:title="Logout"-->
+            <!--android:gravity="bottom"/>-->
     </group>
 
 
