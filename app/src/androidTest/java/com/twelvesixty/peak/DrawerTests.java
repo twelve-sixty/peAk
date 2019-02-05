@@ -29,6 +29,9 @@ public class DrawerTests {
         onView(withId(R.id.nav_view)).check(matches(not(isDisplayed())));
         DrawerActions.openDrawer(R.id.drawer_layout, Gravity.START);
         onView(withId(R.id.nav_view)).check(matches(isDisplayed()));
+        onView(withText("Logout")).check(matches(isDisplayed()));
+        onView(withText("Profile")).check(matches(isDisplayed()));
+        onView(withText("My Groups")).check(matches(isDisplayed()));
         DrawerActions.closeDrawer(R.id.drawer_layout, Gravity.START);
         onView(withId(R.id.nav_view)).check(matches(not(isDisplayed())));
     }
@@ -38,6 +41,7 @@ public class DrawerTests {
         onView(withId(R.id.right_side)).check(matches(not(isDisplayed())));
         DrawerActions.openDrawer(R.id.drawer_layout, Gravity.END);
         onView(withId(R.id.right_side)).check(matches(isDisplayed()));
+        onView(withId(R.id.recycler_nav)).check(matches(isDisplayed()));
         DrawerActions.closeDrawer(R.id.drawer_layout, Gravity.END);
         onView(withId(R.id.right_side)).check(matches(not(isDisplayed())));
     }
