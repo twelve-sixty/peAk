@@ -2,9 +2,12 @@ package com.twelvesixty.peak;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.MapView;
 
@@ -20,41 +23,22 @@ public class MainActivity extends AppCompatActivity {
         dropGroups();
     }
 
-//    public void onClick(View v) {
-//        final Handler handler = new Handler();
-//
-//        R.id.weatherDrop.setOnClickListener(new View.OnClickListener() {
-//       @Override
-//       public void onClick(View v) {
-//           // make textview Gone
-//           R.id.weather.setVisibility(View.GONE);
-//
-//           // perform action
-//           System.out.println("perform action");
-//
-//           // make textview disappear
-//           handler.postDelayed(new Runnable() {
-//               @Override
-//               public void run() {
-//                   R.id.weather.setVisibility(View.VISIBLE);
-//               }
-//           }, 2000);
-//       }
-//   });
-//    }
-
     public void dropWeather() {
         findViewById(R.id.weatherDrop).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                // make textview visible
-                findViewById(R.id.weather).setVisibility(View.GONE);
+                TextView textView = findViewById(R.id.weather);
 
-                // perform action
-                System.out.println("perform action");
+                if (textView.getVisibility() == View.VISIBLE) {
+                    // make textview disappear
+                    textView.setVisibility(View.GONE);
+                } else {
+                    // make textview visible
+                    findViewById(R.id.Filters).setVisibility(View.GONE);
+                    findViewById(R.id.resortsInfo).setVisibility(View.GONE);
+                   textView.setVisibility(View.VISIBLE);
 
-                // make textview disappear
-                findViewById(R.id.weather).setVisibility(View.VISIBLE);
+                }
             }
         });
     }
@@ -63,26 +47,33 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.groupsDrop).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                findViewById(R.id.Filters).setVisibility(View.GONE);
-
-                System.out.println("perform action");
-
-                findViewById(R.id.Filters).setVisibility(View.VISIBLE);
+                if (findViewById(R.id.Filters).getVisibility() == View.VISIBLE){
+                    Log.i("testing", "tests");
+                    findViewById(R.id.Filters).setVisibility(View.GONE);
+                }else{
+                    findViewById(R.id.weather).setVisibility(View.GONE);
+                    findViewById(R.id.resortsInfo).setVisibility(View.GONE);
+                    findViewById(R.id.Filters).setVisibility(View.VISIBLE);
+                }
             }
         });
     }
+
     public void dropResorts() {
         findViewById(R.id.resortsInfoDrop).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                findViewById(R.id.resortsInfo).setVisibility(View.GONE);
+                TextView textView2 = findViewById(R.id.resortsInfo);
 
-                System.out.println("perform action");
-
-                findViewById(R.id.resortsInfo).setVisibility(View.VISIBLE);
+                if (textView2.getVisibility() == View.VISIBLE) {
+                    textView2.setVisibility(View.GONE);
+                }else {
+                    findViewById(R.id.weather).setVisibility(View.GONE);
+                    findViewById(R.id.Filters).setVisibility(View.GONE);
+                    textView2.setVisibility(View.VISIBLE);
+                }
             }
         });
     }
-
 
 }

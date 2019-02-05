@@ -1,8 +1,14 @@
 <resources>
     <string name="app_name">peAk</string>
-    <string name="resortsInfoDrop">Resorts Drop Down</string>
-    <string name="resortsInfo">Resorts</string>
-    <string name="weatherDrop">Weather Drop Down</string>
-    <string name="weather">Weather</string>
-    <string name="groupsDrop">groups Drop Down</string>
+    <string name="resortsInfoDrop">Resorts Information</string>
+    <string name="resortsInfo">Resorts Data</string>
+    <string name="weatherDrop">Weather Forecast</string>
+    <string name="weather">Weather Data</string>
+    <string name="groupsDrop">Filter Groups By Category</string>
+    <string name="checkBox">filter</string>
+    <string name="checkBox2">filter</string>
+    <string name="checkBox3">filter</string>
+    <string name="checkBox4">filter</string>
+    <string name="checkBox5">filter</string>
+    <string name="checkBox6">filter</string>
 </resources>
