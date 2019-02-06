@@ -20,5 +20,9 @@
     <string name="GoToSignUpButton">Sign Up</string>
     <string name="UserSignUp">Username</string>
     <string name="PasswordSignUp">Password</string>
+    <string name="BioSignUp">Bio</string>
+    <string name="DOBSignUp">Date Of Birth</string>
+    <string name="EmailSignUp">Email</string>
+    <string name="SignUpButton">Sign Up</string>
 
 </resources>
