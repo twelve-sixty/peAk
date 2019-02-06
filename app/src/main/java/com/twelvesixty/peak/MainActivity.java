@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void onProfileButtonClick(View view) {
         Intent navigateToProfile = new Intent(getApplicationContext(), UserProfileActivty.class);
         startActivity(navigateToProfile);
-        setContentView(R.layout.activity_user_profile_activty);
     }
 
     //Handles if the back button is pressed while a drawer is currently open
