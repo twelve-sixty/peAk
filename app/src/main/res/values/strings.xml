@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">peAk</string>
+    <string name="group_name">Group Name</string>
+    <string name="going_to">Going to:</string>
+    <string name="capacity">Capacity:</string>
+    <string name="description">Description:</string>
+    <string name="status">Status:</string>
+    <string name="meeting_on">Meeting on:</string>
+    <string name="send_button">Send</string>
+    <string name="enter_message">Enter message</string>
+    <string name="edit">Edit</string>
     <string name="nav_header_title">USERNAME</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
