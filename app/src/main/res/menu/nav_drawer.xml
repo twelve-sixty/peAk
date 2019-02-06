@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <!--Grouping of items in nav drawer-->
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/profile"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Profile" />
+
+        <item
+            android:id="@+id/groups"
+            android:icon="@mipmap/ic_launcher"
+            android:title="My Groups" />
+    </group>
+
+
+</menu>
