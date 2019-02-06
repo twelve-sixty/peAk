@@ -83,47 +83,106 @@
             android:id="@+id/editText_groupDescription"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:gravity="center"
             android:hint="Group Description (140 char limit)"
             android:inputType="textMultiLine"
             android:textSize="10dp"/>
 
-        <CheckBox
-            android:id="@+id/checkBox_FamilyFriendly"
+        <LinearLayout
+            android:id="@+id/linearLayout_checkBoxHolders"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Family Friendly" />
+            android:layout_weight="2"
+            android:orientation="horizontal">
 
-        <CheckBox
-            android:id="@+id/checkBox_BrewsAndBlues"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Blues and Brews" />
+            <LinearLayout
+                android:id="@+id/linearLayout_groupCategories"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
 
-        <CheckBox
-            android:id="@+id/checkBox_ParkJunkies"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Park Junkies" />
+                <CheckBox
+                    android:id="@+id/checkBox_BrewsAndBlues"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Blues and Brews" />
 
-        <CheckBox
-            android:id="@+id/checkBox_BackCountry"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Back Country Riders" />
+                <CheckBox
+                    android:id="@+id/checkBox_BackCountry"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Back Country Riders" />
 
-        <CheckBox
-            android:id="@+id/checkBox_EasyGroomers"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Easy Groomers" />
+                <CheckBox
+                    android:id="@+id/checkBox_ParkJunkies"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Park Junkies" />
 
+                <CheckBox
+                    android:id="@+id/checkBox_EasyGroomers"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Casual Riders" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_FamilyFriendly"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Family Friendly" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout_ridingDifficulty"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:orientation="vertical">
+
+                <CheckBox
+                    android:id="@+id/checkBox_GreenCircle"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Green Circles" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_BlueSquare"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Blue Squares" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_BlackDiamonds"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Black Diamonds" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_DoubleBlackDiamonds"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Double Black Diamonds" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_OffPiste"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Off Piste" />
+            </LinearLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
