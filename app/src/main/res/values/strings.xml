@@ -33,4 +33,6 @@
     <string name="DOBSignUp">Date Of Birth</string>
     <string name="EmailSignUp">Email</string>
     <string name="SignUpButton">Sign Up</string>
+    <string name="myGroupsTitle">My Groups</string>
+    <string name="myProfileTitle">My Profile</string>
 </resources>
