@@ -2,14 +2,10 @@
     <string name="app_name">peAk</string>
     <string name="group_name">Group Name</string>
     <string name="going_to">Going to:</string>
-    <string name="resort_name">Resort name</string>
     <string name="capacity">Capacity:</string>
     <string name="description">Description:</string>
-    <string name="x_y">X/Y</string>
-    <string name="group_description">Group description</string>
     <string name="status">Status:</string>
-    <string name="dd_mm_yy_time"><![CDATA[DD/MM/YY & Time]]></string>
     <string name="meeting_on">Meeting on:</string>
-    <string name="status_enum">Status enum</string>
     <string name="send_button">Send</string>
+    <string name="enter_message">Enter message</string>
 </resources>

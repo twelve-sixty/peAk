@@ -24,111 +24,61 @@
         android:id="@+id/dateLabel"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
         android:text="@string/meeting_on"
         android:textAlignment="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/groupName" />
-
-    <TextView
-        android:id="@+id/dateData"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="60dp"
-        android:text="@string/dd_mm_yy_time"
-        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/groupName" />
 
     <TextView
         android:id="@+id/resortLabel"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_marginStart="60dp"
         android:layout_marginTop="8dp"
         android:text="@string/going_to"
         android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dateLabel" />
-
-    <TextView
-        android:id="@+id/resortData"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="60dp"
-        android:text="@string/resort_name"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateData" />
 
     <TextView
         android:id="@+id/capacityLabel"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_marginStart="60dp"
         android:layout_marginTop="8dp"
         android:text="@string/capacity"
         android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/resortLabel" />
-
-    <TextView
-        android:id="@+id/capacityData"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="60dp"
-        android:text="@string/x_y"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resortData" />
 
     <TextView
         android:id="@+id/descriptionLabel"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_marginStart="60dp"
         android:layout_marginTop="8dp"
         android:text="@string/description"
         android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/capacityLabel" />
-
-    <TextView
-        android:id="@+id/descriptionData"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="60dp"
-        android:text="@string/group_description"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/capacityData" />
 
     <TextView
         android:id="@+id/stateLabel"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        android:layout_marginStart="60dp"
         android:layout_marginTop="8dp"
         android:text="@string/status"
         android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descriptionLabel" />
-
-    <TextView
-        android:id="@+id/stateData"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="60dp"
-        android:text="@string/status_enum"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionData" />
 
     <Button
         android:id="@+id/sendButton"
@@ -148,7 +98,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="Enter message"
+        android:text="@string/enter_message"
+        android:textAlignment="viewStart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/sendButton"
         app:layout_constraintStart_toStartOf="parent" />
@@ -157,12 +108,23 @@
         android:layout_width="395dp"
         android:layout_height="287dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/messageInputField"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stateData" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/editGroupButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Edit"
+        app:layout_constraintBottom_toTopOf="@+id/groupName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
