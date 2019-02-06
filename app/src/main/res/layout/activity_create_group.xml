@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CreateGroupActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout_CapacityAndGroupName"
+            android:layout_width="match_parent"
+            android:layout_height="76dp"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp">
+
+            <EditText
+                android:id="@+id/editText_capacity"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:hint="Capacity"
+                android:inputType="text"
+                android:textSize="10dp"/>
+
+            <EditText
+                android:id="@+id/editText_groupName"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:hint="Group Name"
+                android:inputType="text"
+                android:textSize="10dp"/>
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout_GroupDateGoing"
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <EditText
+            android:id="@+id/editText_groupDateGoing"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="Meeting on dd/mm/yy"
+            android:inputType="date"
+            android:textSize="10dp"/>
+
+        <EditText
+            android:id="@+id/editText_groupTimeMeeting"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="Meeting at 00:00am/pm"
+            android:inputType="datetime"
+            android:textSize="10dp"/>
+
+    </LinearLayout>
+
+        <EditText
+            android:id="@+id/editText_groupDescription"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:hint="Group Description (140 char limit)"
+            android:inputType="textMultiLine"
+            android:textSize="10dp"/>
+
+        <CheckBox
+            android:id="@+id/checkBox_FamilyFriendly"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Family Friendly" />
+
+        <CheckBox
+            android:id="@+id/checkBox_BrewsAndBlues"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Blues and Brews" />
+
+        <CheckBox
+            android:id="@+id/checkBox_ParkJunkies"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Park Junkies" />
+
+        <CheckBox
+            android:id="@+id/checkBox_BackCountry"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Back Country Riders" />
+
+        <CheckBox
+            android:id="@+id/checkBox_EasyGroomers"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Easy Groomers" />
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
