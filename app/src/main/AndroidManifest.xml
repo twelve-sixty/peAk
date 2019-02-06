@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".CreateGroupActivity"></activity>
+      
+        <activity android:name=".UserProfileActivty" />
+        <activity android:name=".Signup"></activity>
+        <activity android:name=".Login" />
+        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".GroupDetailsActivity"></activity>
+        <activity android:name=".MyGroupsActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
