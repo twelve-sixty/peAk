@@ -9,4 +9,18 @@
     <string name="send_button">Send</string>
     <string name="enter_message">Enter message</string>
     <string name="edit">Edit</string>
+    <string name="nav_header_title">USERNAME</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="resortsInfoDrop">Resorts Information</string>
+    <string name="resortsInfo">Resorts Data</string>
+    <string name="weatherDrop">Weather Forecast</string>
+    <string name="weather">Weather Data</string>
+    <string name="groupsDrop">Filter Groups By Category</string>
+    <string name="checkBox">filter</string>
+    <string name="checkBox2">filter</string>
+    <string name="checkBox3">filter</string>
+    <string name="checkBox4">filter</string>
+    <string name="checkBox5">filter</string>
+    <string name="checkBox6">filter</string>
 </resources>
