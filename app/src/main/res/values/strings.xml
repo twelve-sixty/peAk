@@ -8,4 +8,5 @@
     <string name="meeting_on">Meeting on:</string>
     <string name="send_button">Send</string>
     <string name="enter_message">Enter message</string>
+    <string name="edit">Edit</string>
 </resources>
