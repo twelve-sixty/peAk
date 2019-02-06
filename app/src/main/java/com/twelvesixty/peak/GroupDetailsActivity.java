@@ -15,5 +15,8 @@ public class GroupDetailsActivity extends AppCompatActivity {
 
         // find views by id
         editGroupButton = findViewById(R.id.editGroupButton);
+
+        //if this user is the group admin, show the edit button
+
     }
 }
