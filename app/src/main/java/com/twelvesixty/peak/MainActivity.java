@@ -66,13 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         dropResorts();
         dropGroups();
     }
-  
-      @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
-
+ 
     public void onProfileButtonClick(View view) {
         Intent navigateToProfile = new Intent(getApplicationContext(), UserProfileActivty.class);
         startActivity(navigateToProfile);
