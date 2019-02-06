@@ -25,10 +25,6 @@ public class UserProfileActivty extends AppCompatActivity {
         editableLayout = findViewById(R.id.linearLayout_editable);
         defaultProfileLayout = findViewById(R.id.linearLayout_default);
         editProfileButton = findViewById(R.id.button_EditProfile);
-
-        // set editable layout view to GONE
-        editableLayout.setVisibility(View.GONE);
-
     }
 
     // show users content from profile or provide editable content
