@@ -14,4 +14,11 @@
     <string name="checkBox4">filter</string>
     <string name="checkBox5">filter</string>
     <string name="checkBox6">filter</string>
+    <string name="UserLogin">Username</string>
+    <string name="UserPassword">Password</string>
+    <string name="LoginButton">Login</string>
+    <string name="GoToSignUpButton">Sign Up</string>
+    <string name="UserSignUp">Username</string>
+    <string name="PasswordSignUp">Password</string>
+
 </resources>
