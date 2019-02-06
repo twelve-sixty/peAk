@@ -37,12 +37,13 @@ public class UserProfileActivty extends AppCompatActivity {
         String buttonText = editProfileButton.getText().toString().toLowerCase();
 
         if(buttonText.equals("edit profile")) {
+
             flipToEditMode();
             buttonText = "Save";
             editProfileButton.setText(buttonText);
 
         } else {
-            flipToDefaultMode();
+
             buttonText = "Edit Profile";
             editProfileButton.setText(buttonText);
 
@@ -55,16 +56,20 @@ public class UserProfileActivty extends AppCompatActivity {
             TextView bioTextView = findViewById(R.id.textView_Bio);
             TextView favoriteResortTextView = findViewById(R.id.textView_favoriteResort);
 
+            // if users provide content, reset the text in the user profile
             if(!bioFormInput.equals("")) {
                 Log.i("bioFormInput", bioFormInput);
                 bioTextView.setText(bioFormInput);
             }
 
+            // if users provide content for favresort, then update textview
             if(!favoriteResortFormInput.equals("")) {
                 Log.i("favoriteResortInput", favoriteResortFormInput);
                 favoriteResortTextView.setText(favoriteResortFormInput);
             }
-            ;
+
+            flipToDefaultMode();
+            
         }
     }
 
