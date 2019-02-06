@@ -10,7 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
       
-        <activity android:name=".UserProfileActivty" />
+        <activity android:name=".UserProfileActivty"
+            android:parentActivityName="com.twelvesixty.peak.MainActivity"
+            android:label="My Profile"/>
         <activity android:name=".Signup"></activity>
         <activity android:name=".Login" />
         <activity android:name=".SearchActivity"></activity>
