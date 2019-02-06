@@ -44,7 +44,7 @@ public class CreateGroupActivity extends AppCompatActivity {
 
     // submit takes me to the newly created group view
 
-    public void onCreateGroupButtonClick(View view){
+    public void onCreateTeamButtonClick(View view){
         // find all edit text views by ID
         // create Group object with data
         // send that data off to the backend in a post body
@@ -54,6 +54,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         EditText dategoingEditText = findViewById(R.id.editText_groupDateGoing);
         EditText timeGoingEditText = findViewById(R.id.editText_groupTimeMeeting);
         EditText descriptionEditText = findViewById(R.id.editText_groupDescription);
+
 
     }
 
