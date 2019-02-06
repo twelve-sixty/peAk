@@ -44,14 +44,10 @@ public class CreateGroupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_create_group);
     }
 
-    // on click method that takes in all of that data
-    // need to account for when users don't fill in certain fields
-
-    // submit takes me to the newly created group view
-
+    // onClick method that creates a new team object from form data and saves object to database
     public void onCreateTeamButtonClick(View view){
-        // send that data off to the backend in a post body
 
+        // create Team string fields from EditText form data
         EditText capacityEditText = findViewById(R.id.editText_capacity);
         EditText groupNameEditText = findViewById(R.id.editText_groupName);
         EditText dateGoingEditText = findViewById(R.id.editText_groupDateGoing);
@@ -64,8 +60,10 @@ public class CreateGroupActivity extends AppCompatActivity {
         String timeGoingFormInput = timeGoingEditText.getText().toString();
         String desciptionFormInput = descriptionEditText.getText().toString();
 
+        // create list of tags based on checkbox onClick listener input
         List<HashMap<String,Boolean>> tagsList = generateTagsList();
 
+        // construct new Team object with user input data
         Team newTeam = new Team(capacityFormInput, groupNameFormInput, dateGoingFormInput, timeGoingFormInput, desciptionFormInput, tagsList);
 
         // need HTTP request sent back to backend
@@ -74,6 +72,7 @@ public class CreateGroupActivity extends AppCompatActivity {
 
 
     // checkbox click method inspired by: https://developer.android.com/guide/topics/ui/controls/checkbox
+    // onClick listener for group category tags. If tags clicked, boolean variable set to true
     public void onCategoryCheckboxClicked(View view) {
         // Is the view now checked?
         boolean checked = ((CheckBox) view).isChecked();
@@ -99,6 +98,8 @@ public class CreateGroupActivity extends AppCompatActivity {
         }
     }
 
+    // checkbox click method inspired by: https://developer.android.com/guide/topics/ui/controls/checkbox
+    // onClick listener for difficulty checkboxes, changes boolean value of the tag
     public void onDifficultyCheckboxClicked(View view) {
         // Is the view now checked?
         boolean checked = ((CheckBox) view).isChecked();
@@ -123,6 +124,8 @@ public class CreateGroupActivity extends AppCompatActivity {
         }
     }
 
+
+    // helper method which generates our list of tags and their statuses (key = tag name; value = boolean)
     private List<HashMap<String, Boolean>> generateTagsList() {
         List<HashMap<String, Boolean>> tagsMapList = new ArrayList<>();
 
@@ -149,6 +152,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         return tagsMapList;
     }
 
+    // helper method which constructs Hashmaps from tag names and boolean values
     private HashMap<String, Boolean> constructTagMaps(String tagName, Boolean tagIsChecked) {
         HashMap<String, Boolean> tagMap = new HashMap<>();
         tagMap.put(tagName, tagIsChecked);

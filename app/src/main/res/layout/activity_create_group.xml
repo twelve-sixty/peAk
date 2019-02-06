@@ -117,6 +117,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:onClick="onCategoryCheckboxClicked"
                     android:text="Party Hardy" />
 
                 <CheckBox
@@ -124,6 +125,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:onClick="onCategoryCheckboxClicked"
                     android:text="Off Piste" />
 
                 <CheckBox
@@ -131,6 +133,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:onClick="onCategoryCheckboxClicked"
                     android:text="Terrain Park" />
 
                 <CheckBox
@@ -138,6 +141,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:onClick="onCategoryCheckboxClicked"
                     android:text="Family Friendly" />
             </LinearLayout>
 
@@ -162,6 +166,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:onClick="onDifficultyCheckboxClicked"
                     android:text="Green Circles" />
 
                 <CheckBox
@@ -169,6 +174,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:onClick="onDifficultyCheckboxClicked"
                     android:text="Blue Squares" />
 
                 <CheckBox
@@ -176,6 +182,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:onClick="onDifficultyCheckboxClicked"
                     android:text="Black Diamonds" />
 
                 <CheckBox
@@ -183,6 +190,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:onClick="onDifficultyCheckboxClicked"
                     android:text="Double Black Diamonds" />
 
             </LinearLayout>
