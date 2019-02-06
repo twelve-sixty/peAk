@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.text.Layout;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class UserProfileActivty extends AppCompatActivity {
     LinearLayout defaultProfileLayout;
@@ -41,17 +43,27 @@ public class UserProfileActivty extends AppCompatActivity {
             buttonText = "Edit Profile";
             editProfileButton.setText(buttonText);
 
+            EditText bioFormEditView = findViewById(R.id.textView_Bio_Editable);
+            String bioFormInput = bioFormEditView.getText().toString();
+
+            EditText favoriteResortEditView = findViewById(R.id.textView_favoriteResort_Editable);
+            String favoriteResortFormInput = favoriteResortEditView.getText().toString();
+
+            TextView bioTextView = findViewById(R.id.textView_Bio);
+            TextView favoriteResortTextView = findViewById(R.id.textView_favoriteResort);
+
+
         }
 
 
     }
 
-    public void flipToEditMode(){
+    public void flipToEditMode() {
         defaultProfileLayout.setVisibility(View.GONE);
         editableLayout.setVisibility(View.VISIBLE);
     }
 
-    public void flipToDefaultMode(){
+    public void flipToDefaultMode() {
         editableLayout.setVisibility(View.GONE);
         defaultProfileLayout.setVisibility(View.VISIBLE);
     }
