@@ -36,4 +36,11 @@
     <string name="myGroupsTitle">My Groups</string>
     <string name="myProfileTitle">My Profile</string>
     <string name="search">Search</string>
+    <string name="maximum_capacity">Maximum capacity</string>
+    <string name="date_mm_dd_yy">Date: MM/DD/YY</string>
+    <string name="time_mm_hh_am_pm">Time: mm:hh AM/PM</string>
+    <string name="resort">Resort</string>
+    <string name="descriptionInputField">Description</string>
+    <string name="statusInputField">Status</string>
+    <string name="name_input_field">Group name</string>
 </resources>

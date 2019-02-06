@@ -26,7 +26,6 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:orientation="vertical"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -161,84 +160,84 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:orientation="vertical"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:id="@+id/groupNameEditable"
+        <EditText
+            android:id="@+id/nameInputField"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/group_name"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/name_input_field"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
             android:textAlignment="center"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            tools:targetApi="o" />
 
-        <TextView
-            android:id="@+id/dateLabelEditable"
+        <EditText
+            android:id="@+id/dateInputField"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/meeting_on"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/groupNameEditable" />
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/date_mm_dd_yy"
+            android:importantForAutofill="no"
+            android:inputType="date|textPersonName"
+            tools:targetApi="o" />
 
-        <TextView
-            android:id="@+id/resortLabelEditable"
+        <EditText
+            android:id="@+id/timeInputField"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/going_to"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dateLabel" />
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/time_mm_hh_am_pm"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            tools:targetApi="o" />
 
-        <TextView
-            android:id="@+id/capacityLabelEditable"
+        <EditText
+            android:id="@+id/resortInputField"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/capacity"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/resortLabel" />
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/resort"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            tools:targetApi="o" />
 
-        <TextView
-            android:id="@+id/descriptionLabelEditable"
+        <EditText
+            android:id="@+id/capacityInputField"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/description"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/capacityLabel" />
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/maximum_capacity"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            tools:targetApi="o" />
 
-        <TextView
-            android:id="@+id/stateLabelEditable"
+        <EditText
+            android:id="@+id/descriptionInputField"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/status"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionLabel" />
+            android:layout_height="149dp"
+            android:ems="10"
+            android:hint="@string/descriptionInputField"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            tools:targetApi="o" />
+
+        <EditText
+            android:id="@+id/statusInputField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/statusInputField"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"
+            tools:targetApi="o" />
 
     </LinearLayout>
 
