@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.Menu;
@@ -64,6 +65,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         dropWeather();
         dropResorts();
         dropGroups();
+    }
+ 
+    public void onProfileButtonClick(View view) {
+        Intent navigateToProfile = new Intent(getApplicationContext(), UserProfileActivty.class);
+        startActivity(navigateToProfile);
     }
 
     //Handles if the back button is pressed while a drawer is currently open
