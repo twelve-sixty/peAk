@@ -111,6 +111,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+//    Method that creates dropdown for weather
     public void dropWeather() {
         findViewById(R.id.weatherDrop).setOnClickListener(new View.OnClickListener(){
             @Override
@@ -121,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     // make textview disappear
                     textView.setVisibility(View.GONE);
                 } else {
-                    // make textview visible
+                    // make textview visible and other dropdown's close
                     findViewById(R.id.Filters).setVisibility(View.GONE);
                     findViewById(R.id.resortsInfo).setVisibility(View.GONE);
                    textView.setVisibility(View.VISIBLE);
@@ -130,7 +131,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
     }
-
+  
+//    Method that creates dropdown for groups
     public void dropGroups() {
         findViewById(R.id.groupsDrop).setOnClickListener(new View.OnClickListener(){
             @Override
@@ -146,7 +148,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
     }
-
+  
+//    Method that creates dropdown for resorts
     public void dropResorts() {
         findViewById(R.id.resortsInfoDrop).setOnClickListener(new View.OnClickListener(){
             @Override
@@ -163,5 +166,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
     }
-
 }
