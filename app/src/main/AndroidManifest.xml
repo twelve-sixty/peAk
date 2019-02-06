@@ -17,7 +17,9 @@
             android:label="@string/myProfileTitle"/>
         <activity android:name=".Signup"/>
         <activity android:name=".Login" />
-        <activity android:name=".SearchActivity"/>
+        <activity android:name=".SearchActivity"
+            android:parentActivityName="com.twelvesixty.peak.MainActivity"
+            android:label="@string/search"/>
         <activity android:name=".GroupDetailsActivity"/>
         <activity android:name=".MyGroupsActivity"
             android:parentActivityName="com.twelvesixty.peak.MainActivity"

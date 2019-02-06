@@ -180,4 +180,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
     }
+
+    public void goToSearchActivity(View v) {
+        Intent goToSearch = new Intent(this, SearchActivity.class);
+        startActivity(goToSearch);
+        drawer.closeDrawer(GravityCompat.END);
+    }
 }
