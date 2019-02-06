@@ -113,6 +113,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        if (id == R.id.profile) {
+            Intent goToProfile = new Intent(this, UserProfileActivty.class);
+            startActivity(goToProfile);
+        } else if (id == R.id.groups) {
+            Intent goToProfile = new Intent(this, MyGroupsActivity.class);
+            startActivity(goToProfile);
+        }
+
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -171,5 +179,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         });
+    }
+
+    public void goToSearchActivity(View v) {
+        Intent goToSearch = new Intent(this, SearchActivity.class);
+        startActivity(goToSearch);
+        drawer.closeDrawer(GravityCompat.END);
     }
 }
