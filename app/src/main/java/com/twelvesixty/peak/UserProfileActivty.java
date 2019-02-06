@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.Layout;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,8 +28,10 @@ public class UserProfileActivty extends AppCompatActivity {
 
         // set editable layout view to GONE
         editableLayout.setVisibility(View.GONE);
+
     }
 
+    // show users content from profile or provide editable content
     public void onEditProfileButtonClick(View view) {
 
         String buttonText = editProfileButton.getText().toString().toLowerCase();
@@ -52,18 +55,27 @@ public class UserProfileActivty extends AppCompatActivity {
             TextView bioTextView = findViewById(R.id.textView_Bio);
             TextView favoriteResortTextView = findViewById(R.id.textView_favoriteResort);
 
+            if(!bioFormInput.equals("")) {
+                Log.i("bioFormInput", bioFormInput);
+                bioTextView.setText(bioFormInput);
+            }
 
+            if(!favoriteResortFormInput.equals("")) {
+                Log.i("favoriteResortInput", favoriteResortFormInput);
+                favoriteResortTextView.setText(favoriteResortFormInput);
+            }
+            ;
         }
-
-
     }
 
-    public void flipToEditMode() {
+    // flip layouts from default content to editable content
+    private void flipToEditMode() {
         defaultProfileLayout.setVisibility(View.GONE);
         editableLayout.setVisibility(View.VISIBLE);
     }
 
-    public void flipToDefaultMode() {
+    // flip layout from editable content to default content
+    private void flipToDefaultMode() {
         editableLayout.setVisibility(View.GONE);
         defaultProfileLayout.setVisibility(View.VISIBLE);
     }
