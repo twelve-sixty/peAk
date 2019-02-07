@@ -61,4 +61,13 @@ public class ResortAddress {
         this.zipcode = zipcode;
     }
 
+    public String toString() {
+        if (this.line2 == null || this.line2.equals("")) {
+            return this.line1 + "\n" + this.city + ", " + this.state + " " + this.zipcode;
+        } else {
+            return this.line1 + "\n" + this.line2 + "\n" + this.city + ", " + this.state + " " + this.zipcode;
+
+        }
+    }
+
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
 import androidx.appcompat.widget.Toolbar;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -86,8 +87,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     "        \"longitude\": -121.476,\n" +
                     "        \"websiteUrl\": \"www.somewebsite.com\",\n" +
                     "        \"address\": {\n" +
-                    "                \"line1\": \"Address Line 1\",\n" +
-                    "                \"line2\": \"Address Line 2\",\n" +
+                    "                \"line1\": \"123 Crystal Rd NE\",\n" +
+                    "                \"line2\": \"Appt D4\",\n" +
                     "                \"city\": \"City\",\n" +
                     "                \"state\": \"State\",\n" +
                     "                \"zipcode\": 11111\n" +
@@ -122,11 +123,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     "        \"longitude\": -121.4763,\n" +
                     "        \"websiteUrl\": \"www.somewebsite.com\",\n" +
                     "        \"address\": {\n" +
-                    "                \"line1\": \"Address Line 1\",\n" +
-                    "                \"line2\": \"Address Line 2\",\n" +
+                    "                \"line1\": \"123 Not Crystal Rd NE\",\n" +
+                    "                \"line2\": \"\",\n" +
                     "                \"city\": \"City\",\n" +
                     "                \"state\": \"State\",\n" +
-                    "                \"zipcode\": 111111\n" +
+                    "                \"zipcode\": 222222\n" +
                     "            },\n" +
                     "        \"teamsList\": [\n" +
                     "            {\n" +
@@ -156,6 +157,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             teamAdapter = new TeamAdapterMain(resortData[0].getTeamsList());
             teamList.setAdapter(teamAdapter);
             resortList.setAdapter(resortAdapter);
+
+            TextView resortName = findViewById(R.id.resortName);
+            TextView resortAddress = findViewById(R.id.resortAddress);
+            TextView resortWebsite = findViewById(R.id.resortWebsite);
+
+            resortName.setText(resortData[0].getName());
+            resortAddress.setText(resortData[0].getAddress().toString());
+            resortWebsite.setText(resortData[0].getWebsiteUrl());
         }
 
     }
@@ -258,14 +267,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         findViewById(R.id.resortsInfoDrop).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                TextView textView2 = findViewById(R.id.resortsInfo);
+                ConstraintLayout resortInfo = findViewById(R.id.resortsInfo);
 
-                if (textView2.getVisibility() == View.VISIBLE) {
-                    textView2.setVisibility(View.GONE);
+                if (resortInfo.getVisibility() == View.VISIBLE) {
+                    resortInfo.setVisibility(View.GONE);
                 }else {
                     findViewById(R.id.weather).setVisibility(View.GONE);
                     findViewById(R.id.Filters).setVisibility(View.GONE);
-                    textView2.setVisibility(View.VISIBLE);
+                    resortInfo.setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -283,6 +292,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void performLogin(View v) {
-        //TODO: make this do login stuff
+        //TODO: make this do login stuff. Will most likely be get a token from the server, save it in shared prefs, and recreate()
     }
 }

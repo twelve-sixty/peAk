@@ -44,8 +44,20 @@ public class ResortAdapter extends RecyclerView.Adapter<ResortAdapter.ResortView
                 //Find what Layout was clicked, get it's info from the dataset, and log it
                 RecyclerView parent = (RecyclerView) v.getParent();
                 int position = parent.getChildLayoutPosition(v);
-                String resortName = mDataset[position].getName();
-                Log.i("RESORTCLICKED", resortName);
+                View root = v.getRootView();
+                RecyclerView teamList = root.findViewById(R.id.filteredList);
+                teamList.setAdapter(new TeamAdapterMain(mDataset[position].getTeamsList()));
+                String name = mDataset[position].getName();
+                String address = mDataset[position].getAddress().toString();
+                String website = mDataset[position].getWebsiteUrl();
+
+                TextView resortName = root.findViewById(R.id.resortName);
+                TextView resortAddress = root.findViewById(R.id.resortAddress);
+                TextView resortWebsite = root.findViewById(R.id.resortWebsite);
+
+                resortName.setText(name);
+                resortAddress.setText(address);
+                resortWebsite.setText(website);
             }
         });
         ResortViewHolder vh = new ResortViewHolder(v);
