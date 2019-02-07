@@ -2,7 +2,6 @@ package com.twelvesixty.peak;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class Team {
     private long id;
@@ -14,12 +13,14 @@ public class Team {
     private ArrayList<User> userList;
     private User teamLeader;
     private ArrayList<Messages> messagesList;
+    private Resort resort;
+    private String status;
 
     public Team () {}
 
     public Team (int capacity, String name, String dateAndTimeGoing,
                 String description, HashMap<String, Boolean> tagsMap,
-                 User teamLeader) {
+                 User teamLeader, Resort resort, String status) {
         this.capacity = capacity;
         this.name = name;
         this. dateAndTimeGoing = dateAndTimeGoing;
@@ -28,6 +29,8 @@ public class Team {
         this.userList = new ArrayList<>();
         this.teamLeader = teamLeader;
         this.messagesList = new ArrayList<>();
+        this.resort = resort;
+        this.status = status;
     }
 
     ////////////////////// -- getters
@@ -64,6 +67,18 @@ public class Team {
         return teamLeader;
     }
 
+    public ArrayList<Messages> getMessagesList() {
+        return messagesList;
+    }
+
+    public Resort getResort() {
+        return resort;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
     ////////////////////// -- setters
 
 
@@ -97,5 +112,17 @@ public class Team {
 
     public void setTeamLeader(User teamLeader) {
         this.teamLeader = teamLeader;
+    }
+
+    public void setMessagesList(ArrayList<Messages> messagesList) {
+        this.messagesList = messagesList;
+    }
+
+    public void setResort(Resort resort) {
+        this.resort = resort;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
