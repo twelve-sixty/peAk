@@ -40,7 +40,7 @@ public class User {
     }
 
     ////////////////////// -- setters
-    
+
     public void setName (String name) {
         this.name = name;
     }

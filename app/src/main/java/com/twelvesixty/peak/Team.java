@@ -12,11 +12,13 @@ public class Team {
     private String description;
     private List<HashMap<String, Boolean>> tagsList;
     private ArrayList<User> userList;
+    private User teamLeader;
 
     public Team () {}
 
     public Team (int capacity, String name, String dateGoing, String timeGoing,
-                String description, List<HashMap<String, Boolean>> tagsList) {
+                String description, List<HashMap<String, Boolean>> tagsList,
+                 User teamLeader) {
         this.capacity = capacity;
         this.name = name;
         this. dateGoing = dateGoing;
@@ -24,10 +26,10 @@ public class Team {
         this.description = description;
         this.tagsList = tagsList;
         this.userList = new ArrayList<>();
+        this.teamLeader = teamLeader;
     }
 
     ////////////////////// -- getters
-
 
     public int getCapacity() {
         return capacity;
@@ -57,6 +59,9 @@ public class Team {
         return userList;
     }
 
+    public User getTeamLeader() {
+        return teamLeader;
+    }
 
     ////////////////////// -- setters
 
@@ -87,5 +92,9 @@ public class Team {
 
     public void setUserList(ArrayList<User> userList) {
         this.userList = userList;
+    }
+
+    public void setTeamLeader(User teamLeader) {
+        this.teamLeader = teamLeader;
     }
 }
