@@ -1,5 +1,6 @@
 package com.twelvesixty.peak;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,11 +48,12 @@ public class TeamAdapterMain extends RecyclerView.Adapter<TeamAdapterMain.MainTe
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Find what Layout was clicked, get it's info from the dataset, and log it
+                //Find what team was clicked, start groupDetailActivity with that teams id as data
                 RecyclerView parent = (RecyclerView) v.getParent();
                 int position = parent.getChildLayoutPosition(v);
-                String resortName = mDataset.get(position).getName();
-                Log.i("RESORTCLICKED", resortName);
+                Intent goToGroupDetail = new Intent(parent.getContext(), GroupDetailsActivity.class);
+                goToGroupDetail.putExtra("teamId", mDataset.get(position).getId());
+                parent.getContext().startActivity(goToGroupDetail);
             }
         });
         MainTeamViewHolder vh = new MainTeamViewHolder(v);

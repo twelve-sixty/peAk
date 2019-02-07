@@ -169,7 +169,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     "        ]\n" +
                     "    }\n" +
                     "]", Resort[].class);
-//            preferences.edit().putFloat("latitude", (float) resortData[0].getLatitude()).putFloat("longitude", (float) resortData[0].getLongitude()).apply();
             initialLat = resortData[0].getLatitude();
             initialLong = resortData[0].getLongitude();
             resortAdapter = new ResortAdapter(resortData);
