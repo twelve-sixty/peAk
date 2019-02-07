@@ -75,6 +75,38 @@ public class TeamUnitTests {
         messagesList.add(fakeMessage3);
         fakeTeam.setMessagesList(messagesList);
         assertEquals(fakeTeam.getMessagesList(), messagesList);
+    }
+
+    @Test
+    public void teamSecondConstructorTest() {
+
+        // tagsMap getters and setters
+        HashMap<String, Boolean> fakeTagsMap = new HashMap<>();
+        fakeTagsMap.put("blueSquare", true);
+
+        User fakeTeamLeader2 = new User();
+        fakeTeamLeader2.setName("Shaun White");
+
+        Resort fakeResort2 = new Resort();
+
+        Team fakeTeam2 = new Team(4, "Fly boys", "02/07/2019 08:00 a",
+                "Park Junkies", fakeTagsMap, fakeTeamLeader2, fakeResort2, "Active");
+
+        assertEquals(fakeTeam2.getCapacity(), 4);
+
+        assertEquals(fakeTeam2.getName(), "Fly boys");
+
+        assertEquals(fakeTeam2.getDateAndTimeGoingGoing(), "02/07/2019 08:00 a");
+
+        assertEquals(fakeTeam2.getDescription(), "Park Junkies");
+
+        assertEquals(fakeTeam2.getTagsMap(), fakeTagsMap);
+
+        assertEquals(fakeTeam2.getTeamLeader(), fakeTeamLeader2);
+
+        assertEquals(fakeTeam2.getResort(), fakeResort2);
+
+        assertEquals(fakeTeam2.getStatus(), "Active");
 
     }
 }
