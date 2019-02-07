@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".UserProfileActivty">
 
+    <include layout="@layout/app_bar" />
+
     <Button
         android:id="@+id/button_EditProfile"
         android:layout_width="120dp"

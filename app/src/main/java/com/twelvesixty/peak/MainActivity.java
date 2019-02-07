@@ -1,5 +1,6 @@
 package com.twelvesixty.peak;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
@@ -24,52 +25,42 @@ import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
+    //Currently here for dev purposes
+    boolean isLoggedIn = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-        NavDrawerFragment nav = new NavDrawerFragment();
-        ResortDetailFragment content = new ResortDetailFragment();
-        RightDrawerFragment rightDrawer = new RightDrawerFragment();
+        //TODO: Make this check shared prefs for a token instead
+        if (!isLoggedIn) {
+            setContentView(R.layout.activity_login);
 
-        fragmentTransaction.add(R.id.drawer_layout, content);
-        fragmentTransaction.add(R.id.drawer_layout, nav);
-        fragmentTransaction.add(R.id.drawer_layout, rightDrawer);
-        fragmentTransaction.commit();
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+        } else {
+            setContentView(R.layout.activity_main);
 
-    }
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+            //This adds the hamburger for the navigation drawer. Icon can be changed, but rather complicated.
+            drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            toggle.getDrawerArrowDrawable().setDirection(DrawerArrowDrawable.ARROW_DIRECTION_RIGHT);
+            drawer.addDrawerListener(toggle);
+            toggle.syncState();
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+            //Sets up a listener for when a navigation item is selected
+            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(this);
 
-        //This adds the hamburger for the navigation drawer. Icon can be changed, but rather complicated.
-        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        toggle.getDrawerArrowDrawable().setDirection(DrawerArrowDrawable.ARROW_DIRECTION_RIGHT);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
+            MapView map = findViewById(R.id.mapView);
+            dropWeather();
+            dropResorts();
+            dropGroups();
+        }
 
-        //Sets up a listener for when a navigation item is selected
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        MapView map = findViewById(R.id.mapView);
-        dropWeather();
-        dropResorts();
-        dropGroups();
-    }
- 
-    public void onProfileButtonClick(View view) {
-        Intent navigateToProfile = new Intent(getApplicationContext(), UserProfileActivty.class);
-        startActivity(navigateToProfile);
     }
 
     //Handles if the back button is pressed while a drawer is currently open
@@ -87,7 +78,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        if (isLoggedIn) {
+            getMenuInflater().inflate(R.menu.main, menu);
+        }
         return true;
     }
 
@@ -112,6 +105,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+
+        if (id == R.id.profile) {
+            Intent goToProfile = new Intent(this, UserProfileActivty.class);
+            startActivity(goToProfile);
+        } else if (id == R.id.groups) {
+            Intent goToProfile = new Intent(this, MyGroupsActivity.class);
+            startActivity(goToProfile);
+        }
 
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -171,5 +172,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
         });
+    }
+
+    public void goToSearchActivity(View v) {
+        Intent goToSearch = new Intent(this, SearchActivity.class);
+        startActivity(goToSearch);
+        drawer.closeDrawer(GravityCompat.END);
+    }
+
+    public void GoToSignUpActivity(View v) {
+        Intent signUpIntent = new Intent(this, Signup.class);
+        startActivity(signUpIntent);
+    }
+
+    public void performLogin(View v) {
+        //TODO: make this do login stuff
     }
 }

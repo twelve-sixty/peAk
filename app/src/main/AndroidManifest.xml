@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.twelvesixty.peak">
 
     <application
@@ -8,15 +9,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
-
+        android:theme="@style/AppTheme.NoActionBar"
+        tools:ignore="GoogleAppIndexingWarning">
+      
         <activity android:name=".CreateGroupActivity"/>
-        <activity android:name=".UserProfileActivty" />
-        <activity android:name=".Signup"></activity>
+        <activity android:name=".UserProfileActivty"
+            android:parentActivityName="com.twelvesixty.peak.MainActivity"
+            android:label="@string/myProfileTitle"/>
+        <activity android:name=".Signup"/>
         <activity android:name=".Login" />
-        <activity android:name=".SearchActivity"></activity>
-        <activity android:name=".GroupDetailsActivity"></activity>
-        <activity android:name=".MyGroupsActivity"></activity>
+        <activity android:name=".SearchActivity"
+            android:parentActivityName="com.twelvesixty.peak.MainActivity"
+            android:label="@string/search"/>
+        <activity android:name=".GroupDetailsActivity"/>
+        <activity android:name=".MyGroupsActivity"
+            android:parentActivityName="com.twelvesixty.peak.MainActivity"
+            android:label="@string/myGroupsTitle"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
