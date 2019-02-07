@@ -2,10 +2,16 @@ package com.twelvesixty.peak;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class ResortTest {
     Resort r = new Resort();
+    Team t = new Team();
+    Team e = new Team();
+    ArrayList<Team> teamList = new ArrayList<Team>();
+
 
     @Test
     public void getSetIdTest() {
@@ -46,5 +52,24 @@ public class ResortTest {
         ResortAddress fakeAddress = new ResortAddress();
         r.setAddress(fakeAddress);
         assertEquals(r.getAddress(), fakeAddress);
+    }
+
+    @Test
+    public void getSetConstructorTest() {
+        teamList.add(t);
+        teamList.add(e);
+        ResortAddress fakeAddress = new ResortAddress();
+        Resort fakeResort = new Resort(10, "ASUS", 47.062, 47.062, "https://www.google.com/", teamList,fakeAddress);
+
+        assertEquals(fakeResort.getId(), 10);
+        assertEquals(fakeResort.getName(), "ASUS");
+        assertEquals(fakeResort.getLatitude(), 47.062, 0);
+        assertEquals(fakeResort.getLongitude(), 47.062, 0);
+        assertEquals(fakeResort.getWebsiteURL(), "https://www.google.com/");
+        assertEquals(fakeResort.getTeamsList(), teamList);
+        assertEquals(fakeResort.getAddress(), fakeAddress);
+
+
+
     }
 }

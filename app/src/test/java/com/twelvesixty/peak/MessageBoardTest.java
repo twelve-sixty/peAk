@@ -28,4 +28,13 @@ public class MessageBoardTest {
         assertEquals(m.getTeam(), fakeTeam3);
     }
 
+    @Test
+    public void getSetConstructorTest() {
+        Team team = new Team();
+        MessageBoard m = new MessageBoard(team);
+
+        assertEquals(m.getTeam(),team);
+
+    }
+
 }
