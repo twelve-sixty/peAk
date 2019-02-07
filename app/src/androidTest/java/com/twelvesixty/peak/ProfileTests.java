@@ -51,10 +51,13 @@ public class ProfileTests {
         onView(withId(R.id.textView_dateOfBirth_Copy)).check(matches(isDisplayed()));
 
         onView(withId(R.id.textView_Bio_Editable)).perform(typeText("Powder Surfer"));
+
         onView(withId(R.id.button_EditProfile)).perform(ViewActions.pressBack());
         onView(withId(R.id.button_EditProfile)).perform(click());
 
         onView(withId(R.id.textView_Bio)).check(matches(withText("Powder Surfer")));
-        
+        onView(withId(R.id.linearLayout_default)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
+        onView(withId(R.id.linearLayout_editable)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
+
     }
 }
