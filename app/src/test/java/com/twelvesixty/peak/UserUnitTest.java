@@ -35,5 +35,27 @@ public class UserUnitTest {
         assertEquals(fakeUser.getId(), 1);
     }
 
+    @Test
+    public void userContructorTest() {
+        User shaunWhite = new User("Shaun White", "carrot_top_USA", "01/24/1986",
+                "superpipeKing99@gmail.com", "All I do is win");
+
+        assertEquals(shaunWhite.getName(), "Shaun White");
+
+        assertEquals(shaunWhite.getBio(), "All I do is win");
+
+        assertEquals(shaunWhite.getEmail(), "superpipeKing99@gmail.com");
+
+        assertEquals(shaunWhite.getDateOfBirth(), "01/24/1986");
+
+        assertEquals(shaunWhite.getUsername(), "carrot_top_USA");
+
+        assertEquals(shaunWhite.getId(), 0);
+
+
+
+
+    }
+
 
 }
