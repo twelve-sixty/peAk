@@ -12,6 +12,7 @@
         android:theme="@style/AppTheme.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning">
       
+        <activity android:name=".CreateGroupActivity"/>
         <activity android:name=".UserProfileActivty"
             android:parentActivityName="com.twelvesixty.peak.MainActivity"
             android:label="@string/myProfileTitle"/>
