@@ -32,9 +32,8 @@ public class MessagesTest {
 
     @Test
     public void getSetConstructorTest() {
-        Messages fakeMessage = new Messages(10, messageBoard, message);
+        Messages fakeMessage = new Messages(messageBoard, message);
 
-        assertEquals(fakeMessage.getId(),10);
         assertEquals(fakeMessage.getMessageBoard(),messageBoard);
         assertEquals(fakeMessage.getMessageAuthor(),message);
     }
