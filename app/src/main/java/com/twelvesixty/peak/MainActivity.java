@@ -1,30 +1,35 @@
 package com.twelvesixty.peak;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.graphics.drawable.DrawerArrowDrawable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.MapView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.Gson;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
+    RecyclerView resortList;
+    RecyclerView teamList;
+    private RecyclerView.Adapter resortAdapter;
+    private RecyclerView.Adapter teamAdapter;
+    private RecyclerView.LayoutManager resortLayoutManager;
+    private RecyclerView.LayoutManager teamLayoutManager;
+    Gson gson = new Gson();
     //Currently here for dev purposes
     boolean isLoggedIn = true;
 
@@ -59,6 +64,98 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             dropWeather();
             dropResorts();
             dropGroups();
+
+            //Gets the recyclerview and sets it up to include data from DB
+            resortList = findViewById(R.id.recycler_nav);
+            resortList.setHasFixedSize(true);
+            teamList = findViewById(R.id.filteredList);
+            teamList.setHasFixedSize(true);
+
+            // use a linear layout manager
+            resortLayoutManager = new LinearLayoutManager(this);
+            teamLayoutManager = new LinearLayoutManager(this);
+            resortList.setLayoutManager(resortLayoutManager);
+            teamList.setLayoutManager(teamLayoutManager);
+
+            // specify an adapter (see also next example)
+            Resort[] resortData =  gson.fromJson("[\n" +
+                    "    {\n" +
+                    "        \"id\": 1,\n" +
+                    "        \"name\": \"Crystal Mountain Resort\",\n" +
+                    "        \"latitude\": 46.92333,\n" +
+                    "        \"longitude\": -121.476,\n" +
+                    "        \"websiteUrl\": \"www.somewebsite.com\",\n" +
+                    "        \"address\": {\n" +
+                    "                \"line1\": \"Address Line 1\",\n" +
+                    "                \"line2\": \"Address Line 2\",\n" +
+                    "                \"city\": \"City\",\n" +
+                    "                \"state\": \"State\",\n" +
+                    "                \"zipcode\": 11111\n" +
+                    "            },\n" +
+                    "        \"teamsList\": [\n" +
+                    "            {\n" +
+                    "                \"id\": 5,\n" +
+                    "                \"name\": \"Team 3-2\",\n" +
+                    "                \"description\": \"I need words here so I can see what is happening here and in the thing below so I'm writing lots of words\",\n" +
+                    "                \"currentCapacity\": 3,\n" +
+                    "                \"capacity\": 4,\n" +
+                    "                \"meetDate\": \"12/31/19 12:00AM\",\n" +
+                    "                \"resort\": null,\n" +
+                    "                \"status\": \"active\"\n" +
+                    "            },\n" +
+                    "            {\n" +
+                    "                \"id\": 6,\n" +
+                    "                \"name\": \"Team 3-3\",\n" +
+                    "                \"description\": \"I need words here so I can see what is happening\",\n" +
+                    "                \"currentCapacity\": 2,\n" +
+                    "                \"capacity\": 4,\n" +
+                    "                \"meetDate\": \"12/16/19 8:00AM\",\n" +
+                    "                \"resort\": null,\n" +
+                    "                \"status\": \"active\"\n" +
+                    "            }\n" +
+                    "        ]\n" +
+                    "    },\n" +
+                    "    {\n" +
+                    "        \"id\": 2,\n" +
+                    "        \"name\": \"Not Crystal Mountain Resort\",\n" +
+                    "        \"latitude\": 46.9233,\n" +
+                    "        \"longitude\": -121.4763,\n" +
+                    "        \"websiteUrl\": \"www.somewebsite.com\",\n" +
+                    "        \"address\": {\n" +
+                    "                \"line1\": \"Address Line 1\",\n" +
+                    "                \"line2\": \"Address Line 2\",\n" +
+                    "                \"city\": \"City\",\n" +
+                    "                \"state\": \"State\",\n" +
+                    "                \"zipcode\": 111111\n" +
+                    "            },\n" +
+                    "        \"teamsList\": [\n" +
+                    "            {\n" +
+                    "                \"id\": 1,\n" +
+                    "                \"name\": \"Team 1-2\",\n" +
+                    "                \"description\": \"different words\",\n" +
+                    "                \"currentCapacity\": 3,\n" +
+                    "                \"capacity\": 4,\n" +
+                    "                \"meetDate\": \"12/31/19 12:00AM\",\n" +
+                    "                \"resort\": null,\n" +
+                    "                \"status\": \"active\"\n" +
+                    "            },\n" +
+                    "            {\n" +
+                    "                \"id\": 3,\n" +
+                    "                \"name\": \"Team 1-3\",\n" +
+                    "                \"description\": \"it switched!\",\n" +
+                    "                \"currentCapacity\": 2,\n" +
+                    "                \"capacity\": 4,\n" +
+                    "                \"meetDate\": \"12/16/19 8:00AM\",\n" +
+                    "                \"resort\": null,\n" +
+                    "                \"status\": \"active\"\n" +
+                    "            }\n" +
+                    "        ]\n" +
+                    "    }\n" +
+                    "]", Resort[].class);
+            resortAdapter = new ResortAdapter(resortData);
+            teamAdapter = new TeamAdapterMain(resortData[0].getTeamsList());
+            teamList.setAdapter(teamAdapter);
+            resortList.setAdapter(resortAdapter);
         }
 
     }
