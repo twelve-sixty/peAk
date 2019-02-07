@@ -38,4 +38,6 @@
     <string name="search">Search</string>
     <string name="fillerCapacity">1/4</string>
     <string name="secondLineFiller">Group Description / Resort Name</string>
+    <string name="CreateAGroup">Create A Group</string>
+
 </resources>

@@ -43,13 +43,4 @@ public class ResortDetailsTests {
         onView(withId(R.id.resortsInfo)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
     }
 
-    @Test
-    public void testDropDownForFilters() {
-        onView(withId(R.id.groupsDrop)).check(matches(isDisplayed()));
-        onView(withId(R.id.Filters)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
-        onView(withId(R.id.groupsDrop)).perform(click());
-        onView(withId(R.id.Filters)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
-        onView(withId(R.id.groupsDrop)).perform(click());
-        onView(withId(R.id.Filters)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
-    }
 }

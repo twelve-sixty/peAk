@@ -7,8 +7,7 @@ public class Messages {
 
     public Messages () {}
 
-    public Messages (long id, MessageBoard messageBoard, User messageAuthor) {
-        this.id = id;
+    public Messages (MessageBoard messageBoard, User messageAuthor) {
         this.messageBoard = messageBoard;
         this.messageAuthor = messageAuthor;
     }
