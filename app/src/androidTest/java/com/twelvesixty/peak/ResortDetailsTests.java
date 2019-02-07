@@ -17,7 +17,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class ResortDetailsTest {
+public class ResortDetailsTests {
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule =
