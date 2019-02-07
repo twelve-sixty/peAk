@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             MapView map = findViewById(R.id.mapView);
             dropWeather();
             dropResorts();
-            dropGroups();
         }
 
     }
@@ -134,23 +133,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     findViewById(R.id.resortsInfo).setVisibility(View.GONE);
                    textView.setVisibility(View.VISIBLE);
 
-                }
-            }
-        });
-    }
-  
-//    Method that creates dropdown for groups
-    public void dropGroups() {
-        findViewById(R.id.groupsDrop).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                if (findViewById(R.id.Filters).getVisibility() == View.VISIBLE){
-                    Log.i("testing", "tests");
-                    findViewById(R.id.Filters).setVisibility(View.GONE);
-                }else{
-                    findViewById(R.id.weather).setVisibility(View.GONE);
-                    findViewById(R.id.resortsInfo).setVisibility(View.GONE);
-                    findViewById(R.id.Filters).setVisibility(View.VISIBLE);
                 }
             }
         });

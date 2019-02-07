@@ -43,15 +43,4 @@ public class ResortDetailsTests {
         onView(withId(R.id.resortsInfo)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
     }
 
-
-//    This test is for the filter drop down that is still there but we are cutting it out of MVP due to time constraint
-//    @Test
-//    public void testDropDownForFilters() {
-//        onView(withId(R.id.groupsDrop)).check(matches(isDisplayed()));
-//        onView(withId(R.id.Filters)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
-//        onView(withId(R.id.groupsDrop)).perform(click());
-//        onView(withId(R.id.Filters)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
-//        onView(withId(R.id.groupsDrop)).perform(click());
-//        onView(withId(R.id.Filters)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
-//    }
 }
