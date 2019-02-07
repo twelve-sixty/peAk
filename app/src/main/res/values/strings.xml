@@ -37,6 +37,5 @@
     <string name="myProfileTitle">My Profile</string>
     <string name="search">Search</string>
     <string name="fillerCapacity">1/4</string>
-    <string name="group_name">Group Name</string>
     <string name="secondLineFiller">Group Description / Resort Name</string>
 </resources>
