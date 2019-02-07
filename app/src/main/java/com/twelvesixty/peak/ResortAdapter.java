@@ -1,5 +1,6 @@
 package com.twelvesixty.peak;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,6 +46,7 @@ public class ResortAdapter extends RecyclerView.Adapter<ResortAdapter.ResortView
                 RecyclerView parent = (RecyclerView) v.getParent();
                 int position = parent.getChildLayoutPosition(v);
                 View root = v.getRootView();
+                root.getContext().getSharedPreferences("preferences", 0).edit().putFloat("latitude", (float) mDataset[position].getLatitude()).putFloat("longitude", (float) mDataset[position].getLongitude()).apply();
                 RecyclerView teamList = root.findViewById(R.id.filteredList);
                 teamList.setAdapter(new TeamAdapterMain(mDataset[position].getTeamsList()));
                 String name = mDataset[position].getName();

@@ -29,10 +29,13 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, SharedPreferences.OnSharedPreferenceChangeListener {
     DrawerLayout drawer;
     RecyclerView resortList;
     RecyclerView teamList;
+    SupportMapFragment mapView;
+    double initialLat;
+    double initialLong;
     private SharedPreferences preferences;
     private RecyclerView.Adapter resortAdapter;
     private RecyclerView.Adapter teamAdapter;
@@ -47,6 +50,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         preferences = getSharedPreferences("preferences", 0);
+
+        preferences.registerOnSharedPreferenceChangeListener(this);
 
         //TODO: Make this check shared prefs for a token instead
         if (!isLoggedIn) {
@@ -71,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
             navigationView.setNavigationItemSelectedListener(this);
 
-            SupportMapFragment mapView = (SupportMapFragment) getSupportFragmentManager()
+            mapView = (SupportMapFragment) getSupportFragmentManager()
                     .findFragmentById(R.id.map);
             dropWeather();
             dropResorts();
@@ -130,8 +135,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     "    {\n" +
                     "        \"id\": 2,\n" +
                     "        \"name\": \"Not Crystal Mountain Resort\",\n" +
-                    "        \"latitude\": 46.9233,\n" +
-                    "        \"longitude\": -121.4763,\n" +
+                    "        \"latitude\": 47.6062,\n" +
+                    "        \"longitude\": -122.3321,\n" +
                     "        \"websiteUrl\": \"www.somewebsite.com\",\n" +
                     "        \"address\": {\n" +
                     "                \"line1\": \"123 Not Crystal Rd NE\",\n" +
@@ -164,7 +169,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     "        ]\n" +
                     "    }\n" +
                     "]", Resort[].class);
-            preferences.edit().putFloat("latitude", (float) resortData[0].getLatitude()).putFloat("longitude", (float) resortData[0].getLongitude()).apply();
+//            preferences.edit().putFloat("latitude", (float) resortData[0].getLatitude()).putFloat("longitude", (float) resortData[0].getLongitude()).apply();
+            initialLat = resortData[0].getLatitude();
+            initialLong = resortData[0].getLongitude();
             resortAdapter = new ResortAdapter(resortData);
             teamAdapter = new TeamAdapterMain(resortData[0].getTeamsList());
             teamList.setAdapter(teamAdapter);
@@ -199,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         map = googleMap;
 
         // Add a marker in Sydney, Australia, and move the camera.
-        LatLng coords = new LatLng(preferences.getFloat("latitude", 0), preferences.getFloat("longitude", 0));
+        LatLng coords = new LatLng(initialLat, initialLong);
         map.addMarker(new MarkerOptions().position(coords).title("Marker at resort location"));
         map.moveCamera(CameraUpdateFactory.newLatLng(coords));
         map.setMinZoomPreference(8);
@@ -228,6 +235,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+        LatLng coords = new LatLng(preferences.getFloat("latitude", 0), preferences.getFloat("longitude", 0));
+        map.addMarker(new MarkerOptions().position(coords).title("Marker at resort location"));
+        map.moveCamera(CameraUpdateFactory.newLatLng(coords));
+        map.setMinZoomPreference(8);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
