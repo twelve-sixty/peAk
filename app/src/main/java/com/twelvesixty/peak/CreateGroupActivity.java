@@ -68,6 +68,7 @@ public class CreateGroupActivity extends AppCompatActivity {
 
         // need HTTP request sent back to backend
         // need to then populate the new form with these data
+        // need to add this user to the list of users in that team
     }
 
 

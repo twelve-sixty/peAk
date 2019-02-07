@@ -1,5 +1,6 @@
 package com.twelvesixty.peak;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -10,6 +11,7 @@ public class Team {
     private String timeGoing;
     private String description;
     private List<HashMap<String, Boolean>> tagsList;
+    private ArrayList<User> userList;
 
     public Team () {}
 
@@ -21,6 +23,69 @@ public class Team {
         this.timeGoing = timeGoing;
         this.description = description;
         this.tagsList = tagsList;
+        this.userList = new ArrayList<>();
+    }
 
+    ////////////////////// -- getters
+
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDateGoing() {
+        return dateGoing;
+    }
+
+    public String getTimeGoing() {
+        return timeGoing;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public List<HashMap<String, Boolean>> getTagsList() {
+        return tagsList;
+    }
+
+    public ArrayList<User> getUserList() {
+        return userList;
+    }
+
+
+    ////////////////////// -- setters
+
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDateGoing(String dateGoing) {
+        this.dateGoing = dateGoing;
+    }
+
+    public void setTimeGoing(String timeGoing) {
+        this.timeGoing = timeGoing;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setTagsList(List<HashMap<String, Boolean>> tagsList) {
+        this.tagsList = tagsList;
+    }
+
+    public void setUserList(ArrayList<User> userList) {
+        this.userList = userList;
     }
 }
