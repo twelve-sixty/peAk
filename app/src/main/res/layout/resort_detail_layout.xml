@@ -55,7 +55,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mapView"
         tools:ignore="OnClick,UnusedAttribute" />
-    
+
     <TextView
         android:id="@+id/weather"
         android:layout_width="289dp"
@@ -118,7 +118,7 @@
         android:onClick="goToCreateGroup"
         android:text="@string/CreateAGroup"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/groupsDrop" />
+        app:layout_constraintTop_toBottomOf="@+id/weatherDrop" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
     <!--Setup for the toolbar at the top of the activity-->

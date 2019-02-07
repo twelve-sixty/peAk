@@ -6,6 +6,8 @@ import static org.junit.Assert.*;
 
 public class MessagesTest {
     Messages m = new Messages();
+    MessageBoard messageBoard = new MessageBoard();
+    User message = new User();
 
     @Test
     public void getSetIdTest() {
@@ -26,6 +28,15 @@ public class MessagesTest {
         User fakeMessageAuthor = new User();
         m.setMessageAuthor(fakeMessageAuthor);
         assertEquals(m.getMessageAuthor(), fakeMessageAuthor);
+    }
+
+    @Test
+    public void getSetConstructorTest() {
+        Messages fakeMessage = new Messages(10, messageBoard, message);
+
+        assertEquals(fakeMessage.getId(),10);
+        assertEquals(fakeMessage.getMessageBoard(),messageBoard);
+        assertEquals(fakeMessage.getMessageAuthor(),message);
     }
 
 }

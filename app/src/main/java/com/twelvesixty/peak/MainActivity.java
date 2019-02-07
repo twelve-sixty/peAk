@@ -129,7 +129,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     textView.setVisibility(View.GONE);
                 } else {
                     // make textview visible and other dropdown's close
-                    findViewById(R.id.Filters).setVisibility(View.GONE);
                     findViewById(R.id.resortsInfo).setVisibility(View.GONE);
                    textView.setVisibility(View.VISIBLE);
 
@@ -149,7 +148,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     textView2.setVisibility(View.GONE);
                 }else {
                     findViewById(R.id.weather).setVisibility(View.GONE);
-                    findViewById(R.id.Filters).setVisibility(View.GONE);
                     textView2.setVisibility(View.VISIBLE);
                 }
             }
