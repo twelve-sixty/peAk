@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,18 +19,26 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
     DrawerLayout drawer;
     RecyclerView resortList;
     RecyclerView teamList;
+    private SharedPreferences preferences;
     private RecyclerView.Adapter resortAdapter;
     private RecyclerView.Adapter teamAdapter;
     private RecyclerView.LayoutManager resortLayoutManager;
     private RecyclerView.LayoutManager teamLayoutManager;
+    private GoogleMap map;
     Gson gson = new Gson();
     //Currently here for dev purposes
     boolean isLoggedIn = true;
@@ -37,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        preferences = getSharedPreferences("preferences", 0);
 
         //TODO: Make this check shared prefs for a token instead
         if (!isLoggedIn) {
@@ -61,7 +71,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
             navigationView.setNavigationItemSelectedListener(this);
 
-            MapView map = findViewById(R.id.mapView);
+            SupportMapFragment mapView = (SupportMapFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.map);
             dropWeather();
             dropResorts();
             dropGroups();
@@ -153,6 +164,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     "        ]\n" +
                     "    }\n" +
                     "]", Resort[].class);
+            preferences.edit().putFloat("latitude", (float) resortData[0].getLatitude()).putFloat("longitude", (float) resortData[0].getLongitude()).apply();
             resortAdapter = new ResortAdapter(resortData);
             teamAdapter = new TeamAdapterMain(resortData[0].getTeamsList());
             teamList.setAdapter(teamAdapter);
@@ -165,6 +177,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             resortName.setText(resortData[0].getName());
             resortAddress.setText(resortData[0].getAddress().toString());
             resortWebsite.setText(resortData[0].getWebsiteUrl());
+
+            mapView.getMapAsync(this);
         }
 
     }
@@ -179,6 +193,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             super.onBackPressed();
         }
+    }
+
+    public void onMapReady(GoogleMap googleMap) {
+        map = googleMap;
+
+        // Add a marker in Sydney, Australia, and move the camera.
+        LatLng coords = new LatLng(preferences.getFloat("latitude", 0), preferences.getFloat("longitude", 0));
+        map.addMarker(new MarkerOptions().position(coords).title("Marker at resort location"));
+        map.moveCamera(CameraUpdateFactory.newLatLng(coords));
+        map.setMinZoomPreference(8);
     }
 
     @Override
