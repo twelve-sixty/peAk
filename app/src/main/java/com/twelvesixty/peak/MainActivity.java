@@ -174,6 +174,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
+
+
     public void goToSearchActivity(View v) {
         Intent goToSearch = new Intent(this, SearchActivity.class);
         startActivity(goToSearch);
@@ -183,6 +185,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void GoToSignUpActivity(View v) {
         Intent signUpIntent = new Intent(this, Signup.class);
         startActivity(signUpIntent);
+    }
+
+    public void goToCreateGroup(View v) {
+        Intent goToCreate = new Intent(this, CreateGroupActivity.class);
+        startActivity(goToCreate);
     }
 
     public void performLogin(View v) {
