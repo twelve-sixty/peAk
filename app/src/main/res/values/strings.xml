@@ -8,7 +8,7 @@
     <string name="meeting_on">Meeting on:</string>
     <string name="send_button">Send</string>
     <string name="enter_message">Enter message</string>
-    <string name="edit">Edit</string>
+    <string name="edit_group_button">Edit Group</string>
     <string name="nav_header_title">USERNAME</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

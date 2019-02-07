@@ -33,47 +33,49 @@ public class GroupDetailsActivity extends AppCompatActivity {
 
     }
 
-    // show users content from profile or provide editable content
-    public void onEditProfileButtonClick(View view) {
+    // Need to migrate this method for this activity.
+    // Method shows users content from group or provides editable content for the owner
 
-        String buttonText = editGroupButton.getText().toString().toLowerCase();
-
-        if(buttonText.equals("edit group")) {
-
-            flipToEditMode();
-            buttonText = "Save";
-            editGroupButton.setText(buttonText);
-
-        } else {
-
-            buttonText = "Edit group";
-            editGroupButton.setText(buttonText);
-
-            EditText bioFormEditView = findViewById(R.id.textView_Bio_Editable);
-            String bioFormInput = bioFormEditView.getText().toString();
-
-            EditText favoriteResortEditView = findViewById(R.id.textView_favoriteResort_Editable);
-            String favoriteResortFormInput = favoriteResortEditView.getText().toString();
-
-            TextView bioTextView = findViewById(R.id.textView_Bio);
-            TextView favoriteResortTextView = findViewById(R.id.textView_favoriteResort);
-
-            // if users provide content, reset the text in the user profile
-            if(!bioFormInput.equals("")) {
-                Log.i("bioFormInput", bioFormInput);
-                bioTextView.setText(bioFormInput);
-            }
-
-            // if users provide content for favresort, then update textview
-            if(!favoriteResortFormInput.equals("")) {
-                Log.i("favoriteResortInput", favoriteResortFormInput);
-                favoriteResortTextView.setText(favoriteResortFormInput);
-            }
-
-            flipToDefaultMode();
-
-        }
-    }
+//    public void onEditGroupButtonClick(View view) {
+//
+//        String buttonText = editGroupButton.getText().toString().toLowerCase();
+//
+//        if(buttonText.equals("edit group")) {
+//
+//            flipToEditMode();
+//            buttonText = "Save";
+//            editGroupButton.setText(buttonText);
+//
+//        } else {
+//
+//            buttonText = "Edit group";
+//            editGroupButton.setText(buttonText);
+//
+//            EditText bioFormEditView = findViewById(R.id.textView_Bio_Editable);
+//            String bioFormInput = bioFormEditView.getText().toString();
+//
+//            EditText favoriteResortEditView = findViewById(R.id.textView_favoriteResort_Editable);
+//            String favoriteResortFormInput = favoriteResortEditView.getText().toString();
+//
+//            TextView bioTextView = findViewById(R.id.textView_Bio);
+//            TextView favoriteResortTextView = findViewById(R.id.textView_favoriteResort);
+//
+//            // if users provide content, reset the text in the user profile
+//            if(!bioFormInput.equals("")) {
+//                Log.i("bioFormInput", bioFormInput);
+//                bioTextView.setText(bioFormInput);
+//            }
+//
+//            // if users provide content for faveResort, then update textView
+//            if(!favoriteResortFormInput.equals("")) {
+//                Log.i("favoriteResortInput", favoriteResortFormInput);
+//                favoriteResortTextView.setText(favoriteResortFormInput);
+//            }
+//
+//            flipToDefaultMode();
+//
+//        }
+//    }
 
     // flip layouts from default content to editable content
     private void flipToEditMode() {
