@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Team {
+    private long id;
     private int capacity;
     private String name;
     private String dateGoing;
@@ -13,6 +14,7 @@ public class Team {
     private List<HashMap<String, Boolean>> tagsList;
     private ArrayList<User> userList;
     private User teamLeader;
+    private ArrayList<Messages> messagesList;
 
     public Team () {}
 
@@ -27,9 +29,15 @@ public class Team {
         this.tagsList = tagsList;
         this.userList = new ArrayList<>();
         this.teamLeader = teamLeader;
+        this.messagesList = new ArrayList<>();
     }
 
     ////////////////////// -- getters
+
+
+    public long getId() {
+        return id;
+    }
 
     public int getCapacity() {
         return capacity;
@@ -65,6 +73,10 @@ public class Team {
 
     ////////////////////// -- setters
 
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public void setCapacity(int capacity) {
         this.capacity = capacity;

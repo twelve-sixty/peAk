@@ -1,6 +1,7 @@
 package com.twelvesixty.peak;
 
 public class User {
+    private long id;
     private String name;
     private String username;
     private String dateOfBirth;
@@ -18,6 +19,10 @@ public class User {
     }
 
     ////////////////////// -- getters
+
+    public long getId() {
+        return id;
+    }
 
     public String getName () {
         return this.name;
@@ -40,6 +45,11 @@ public class User {
     }
 
     ////////////////////// -- setters
+
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public void setName (String name) {
         this.name = name;
