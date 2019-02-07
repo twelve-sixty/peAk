@@ -63,7 +63,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:hint="Meeting on dd/mm/yy"
+            android:hint="Meeting on dd/mm/yyyy"
             android:inputType="date"
             android:textSize="10dp"/>
 
@@ -73,8 +73,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:hint="Meeting at 00:00am/pm"
-            android:inputType="datetime"
+            android:hint="Meeting at 00:00 am/pm"
+            android:inputType="time"
             android:textSize="10dp"/>
 
     </LinearLayout>

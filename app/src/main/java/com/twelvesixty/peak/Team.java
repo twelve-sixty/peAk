@@ -8,32 +8,29 @@ public class Team {
     private long id;
     private int capacity;
     private String name;
-    private String dateGoing;
-    private String timeGoing;
+    private String dateAndTimeGoing;
     private String description;
-    private List<HashMap<String, Boolean>> tagsList;
+    private HashMap<String, Boolean> tagsMap;
     private ArrayList<User> userList;
     private User teamLeader;
     private ArrayList<Messages> messagesList;
 
     public Team () {}
 
-    public Team (int capacity, String name, String dateGoing, String timeGoing,
-                String description, List<HashMap<String, Boolean>> tagsList,
+    public Team (int capacity, String name, String dateAndTimeGoing,
+                String description, HashMap<String, Boolean> tagsMap,
                  User teamLeader) {
         this.capacity = capacity;
         this.name = name;
-        this. dateGoing = dateGoing;
-        this.timeGoing = timeGoing;
+        this. dateAndTimeGoing = dateAndTimeGoing;
         this.description = description;
-        this.tagsList = tagsList;
+        this.tagsMap = tagsMap;
         this.userList = new ArrayList<>();
         this.teamLeader = teamLeader;
         this.messagesList = new ArrayList<>();
     }
 
     ////////////////////// -- getters
-
 
     public long getId() {
         return id;
@@ -47,20 +44,16 @@ public class Team {
         return name;
     }
 
-    public String getDateGoing() {
-        return dateGoing;
-    }
-
-    public String getTimeGoing() {
-        return timeGoing;
+    public String getDateAndTimeGoingGoing() {
+        return this.dateAndTimeGoing;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public List<HashMap<String, Boolean>> getTagsList() {
-        return tagsList;
+    public HashMap<String, Boolean> getTagsMap() {
+        return tagsMap;
     }
 
     public ArrayList<User> getUserList() {
@@ -86,20 +79,16 @@ public class Team {
         this.name = name;
     }
 
-    public void setDateGoing(String dateGoing) {
-        this.dateGoing = dateGoing;
-    }
-
-    public void setTimeGoing(String timeGoing) {
-        this.timeGoing = timeGoing;
+    public void setDateAndTimeGoing(String dateAndTimeGoing) {
+        this.dateAndTimeGoing = dateAndTimeGoing;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public void setTagsList(List<HashMap<String, Boolean>> tagsList) {
-        this.tagsList = tagsList;
+    public void setTagsMap(HashMap<String, Boolean> tagsMap) {
+        this.tagsMap = tagsMap;
     }
 
     public void setUserList(ArrayList<User> userList) {

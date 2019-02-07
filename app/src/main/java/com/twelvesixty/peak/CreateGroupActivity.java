@@ -58,13 +58,21 @@ public class CreateGroupActivity extends AppCompatActivity {
         String groupNameFormInput = groupNameEditText.getText().toString();
         String dateGoingFormInput = dateGoingEditText.getText().toString();
         String timeGoingFormInput = timeGoingEditText.getText().toString();
-        String desciptionFormInput = descriptionEditText.getText().toString();
+        String descriptionFormInput = descriptionEditText.getText().toString();
+
+        // date and time going should be in the proper format; we concatenate them here
+        String dateAndTimeGoing = dateGoingFormInput + " " + timeGoingFormInput;
+
+        // for testing purposes only (will pull these data from logged in user)
+        User fakeTeamLeader = new User();
+        fakeTeamLeader.setName("Fake User");
 
         // create list of tags based on checkbox onClick listener input
-        List<HashMap<String,Boolean>> tagsList = generateTagsList();
+        HashMap<String,Boolean> tagsMap = generateTagsList();
 
         // construct new Team object with user input data
-        Team newTeam = new Team(capacityFormInput, groupNameFormInput, dateGoingFormInput, timeGoingFormInput, desciptionFormInput, tagsList);
+        Team newTeam = new Team(capacityFormInput, groupNameFormInput, dateAndTimeGoing,
+                descriptionFormInput, tagsMap, fakeTeamLeader);
 
         // need HTTP request sent back to backend
         // need to then populate the new form with these data
@@ -83,18 +91,26 @@ public class CreateGroupActivity extends AppCompatActivity {
             case partyHardyID:
                 if (checked)
                     partyHardyTag = true;
+                else
+                    partyHardyTag = false;
                 break;
             case offPisteID:
                 if (checked)
                     offPisteTag = true;
+                else
+                    offPisteTag = false;
                 break;
             case terrainParkID:
                 if (checked)
                     terrainParkTag = true;
+                else
+                    terrainParkTag = false;
                 break;
             case familyFriendlyID:
                 if (checked)
                     familyFriendlyTag = true;
+                else
+                    familyFriendlyTag = false;
                 break;
         }
     }
@@ -110,55 +126,45 @@ public class CreateGroupActivity extends AppCompatActivity {
             case greenCircleID:
                 if (checked)
                     greenCircleTag = true;
+                else
+                    greenCircleTag = false;
                 break;
             case blueSquareID:
                 if (checked)
                     blueSquareTag = true;
+                else
+                    blueSquareTag = false;
                 break;
             case blackDiamondID:
                 if (checked)
                     blackDiamondTag = true;
+                else
+                    blackDiamondTag = false;
                 break;
             case doubleblackDiamondID:
                 if (checked)
                     doubleBlackDiamondTag = true;
+                else
+                    doubleBlackDiamondTag = false;
+                break;
         }
     }
 
 
     // helper method which generates our list of tags and their statuses (key = tag name; value = boolean)
-    private List<HashMap<String, Boolean>> generateTagsList() {
-        List<HashMap<String, Boolean>> tagsMapList = new ArrayList<>();
+    private HashMap<String, Boolean> generateTagsList() {
+        HashMap<String, Boolean> tagsMapList = new HashMap<>();
 
-        HashMap<String, Boolean> greenCircleMap = constructTagMaps("greenCircle", greenCircleTag);
-        HashMap<String, Boolean> blueSquareMap = constructTagMaps("blueSquare", blueSquareTag);
-        HashMap<String, Boolean> blackDiamondMap = constructTagMaps("blackDiamond", blackDiamondTag);
-        HashMap<String, Boolean> doubleBlackDiamondMap = constructTagMaps("doubleBlackDiamond", doubleBlackDiamondTag);
+        tagsMapList.put("greenCircle", greenCircleTag);
+        tagsMapList.put("blueSquare", blueSquareTag);
+        tagsMapList.put("blackDiamond", blackDiamondTag);
+        tagsMapList.put("doubleBlackDiamond", doubleBlackDiamondTag);
 
-        HashMap<String, Boolean> partyHardyMap = constructTagMaps("partyHardy", partyHardyTag);
-        HashMap<String, Boolean> offPisteMap = constructTagMaps("offPiste", offPisteTag);
-        HashMap<String, Boolean> terrainParkMap = constructTagMaps("terrainPark", terrainParkTag);
-        HashMap<String, Boolean> familyFriendlyMap = constructTagMaps("familyFriendly", familyFriendlyTag);
-
-        tagsMapList.add(greenCircleMap);
-        tagsMapList.add(blueSquareMap);
-        tagsMapList.add(blackDiamondMap);
-        tagsMapList.add(doubleBlackDiamondMap);
-
-        tagsMapList.add(partyHardyMap);
-        tagsMapList.add(offPisteMap);
-        tagsMapList.add(terrainParkMap);
-        tagsMapList.add(familyFriendlyMap);
+        tagsMapList.put("partyHardy", partyHardyTag);
+        tagsMapList.put("offPiste", offPisteTag);
+        tagsMapList.put("terrainPark", terrainParkTag);
+        tagsMapList.put("familyFriendly", familyFriendlyTag);
 
         return tagsMapList;
     }
-
-    // helper method which constructs Hashmaps from tag names and boolean values
-    private HashMap<String, Boolean> constructTagMaps(String tagName, Boolean tagIsChecked) {
-        HashMap<String, Boolean> tagMap = new HashMap<>();
-        tagMap.put(tagName, tagIsChecked);
-        return tagMap;
-    }
-
-
 }
