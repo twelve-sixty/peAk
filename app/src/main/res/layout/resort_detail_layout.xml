@@ -118,7 +118,7 @@
         android:onClick="goToCreateGroup"
         android:text="@string/CreateAGroup"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weatherDrop" />
+        app:layout_constraintTop_toBottomOf="@+id/weather" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
     <!--Setup for the toolbar at the top of the activity-->
