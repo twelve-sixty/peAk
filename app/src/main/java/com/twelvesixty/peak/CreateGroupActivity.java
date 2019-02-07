@@ -72,7 +72,7 @@ public class CreateGroupActivity extends AppCompatActivity {
 
         // construct new Team object with user input data
         Team newTeam = new Team(capacityFormInput, groupNameFormInput, dateAndTimeGoing,
-                descriptionFormInput, tagsMap, fakeTeamLeader);
+                descriptionFormInput, tagsMap, fakeTeamLeader, new Resort(), "Active");
 
         // need HTTP request sent back to backend
         // need to then populate the new form with these data
