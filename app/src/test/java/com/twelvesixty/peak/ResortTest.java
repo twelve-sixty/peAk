@@ -65,7 +65,7 @@ public class ResortTest {
         assertEquals(fakeResort.getLatitude(), 47.062, 0);
         assertEquals(fakeResort.getLongitude(), 47.062, 0);
         assertEquals(fakeResort.getWebsiteURL(), "https://www.google.com/");
-        assertEquals(fakeResort.getTeamsList(), teamList);
+        assertEquals(fakeResort.getTeams(), teamList);
         assertEquals(fakeResort.getAddress(), fakeAddress);
 
 

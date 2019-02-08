@@ -1,11 +1,9 @@
 package com.twelvesixty.peak;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -66,7 +64,7 @@ class MyGroupAdapter extends RecyclerView.Adapter<MyGroupAdapter.MyViewHolder> {
         // - replace the contents of the view with that element
         Team t = mDataset[position];
         holder.teamName.setText(t.getName());
-        holder.teamCapactiy.setText(0 + "/" +  t.getCapacity());
+        holder.teamCapactiy.setText(0 + "/" +  t.getMaxCapacity());
         holder.resortName.setText("Resort Name");
     }
 

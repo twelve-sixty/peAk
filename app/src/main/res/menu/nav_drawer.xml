@@ -7,12 +7,12 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/profile"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/user_icon"
             android:title="Profile" />
 
         <item
             android:id="@+id/groups"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/groups_icon"
             android:title="My Groups" />
     </group>
 

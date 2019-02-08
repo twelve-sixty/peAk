@@ -5,9 +5,10 @@ import java.util.HashMap;
 
 public class Team {
     private long id;
-    private int capacity;
+    private int maxCapacity;
+    private int currentCapacity;
     private String name;
-    private String dateAndTimeGoing;
+    private String meetDate;
     private String description;
     private HashMap<String, Boolean> tagsMap;
     private ArrayList<User> userList;
@@ -18,12 +19,12 @@ public class Team {
 
     public Team () {}
 
-    public Team (int capacity, String name, String dateAndTimeGoing,
-                String description, HashMap<String, Boolean> tagsMap,
+    public Team (int maxCapacity, String name, String meetDate,
+                 String description, HashMap<String, Boolean> tagsMap,
                  User teamLeader, Resort resort, String status) {
-        this.capacity = capacity;
+        this.maxCapacity = maxCapacity;
         this.name = name;
-        this. dateAndTimeGoing = dateAndTimeGoing;
+        this.meetDate = meetDate;
         this.description = description;
         this.tagsMap = tagsMap;
         this.userList = new ArrayList<>();
@@ -39,8 +40,8 @@ public class Team {
         return id;
     }
 
-    public int getCapacity() {
-        return capacity;
+    public int getMaxCapacity() {
+        return maxCapacity;
     }
 
     public String getName() {
@@ -48,7 +49,7 @@ public class Team {
     }
 
     public String getDateAndTimeGoingGoing() {
-        return this.dateAndTimeGoing;
+        return this.meetDate;
     }
 
     public String getDescription() {
@@ -86,16 +87,16 @@ public class Team {
         this.id = id;
     }
 
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
+    public void setMaxCapacity(int maxCapacity) {
+        this.maxCapacity = maxCapacity;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setDateAndTimeGoing(String dateAndTimeGoing) {
-        this.dateAndTimeGoing = dateAndTimeGoing;
+    public void setMeetDate(String meetDate) {
+        this.meetDate = meetDate;
     }
 
     public void setDescription(String description) {
@@ -124,5 +125,13 @@ public class Team {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public int getCurrentCapacity() {
+        return currentCapacity;
+    }
+
+    public void setCurrentCapacity(int currentCapacity) {
+        this.currentCapacity = currentCapacity;
     }
 }

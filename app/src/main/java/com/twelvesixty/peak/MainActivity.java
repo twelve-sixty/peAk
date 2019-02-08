@@ -9,19 +9,22 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
@@ -29,7 +32,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 
-import org.w3c.dom.Text;
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, SharedPreferences.OnSharedPreferenceChangeListener {
     DrawerLayout drawer;
@@ -82,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             dropWeather();
             dropResorts();
 
+
             //Gets the recyclerview and sets it up to include data from DB
             resortList = findViewById(R.id.recycler_nav);
             resortList.setHasFixedSize(true);
@@ -94,103 +98,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             resortList.setLayoutManager(resortLayoutManager);
             teamList.setLayoutManager(teamLayoutManager);
 
-            // specify an adapter (see also next example)
-            resortData =  gson.fromJson("[\n" +
-                    "    {\n" +
-                    "        \"id\": 1,\n" +
-                    "        \"name\": \"Crystal Mountain Resort\",\n" +
-                    "        \"latitude\": 46.92333,\n" +
-                    "        \"longitude\": -121.476,\n" +
-                    "        \"websiteUrl\": \"www.somewebsite.com\",\n" +
-                    "        \"address\": {\n" +
-                    "                \"line1\": \"123 Crystal Rd NE\",\n" +
-                    "                \"line2\": \"Appt D4\",\n" +
-                    "                \"city\": \"City\",\n" +
-                    "                \"state\": \"State\",\n" +
-                    "                \"zipcode\": 11111\n" +
-                    "            },\n" +
-                    "        \"teamsList\": [\n" +
-                    "            {\n" +
-                    "                \"id\": 5,\n" +
-                    "                \"name\": \"Team 3-2\",\n" +
-                    "                \"description\": \"I need words here so I can see what is happening here and in the thing below so I'm writing lots of words\",\n" +
-                    "                \"currentCapacity\": 3,\n" +
-                    "                \"capacity\": 4,\n" +
-                    "                \"meetDate\": \"12/31/19 12:00AM\",\n" +
-                    "                \"resort\": null,\n" +
-                    "                \"status\": \"active\"\n" +
-                    "            },\n" +
-                    "            {\n" +
-                    "                \"id\": 6,\n" +
-                    "                \"name\": \"Team 3-3\",\n" +
-                    "                \"description\": \"I need words here so I can see what is happening\",\n" +
-                    "                \"currentCapacity\": 2,\n" +
-                    "                \"capacity\": 4,\n" +
-                    "                \"meetDate\": \"12/16/19 8:00AM\",\n" +
-                    "                \"resort\": null,\n" +
-                    "                \"status\": \"active\"\n" +
-                    "            }\n" +
-                    "        ]\n" +
-                    "    },\n" +
-                    "    {\n" +
-                    "        \"id\": 2,\n" +
-                    "        \"name\": \"Not Crystal Mountain Resort\",\n" +
-                    "        \"latitude\": 47.6062,\n" +
-                    "        \"longitude\": -122.3321,\n" +
-                    "        \"websiteUrl\": \"www.somewebsite.com\",\n" +
-                    "        \"address\": {\n" +
-                    "                \"line1\": \"123 Not Crystal Rd NE\",\n" +
-                    "                \"line2\": \"\",\n" +
-                    "                \"city\": \"City\",\n" +
-                    "                \"state\": \"State\",\n" +
-                    "                \"zipcode\": 222222\n" +
-                    "            },\n" +
-                    "        \"teamsList\": [\n" +
-                    "            {\n" +
-                    "                \"id\": 1,\n" +
-                    "                \"name\": \"Team 1-2\",\n" +
-                    "                \"description\": \"different words\",\n" +
-                    "                \"currentCapacity\": 3,\n" +
-                    "                \"capacity\": 4,\n" +
-                    "                \"meetDate\": \"12/31/19 12:00AM\",\n" +
-                    "                \"resort\": null,\n" +
-                    "                \"status\": \"active\"\n" +
-                    "            },\n" +
-                    "            {\n" +
-                    "                \"id\": 3,\n" +
-                    "                \"name\": \"Team 1-3\",\n" +
-                    "                \"description\": \"it switched!\",\n" +
-                    "                \"currentCapacity\": 2,\n" +
-                    "                \"capacity\": 4,\n" +
-                    "                \"meetDate\": \"12/16/19 8:00AM\",\n" +
-                    "                \"resort\": null,\n" +
-                    "                \"status\": \"active\"\n" +
-                    "            }\n" +
-                    "        ]\n" +
-                    "    }\n" +
-                    "]", Resort[].class);
-            preferences.edit().putFloat("latitude", (float) resortData[0].getLatitude()).putFloat("longitude", (float) resortData[0].getLongitude()).apply();
-            preferences.registerOnSharedPreferenceChangeListener(this);
-            initialLat = resortData[0].getLatitude();
-            initialLong = resortData[0].getLongitude();
-            resortAdapter = new ResortAdapter(resortData);
-            teamAdapter = new TeamAdapterMain(resortData[0].getTeamsList());
-            teamList.setAdapter(teamAdapter);
-            resortList.setAdapter(resortAdapter);
 
-            TextView resortName = findViewById(R.id.resortName);
-            TextView resortAddress = findViewById(R.id.resortAddress);
-            TextView resortWebsite = findViewById(R.id.resortWebsite);
+            getResorts.execute();
 
-            resortName.setText(resortData[0].getName());
-            resortAddress.setText(resortData[0].getAddress().toString());
-            resortWebsite.setText(resortData[0].getWebsiteUrl());
 
-            mapView.getMapAsync(this);
+//            teamAdapter = new TeamAdapterMain(resortData[0].getTeams());
+//            teamList.setAdapter(teamAdapter);
+//            resortList.setAdapter(resortAdapter);
 
             TextView rightHandHeaderText = findViewById(R.id.rightSideTitle);
             rightHandHeaderText.setText("Resorts");
         }
+
+    }
+
+
+
+    private void finishCreate() {
+        preferences.edit().putFloat("latitude", (float) resortData[0].getLatitude()).putFloat("longitude", (float) resortData[0].getLongitude()).apply();
+        preferences.registerOnSharedPreferenceChangeListener(this);
+        initialLat = resortData[0].getLatitude();
+        initialLong = resortData[0].getLongitude();
+
+        TextView resortName = findViewById(R.id.resortName);
+        TextView resortAddress = findViewById(R.id.resortAddress);
+        TextView resortWebsite = findViewById(R.id.resortWebsite);
+
+        resortName.setText(resortData[0].getName());
+        resortAddress.setText(resortData[0].getAddress());
+        resortWebsite.setText(resortData[0].getWebsiteUrl());
+
+        mapView.getMapAsync(this);
 
     }
 
@@ -244,6 +182,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         LatLng coords = new LatLng(preferences.getFloat("latitude", 0), preferences.getFloat("longitude", 0));
+        map.clear();
         map.addMarker(new MarkerOptions().position(coords).title("Marker at resort location"));
         map.moveCamera(CameraUpdateFactory.newLatLng(coords));
         map.setMinZoomPreference(8);
@@ -306,8 +245,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
-
-
     public void goToSearchActivity(View v) {
         Intent goToSearch = new Intent(this, SearchActivity.class);
         startActivity(goToSearch);
@@ -327,4 +264,71 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void performLogin(View v) {
         //TODO: make this do login stuff. Will most likely be get a token from the server, save it in shared prefs, and recreate()
     }
+
+
+    AsyncTask getResorts = new AsyncTask() {
+        @Override
+        protected Object doInBackground(Object[] objects) {
+            OkHttpClient client = new OkHttpClient();
+
+            Request request = new Request.Builder()
+                    .url("http://ec2-54-186-185-206.us-west-2.compute.amazonaws.com/api/v1/resort")
+                    .get()
+                    .build();
+            try {
+                Response response = client.newCall(request).execute();
+                if (response.code() == 200) {
+                    resortData = gson.fromJson(response.body().string(), Resort[].class);
+                } else {
+                    return "uh oh";
+                }
+
+            } catch (IOException e) {
+                Log.e("GETRESORTS", e.toString());
+                return e;
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            if (o == null) {
+                resortAdapter = new ResortAdapter(resortData);
+                resortList.setAdapter(resortAdapter);
+                getTeams.execute();
+                finishCreate();
+            } else {
+                TextView resortName = findViewById(R.id.resortName);
+                resortName.setText("Error getting Resorts");
+            }
+        }
+    };
+
+    AsyncTask getTeams = new AsyncTask() {
+        @Override
+        protected Object doInBackground(Object[] objects) {
+
+            OkHttpClient client = new OkHttpClient();
+
+            Request request = new Request.Builder()
+                    .url("http://ec2-54-186-185-206.us-west-2.compute.amazonaws.com/api/v1/resort/" + resortData[0].getId())
+                    .get()
+                    .build();
+            try {
+                Response response = client.newCall(request).execute();
+                Resort r = gson.fromJson(response.body().string(), Resort.class);
+                teamAdapter = new TeamAdapterMain(r.getTeams());
+            } catch (IOException e) {
+
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            teamList.setAdapter(teamAdapter);
+        }
+    };
 }
