@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.RequestBody;
 
 import android.content.Intent;
@@ -98,7 +99,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         HashMap<String,Boolean> tagsMap = generateTagsList();
 
         // construct new Team object with user input data
-        Team newTeam = new Team(capacityFormInput, groupNameFormInput, timeGoingFormInput,
+        final Team newTeam = new Team(capacityFormInput, groupNameFormInput, timeGoingFormInput,
                 descriptionFormInput, tagsMap, fakeTeamLeader, fakeResort, "Active");
 
         // need HTTP request sent back to backend
@@ -123,10 +124,12 @@ public class CreateGroupActivity extends AppCompatActivity {
         AsyncTask asyncTask = new AsyncTask() {
             @Override
             protected Object doInBackground(Object[] objects) {
-                createTeam(url, obj);
+                createTeam(url, newTeam);
                 return null;
             }
         };
+
+        asyncTask.execute();
 
         finish();
 
@@ -227,18 +230,22 @@ public class CreateGroupActivity extends AppCompatActivity {
 
 
     // inspired by: https://stackoverflow.com/questions/40523965/sending-json-body-through-post-request-in-okhttp-in-android/40524159
-    public static void createTeam(String url, JSONObject json) {
-        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+    public static void createTeam(String url, Team team) {
+
+
+
+
         OkHttpClient client = new OkHttpClient();
 
-        okhttp3.RequestBody body = RequestBody.create(JSON, json.toString());
-        okhttp3.Request request = new okhttp3.Request.Builder()
-                .url(url)
+        MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
+        RequestBody body = RequestBody.create(mediaType, "team_name=" + team.getName() + "&team_description=" + team.getDescription()+ "&team_max_capacity=" + team.getCapacity() + "&team_administrator=" + team.getTeamLeader() + "&team_resort=" + 1 + "&team_meet_date=" + team.getDateAndTimeGoingGoing());
+        Request request = new Request.Builder()
+                .url("http://ec2-54-186-185-206.us-west-2.compute.amazonaws.com/api/v1/team/")
                 .post(body)
-                .addHeader("Content-Type", "application/x-www-form-urlencoded")
                 .build();
         try {
             okhttp3.Response response = client.newCall(request).execute();
+            Log.i("this is our response", response.toString());
         } catch (Exception e) {
             Log.i("PostError", e.toString());
         }
