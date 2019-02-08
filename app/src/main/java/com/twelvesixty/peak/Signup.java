@@ -51,6 +51,8 @@ public class Signup extends AppCompatActivity {
         String fullName = firstNameInput + " " + lastNameInput;
         User newestUser = new User(fullName, usernameInput, dobInput, emailInput, bioInput);
         registarUser();
+
+        
         //jsonify
 
 
@@ -58,7 +60,7 @@ public class Signup extends AppCompatActivity {
 
     }
 
-
+    //Method from Postman to make a request for their backend routes with the proper requirements
     public void registarUser(){
         OkHttpClient client = new OkHttpClient();
 
@@ -71,7 +73,7 @@ public class Signup extends AppCompatActivity {
 try {
     Response response = client.newCall(request).execute();
 }   catch(Exception e){
-
+//
 }
     }
 
