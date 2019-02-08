@@ -20,9 +20,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.CoreMatchers.startsWith;
+
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
@@ -58,6 +56,5 @@ public class ProfileTests {
         onView(withId(R.id.textView_Bio)).check(matches(withText("Powder Surfer")));
         onView(withId(R.id.linearLayout_default)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
         onView(withId(R.id.linearLayout_editable)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
-
     }
 }
