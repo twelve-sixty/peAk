@@ -1,8 +1,21 @@
 package com.twelvesixty.peak;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
+
 import android.text.Layout;
 import android.util.Log;
 import android.view.View;
@@ -15,22 +28,127 @@ public class GroupDetailsActivity extends AppCompatActivity {
     Button editGroupButton;
     LinearLayout defaultGroupLayout;
     LinearLayout editableGroupLayout;
+    DrawerLayout drawers;
+    RecyclerView userList;
+    private RecyclerView.Adapter userAdapter;
+    private RecyclerView.LayoutManager userLayoutManager;
+    private Gson gson = new Gson();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_details);
 
+        drawers = findViewById(R.id.right_drawer_only);
+
+        TextView rightHandHeaderText = findViewById(R.id.rightSideTitle);
+        rightHandHeaderText.setText("Users");
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        ActionBar bar = getSupportActionBar();
+        bar.setDisplayHomeAsUpEnabled(true);
+
+        Team team = gson.fromJson("{\n" +
+                "    \"id\": 3,\n" +
+                "    \"name\": \"Team 2-2\",\n" +
+                "    \"description\": \"Descriptions are lame\",\n" +
+                "    \"capacity\": 3,\n" +
+                "    \"dateAndTimeGoing\": \"11/21/19 11:00AM\",\n" +
+                "    \"teamLeader\": null,\n" +
+                "    \"resort\": null,\n" +
+                "    \"userList\": [\n" +
+                "        {\n" +
+                "            \"id\": 1,\n" +
+                "            \"username\": \"NJCrain\",\n" +
+                "            \"name\": \"Nick\",\n" +
+                "\t    \"bio\": \"About me\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 2,\n" +
+                "            \"username\": \"DarrinHowell\",\n" +
+                "            \"name\": \"Darrin\",\n" +
+                "\t    \"bio\": \"\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "            \"id\": 3,\n" +
+                "            \"username\": \"jasonb315\",\n" +
+                "            \"name\": \"Jason\",\n" +
+                "\t    \"bio\": \"About me About meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout me\"\n" +
+                "        }\n" +
+                "    ],\n" +
+                "    \"messagesList\": null\n" +
+                "}", Team.class);
+
+;
+
+        TextView groupNameTextView = findViewById(R.id.groupName);
+        TextView meetingDateAndTimeTextView = findViewById(R.id.dateLabel);
+        TextView resortTextView = findViewById(R.id.resortLabel);
+        TextView groupMaxCapacityTextView = findViewById(R.id.capacityLabel);
+        TextView groupDescriptionTextView = findViewById(R.id.descriptionLabel);
+        TextView groupStatusTextView = findViewById(R.id.stateLabel);
+        groupNameTextView.setText(team.getName());
+        meetingDateAndTimeTextView.setText("Meeting on: " + team.getDateAndTimeGoingGoing());
+        resortTextView.setText("Going to: " + "Resort Name");
+        groupMaxCapacityTextView.setText("Capacity: " + 0 + "/" + team.getCapacity());
+        groupDescriptionTextView.setText("Description: " + team.getDescription());
+        groupStatusTextView.setText("Status: " + team.getStatus());
+
+
+
+        userList = findViewById(R.id.recycler_nav);
+        userList.setHasFixedSize(true);
+
+        userLayoutManager = new LinearLayoutManager(this);
+        userList.setLayoutManager(userLayoutManager);
+
+        userAdapter = new UserAdapter(team.getUserList());
+        userList.setAdapter(userAdapter);
+
         // find views by id
         editGroupButton = findViewById(R.id.editGroupButton);
         defaultGroupLayout = findViewById(R.id.LinearLayout_GroupDetails);
-        editableGroupLayout = findViewById(R.id.LinearLayout_GroupDetails);
+        editableGroupLayout = findViewById(R.id.LinearLayout_GroupEditable);
 
         // if this user is the group admin, show the edit button
 //        if(User.getOwnsGroup()){
 //          editGroupButton.setVisibility(View.VISIBLE);
 //        }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //If the right hand logo is clicked, open the right hand drawer
+        if (id == R.id.action_openRight) {
+            drawers.openDrawer(GravityCompat.END);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawers.isDrawerOpen(GravityCompat.END)) {
+            drawers.closeDrawer(GravityCompat.END);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     // Method shows users details about a group and can provide editable content for the owner to update
@@ -129,4 +247,6 @@ public class GroupDetailsActivity extends AppCompatActivity {
         editableGroupLayout.setVisibility(View.GONE);
         defaultGroupLayout.setVisibility(View.VISIBLE);
     }
+
+
 }

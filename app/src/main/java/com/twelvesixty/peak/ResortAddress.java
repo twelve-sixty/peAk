@@ -5,16 +5,16 @@ public class ResortAddress {
     private String line2;
     private String city;
     private String state;
-    private int zipCode;
+    private int zipcode;
 
     public ResortAddress () {}
 
-    public ResortAddress (String line1, String line2, String city, String state, int zipCode) {
+    public ResortAddress (String line1, String line2, String city, String state, int zipcode) {
         this.line1 = line1;
         this.line2 = line2;
         this.city = city;
         this.state = state;
-        this.zipCode = zipCode;
+        this.zipcode = zipcode;
     }
 
     ////////////////////// -- getters
@@ -35,8 +35,8 @@ public class ResortAddress {
         return state;
     }
 
-    public int getZipCode() {
-        return zipCode;
+    public int getZipcode() {
+        return zipcode;
     }
 
     ////////////////////// -- setters
@@ -57,8 +57,17 @@ public class ResortAddress {
         this.state = state;
     }
 
-    public void setZipCode(int zipCode) {
-        this.zipCode = zipCode;
+    public void setZipcode(int zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public String toString() {
+        if (this.line2 == null || this.line2.equals("")) {
+            return this.line1 + "\n" + this.city + ", " + this.state + " " + this.zipcode;
+        } else {
+            return this.line1 + "\n" + this.line2 + "\n" + this.city + ", " + this.state + " " + this.zipcode;
+
+        }
     }
 
 }

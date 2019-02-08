@@ -1,10 +1,12 @@
 package com.twelvesixty.peak;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
 import android.os.AsyncTask;
+import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,6 +47,12 @@ public class CreateGroupActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_group);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        ActionBar bar = getSupportActionBar();
+        bar.setDisplayHomeAsUpEnabled(true);
     }
 
     // onClick method that creates a new team object from form data and saves object to database
@@ -77,7 +85,7 @@ public class CreateGroupActivity extends AppCompatActivity {
 
         fakeAddress.setLine1("111");
         fakeAddress.setLine2("222");
-        fakeAddress.setZipCode(999);
+        fakeAddress.setZipcode(999);
         fakeAddress.setState("WA");
         fakeAddress.setCity("Skykomish");
 
