@@ -17,6 +17,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -271,16 +272,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             OkHttpClient client = new OkHttpClient();
 
             Request request = new Request.Builder()
-                    .url("http://ec2-54-186-185-206.us-west-2.compute.amazonaws.com/api/v1/resort/")
+                    .url("http://ec2-54-186-185-206.us-west-2.compute.amazonaws.com/api/v1/resort")
                     .get()
                     .build();
             try {
                 Response response = client.newCall(request).execute();
-                resortData = gson.fromJson(response.body().string(), Resort[].class);
+                if (response.code() == 200) {
+                    resortData = gson.fromJson(response.body().string(), Resort[].class);
+                } else {
+                    return "uh oh";
+                }
 
             } catch (IOException e) {
-                TextView resortName = findViewById(R.id.resortName);
-                resortName.setText("Error getting Resorts");
+                Log.e("GETRESORTS", e.toString());
                 return e;
             }
             return null;
@@ -294,6 +298,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 resortList.setAdapter(resortAdapter);
                 getTeams.execute();
                 finishCreate();
+            } else {
+                TextView resortName = findViewById(R.id.resortName);
+                resortName.setText("Error getting Resorts");
             }
         }
     };
