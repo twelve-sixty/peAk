@@ -23,60 +23,56 @@ public class Signup extends AppCompatActivity {
         signUpButton = findViewById(R.id.holyGrail);
     }
 
+    //target the fields
+    EditText firstNameInputField = findViewById(R.id.UserFirstname);
+    String firstNameInput = firstNameInputField.getText().toString();
+
+    EditText lastNameInputField = findViewById(R.id.UserLastname);
+    String lastNameInput = lastNameInputField.getText().toString();
+
+    EditText usernameInputField = findViewById(R.id.UserSignUp);
+    EditText passwordInputField = findViewById(R.id.PasswordSignUp);
+    EditText bioInputField = findViewById(R.id.BioSignUp);
+    EditText dobInputField = findViewById(R.id.DOBSignUp);
+    EditText emailInputField = findViewById(R.id.EmailSignUp);
+
     public void onSignUpButtonClick(View view) {
-
-        //get fields & their input
-        EditText firstNameInputField = findViewById(R.id.UserFirstname);
-        String firstNameInput = firstNameInputField.getText().toString();
-
-        EditText lastNameInputField = findViewById(R.id.UserLastname);
-        String lastNameInput = lastNameInputField.getText().toString();
-
-        EditText usernameInputField = findViewById(R.id.UserSignUp);
+        //grab the users input
         String usernameInput = usernameInputField.getText().toString();
-
-        EditText passwordInputField = findViewById(R.id.PasswordSignUp);
         String passwordInput = passwordInputField.getText().toString();
-
-        EditText bioInputField = findViewById(R.id.BioSignUp);
         String bioInput = bioInputField.getText().toString();
-
-        EditText dobInputField = findViewById(R.id.DOBSignUp);
         String dobInput = dobInputField.getText().toString();
-
-        EditText emailInputField = findViewById(R.id.EmailSignUp);
         String emailInput = emailInputField.getText().toString();
 
         //(stretch)check if fields are valid
-        //make an object
+
+
+        //make a user object from input
         String fullName = firstNameInput + " " + lastNameInput;
         User newestUser = new User(fullName, usernameInput, dobInput, emailInput, bioInput);
-        registarUser();
 
+        //send this user object in a post request to /register
+        registerUser(newestUser, firstNameInput, lastNameInput);
 
-        //grab that object and turn it into JSON
-        JSONObject jsonUser; //some way to take a user and pass it into JSON for a request
-
-
-        //send request
 
     }
 
     //Method from Postman to make a request for their backend routes with the proper requirements
-    public void registarUser(){
+    public void registerUser(User user,String firstNameInput, String lastNameInput){
         OkHttpClient client = new OkHttpClient();
 
+        //needs a password to be encrypted & sent as well
         Request request = new Request.Builder()
-                .url("http://ec2-54-186-185-206.us-west-2.compute.amazonaws.com/api/v1/register?username=Pablo&password=1&firstName=Pablo&lastName=Rosales&birthDate=09/03/1995&email=p@gmail.com&bio=Im%20alive")
+                .url("http://ec2-54-186-185-206.us-west-2.compute.amazonaws.com/api/v1/register?username=user.username&password=PASSWORD&firstName=firstNameInput&lastName=lastNameInput&birthDate=user.dateOfBirth&email=user.email&bio=user.bio")
                 .post(null)
                 .addHeader("cache-control", "no-cache")
                 .addHeader("Postman-Token", "c04a5349-807b-4bca-8977-95913d82ea84")
                 .build();
-try {
-    Response response = client.newCall(request).execute();
-}   catch(Exception e){
-//
-}
+        try {
+            Response response = client.newCall(request).execute();
+        } catch(Exception e){
+            //
+        }
     }
 
 
