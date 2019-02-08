@@ -99,7 +99,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         HashMap<String,Boolean> tagsMap = generateTagsList();
 
         // construct new Team object with user input data
-        final Team newTeam = new Team(capacityFormInput, groupNameFormInput, timeGoingFormInput,
+        final Team newTeam = new Team(capacityFormInput, groupNameFormInput, dateGoingFormInput,
                 descriptionFormInput, tagsMap, fakeTeamLeader, fakeResort, "Active");
 
         // need HTTP request sent back to backend
@@ -113,7 +113,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         try{
             obj.put("team_name", newTeam.getName());
             obj.put("team_description", newTeam.getDescription());
-            obj.put("team_max_capacity", newTeam.getCapacity());
+            obj.put("team_max_capacity", newTeam.getMaxCapacity());
             obj.put("team_administrator", 1);
             obj.put("team_resort", 1);
             obj.put("team_meet_date", newTeam.getDateAndTimeGoingGoing());
@@ -238,9 +238,12 @@ public class CreateGroupActivity extends AppCompatActivity {
         OkHttpClient client = new OkHttpClient();
 
         MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
-        RequestBody body = RequestBody.create(mediaType, "team_name=" + team.getName() + "&team_description=" + team.getDescription()+ "&team_max_capacity=" + team.getCapacity() + "&team_administrator=" + team.getTeamLeader() + "&team_resort=" + 1 + "&team_meet_date=" + team.getDateAndTimeGoingGoing());
+        String postContent = "team_name=" + team.getName() + "&team_description=" + team.getDescription()+ "&team_max_capacity=" + team.getMaxCapacity() + "&team_administrator=" + 1 + "&team_resort=" + 3 + "&team_meet_date=" + team.getDateAndTimeGoingGoing();
+        RequestBody body = RequestBody.create(mediaType, postContent);
+//        RequestBody body = RequestBody.create(mediaType, "team_name=surfNar&team_description=let's%20go&team_max_capacity=10&team_administrator=1&team_resort=3&team_meet_date=1990-11-09&undefined=");
         Request request = new Request.Builder()
-                .url("http://ec2-54-186-185-206.us-west-2.compute.amazonaws.com/api/v1/team/")
+                .url("http://ec2-54-186-185-206.us-west-2.compute.amazonaws.com/api/v1/team")
+                .addHeader("Content-Type", "application/x-www-form-urlencoded")
                 .post(body)
                 .build();
         try {
