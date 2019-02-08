@@ -9,20 +9,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 
-import android.text.Layout;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 public class GroupDetailsActivity extends AppCompatActivity {
     Button editGroupButton;
@@ -92,7 +89,7 @@ public class GroupDetailsActivity extends AppCompatActivity {
         groupNameTextView.setText(team.getName());
         meetingDateAndTimeTextView.setText("Meeting on: " + team.getDateAndTimeGoingGoing());
         resortTextView.setText("Going to: " + "Resort Name");
-        groupMaxCapacityTextView.setText("Capacity: " + 0 + "/" + team.getCapacity());
+        groupMaxCapacityTextView.setText("Capacity: " + 0 + "/" + team.getMaxCapacity());
         groupDescriptionTextView.setText("Description: " + team.getDescription());
         groupStatusTextView.setText("Status: " + team.getStatus());
 
