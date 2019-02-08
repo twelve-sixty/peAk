@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import org.json.JSONObject;
 
 
 public class Signup extends AppCompatActivity {
@@ -52,11 +53,12 @@ public class Signup extends AppCompatActivity {
         User newestUser = new User(fullName, usernameInput, dobInput, emailInput, bioInput);
         registarUser();
 
-        
-        //jsonify
+
+        //grab that object and turn it into JSON
+        JSONObject jsonUser; //some way to take a user and pass it into JSON for a request
 
 
-        //send
+        //send request
 
     }
 
