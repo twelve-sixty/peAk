@@ -17,7 +17,7 @@
 
         <include
             android:id="@+id/include"
-            layout="@layout/nav_header"
+            layout="@layout/right_side_header"
             app:layout_constraintTop_toTopOf="parent" />
 
         <!--This will hold whatever information is relevant to the view using it-->
@@ -41,6 +41,7 @@
             android:text="@string/search"
             android:textAlignment="center"
             android:textSize="30sp"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="0dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>

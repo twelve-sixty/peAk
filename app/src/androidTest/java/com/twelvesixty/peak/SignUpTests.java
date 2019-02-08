@@ -7,6 +7,8 @@ import org.junit.runner.RunWith;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 import androidx.test.runner.AndroidJUnit4;
+
+import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 
 import static androidx.test.espresso.Espresso.onView;
@@ -29,5 +31,15 @@ public class SignUpTests {
         onView(withId(R.id.DOBSignUp)).check(matches(withHint("Date Of Birth")));
         onView(withId(R.id.EmailSignUp)).check(matches(withHint("Email")));
         onView(withId(R.id.Button)).check(matches(withText("Sign Up")));
+        onView(withId(R.id.UserSignUp)).perform(typeText("KevinRosales"));
+        onView(withId(R.id.UserSignUp)).check(matches(withText("KevinRosales")));
+        onView(withId(R.id.PasswordSignUp)).perform(typeText("123one"));
+        onView(withId(R.id.PasswordSignUp)).check(matches(withText("123one")));
+        onView(withId(R.id.BioSignUp)).perform(typeText("My name is Berry Alen And.."));
+        onView(withId(R.id.BioSignUp)).check(matches(withText("My name is Berry Alen And..")));
+        onView(withId(R.id.DOBSignUp)).perform(typeText("12/12/2000"));
+        onView(withId(R.id.DOBSignUp)).check(matches(withText("12/12/2000")));
+        onView(withId(R.id.EmailSignUp)).perform(typeText("guyMcGuyington@yes.com"));
+        onView(withId(R.id.EmailSignUp)).check(matches(withText("guyMcGuyington@yes.com")));
     }
 }

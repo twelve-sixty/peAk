@@ -17,7 +17,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:onClick="onEditProfileButtonClick"
-        android:text="Edit Profile"
+        android:text="@string/edit_profile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -47,7 +47,7 @@
             android:layout_height="0dp"
             android:layout_weight="2"
             android:gravity="center_vertical"
-            android:text="Username"
+            android:text="@string/username"
             android:textSize="20dp"
             android:textStyle="bold|italic" />
 
@@ -64,16 +64,16 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Name"
+            android:text="@string/name"
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/textView_Age_Copy"
+            android:id="@+id/textView_dateOfBirth_Copy"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Age"
+            android:text="@string/age"
             android:textSize="20dp" />
 
         <EditText
@@ -82,19 +82,10 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:hint="Edit Bio"
+            android:hint="@string/edit_bio"
             android:inputType="text"
             android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/textView_favoriteResort_Editable"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:hint="Favorite Resort"
-            android:inputType="text"
-            android:textSize="20dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -119,7 +110,7 @@
             android:layout_height="0dp"
             android:layout_weight="2"
             android:gravity="center_vertical"
-            android:text="Username"
+            android:text="@string/username"
             android:textSize="20dp"
             android:textStyle="bold|italic" />
 
@@ -136,16 +127,16 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Name"
+            android:text="@string/name"
             android:textSize="20dp" />
 
         <TextView
-            android:id="@+id/textView_Age"
+            android:id="@+id/textView_dateOfBirth"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Age"
+            android:text="@string/date_of_birth"
             android:textSize="20dp" />
 
         <TextView
@@ -154,16 +145,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="Bio: Powder Surfer"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/textView_favoriteResort"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Favorite Resort"
+            android:text="@string/bio_powder_surfer"
             android:textSize="20dp" />
 
 
