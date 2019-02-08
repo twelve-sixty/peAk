@@ -43,4 +43,9 @@ public class ResortDetailsTests {
         onView(withId(R.id.resortsInfo)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
     }
 
+    @Test
+    public void mapDisplayTest() {
+        onView(withId(R.id.mapView)).check(matches(isDisplayed()));
+    }
+
 }
