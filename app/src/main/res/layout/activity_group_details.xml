@@ -1,251 +1,260 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/right_drawer_only"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".GroupDetailsActivity">
+    android:layout_height="match_parent" >
 
-    <include
-        layout="@layout/app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
-
-    <Button
-        android:id="@+id/editGroupButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/edit_group_button"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/LinearLayout_GroupDetails"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:context=".GroupDetailsActivity">
 
-        <TextView
-            android:id="@+id/groupName"
+        <include
+            layout="@layout/app_bar"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="60dp"
+            android:layout_height="?attr/actionBarSize"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="0dp" />
+
+        <Button
+            android:id="@+id/editGroupButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:text="@string/group_name"
-            android:textAlignment="center"
-            android:textSize="30sp"
+            android:text="@string/edit_group_button"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/dateLabel"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/meeting_on"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/groupNameEditable" />
-
-        <TextView
-            android:id="@+id/resortLabel"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/going_to"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dateLabel" />
-
-        <TextView
-            android:id="@+id/capacityLabel"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/capacity"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/resortLabel" />
-
-        <TextView
-            android:id="@+id/descriptionLabel"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/description"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/capacityLabel" />
-
-        <TextView
-            android:id="@+id/stateLabel"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/status"
-            android:textAlignment="center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionLabel" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/messageRecycler"
-            android:layout_width="match_parent"
-            android:layout_height="287dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/messageInputField"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
         <LinearLayout
+            android:id="@+id/LinearLayout_GroupDetails"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <EditText
-                android:id="@+id/messageInputField"
-                android:layout_width="288dp"
-                android:layout_height="46dp"
+            <TextView
+                android:id="@+id/groupName"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="8dp"
+                android:text="@string/group_name"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/dateLabel"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/meeting_on"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/groupNameEditable" />
+
+            <TextView
+                android:id="@+id/resortLabel"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/going_to"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dateLabel" />
+
+            <TextView
+                android:id="@+id/capacityLabel"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/capacity"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/resortLabel" />
+
+            <TextView
+                android:id="@+id/descriptionLabel"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/description"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/capacityLabel" />
+
+            <TextView
+                android:id="@+id/stateLabel"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/status"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/descriptionLabel" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/messageRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="287dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                android:hint="@string/enter_message"
-                android:textAlignment="viewStart"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/sendButton"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintBottom_toTopOf="@+id/messageInputField"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent">
 
-            <Button
-                android:id="@+id/sendButton"
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:text="@string/send_button"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/messageInputField"
+                    android:layout_width="288dp"
+                    android:layout_height="46dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:hint="@string/enter_message"
+                    android:textAlignment="viewStart"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/sendButton"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+                    android:id="@+id/sendButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="@string/send_button"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </LinearLayout>
+
         </LinearLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/LinearLayout_GroupEditable"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-        <EditText
-            android:id="@+id/nameInputField"
+        <LinearLayout
+            android:id="@+id/LinearLayout_GroupEditable"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/name_input_field"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            android:textAlignment="center"
-            tools:targetApi="o" />
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
-        <EditText
-            android:id="@+id/dateInputField"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/date_mm_dd_yy"
-            android:importantForAutofill="no"
-            android:inputType="date|textPersonName"
-            tools:targetApi="o" />
+            <EditText
+                android:id="@+id/nameInputField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/name_input_field"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                tools:targetApi="o" />
 
-        <EditText
-            android:id="@+id/timeInputField"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/time_mm_hh_am_pm"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            tools:targetApi="o" />
+            <EditText
+                android:id="@+id/dateInputField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/date_mm_dd_yy"
+                android:importantForAutofill="no"
+                android:inputType="date|textPersonName"
+                tools:targetApi="o" />
 
-        <EditText
-            android:id="@+id/resortInputField"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/resort"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            tools:targetApi="o" />
+            <EditText
+                android:id="@+id/timeInputField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/time_mm_hh_am_pm"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                tools:targetApi="o" />
 
-        <EditText
-            android:id="@+id/capacityInputField"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/maximum_capacity"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            tools:targetApi="o" />
+            <EditText
+                android:id="@+id/resortInputField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/resort"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                tools:targetApi="o" />
 
-        <EditText
-            android:id="@+id/descriptionInputField"
-            android:layout_width="match_parent"
-            android:layout_height="149dp"
-            android:ems="10"
-            android:hint="@string/descriptionInputField"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            tools:targetApi="o" />
+            <EditText
+                android:id="@+id/capacityInputField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/maximum_capacity"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                tools:targetApi="o" />
 
-        <EditText
-            android:id="@+id/statusInputField"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/statusInputField"
-            android:importantForAutofill="no"
-            android:inputType="textPersonName"
-            tools:targetApi="o" />
+            <EditText
+                android:id="@+id/descriptionInputField"
+                android:layout_width="match_parent"
+                android:layout_height="149dp"
+                android:ems="10"
+                android:hint="@string/descriptionInputField"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                tools:targetApi="o" />
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/statusInputField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/statusInputField"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                tools:targetApi="o" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <include layout="@layout/right_hand_drawer_layout" />
+
+</androidx.drawerlayout.widget.DrawerLayout>

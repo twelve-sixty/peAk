@@ -29,6 +29,8 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
 
+import org.w3c.dom.Text;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, SharedPreferences.OnSharedPreferenceChangeListener {
     DrawerLayout drawer;
     RecyclerView resortList;
@@ -185,6 +187,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             resortWebsite.setText(resortData[0].getWebsiteUrl());
 
             mapView.getMapAsync(this);
+
+            TextView rightHandHeaderText = findViewById(R.id.rightSideTitle);
+            rightHandHeaderText.setText("Resorts");
         }
 
     }

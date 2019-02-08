@@ -17,7 +17,7 @@
 
         <include
             android:id="@+id/include"
-            layout="@layout/nav_header"
+            layout="@layout/right_side_header"
             app:layout_constraintTop_toTopOf="parent" />
 
         <!--This will hold whatever information is relevant to the view using it-->

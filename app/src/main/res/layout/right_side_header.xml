@@ -14,7 +14,7 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
     <TextView
-        android:id="@+id/usernameText"
+        android:id="@+id/rightSideTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"

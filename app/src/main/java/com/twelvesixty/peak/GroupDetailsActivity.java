@@ -3,8 +3,13 @@ package com.twelvesixty.peak;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -18,15 +23,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class GroupDetailsActivity extends AppCompatActivity {
-    private Gson gson = new Gson();
     Button editGroupButton;
     LinearLayout defaultGroupLayout;
     LinearLayout editableGroupLayout;
+    DrawerLayout drawers;
+    private Gson gson = new Gson();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_details);
+
+        drawers = findViewById(R.id.right_drawer_only);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -64,6 +72,12 @@ public class GroupDetailsActivity extends AppCompatActivity {
 
         TextView groupName = findViewById(R.id.groupName);
         groupName.setText(team.getName());
+
+        TextView rightHandHeaderText = findViewById(R.id.rightSideTitle);
+        rightHandHeaderText.setText("Users");
+
+        TextView search = findViewById(R.id.searchOption);
+        search.setVisibility(View.GONE);
         // find views by id
         editGroupButton = findViewById(R.id.editGroupButton);
         defaultGroupLayout = findViewById(R.id.LinearLayout_GroupDetails);
@@ -74,6 +88,38 @@ public class GroupDetailsActivity extends AppCompatActivity {
 //          editGroupButton.setVisibility(View.VISIBLE);
 //        }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //If the right hand logo is clicked, open the right hand drawer
+        if (id == R.id.action_openRight) {
+            drawers.openDrawer(GravityCompat.END);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawers.isDrawerOpen(GravityCompat.END)) {
+            drawers.closeDrawer(GravityCompat.END);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     // Method shows users details about a group and can provide editable content for the owner to update
