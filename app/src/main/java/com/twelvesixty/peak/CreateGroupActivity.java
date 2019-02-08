@@ -1,13 +1,27 @@
 package com.twelvesixty.peak;
 
 import androidx.appcompat.app.AppCompatActivity;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.BoringLayout;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -66,17 +80,57 @@ public class CreateGroupActivity extends AppCompatActivity {
         // for testing purposes only (will pull these data from logged in user)
         User fakeTeamLeader = new User();
         fakeTeamLeader.setName("Fake User");
+        fakeTeamLeader.setId(1);
+        fakeTeamLeader.setUsername("faker999");
+        fakeTeamLeader.setDateOfBirth("1/1/2001");
+        fakeTeamLeader.setEmail("myEmail@gmail.com");
+        fakeTeamLeader.setBio("let's get it");
+
+        ArrayList<Team> teamList = new ArrayList<>();
+        ResortAddress fakeAddress = new ResortAddress();
+
+        fakeAddress.setLine1("111");
+        fakeAddress.setLine2("222");
+        fakeAddress.setZipCode(999);
+        fakeAddress.setState("WA");
+        fakeAddress.setCity("Skykomish");
+
+        Resort fakeResort = new Resort("ASUS", 47.062, 47.062, "https://www.google.com/", teamList,fakeAddress);
+
 
         // create list of tags based on checkbox onClick listener input
         HashMap<String,Boolean> tagsMap = generateTagsList();
 
         // construct new Team object with user input data
         Team newTeam = new Team(capacityFormInput, groupNameFormInput, dateAndTimeGoing,
-                descriptionFormInput, tagsMap, fakeTeamLeader, new Resort(), "Active");
+                descriptionFormInput, tagsMap, fakeTeamLeader, fakeResort, "Active");
 
         // need HTTP request sent back to backend
         // need to then populate the new form with these data
         // need to add this user to the list of users in that team
+        final String url = "http://ec2-54-186-185-206.us-west-2.compute.amazonaws.com/api/v1/team";
+
+        final JSONObject obj = new JSONObject();
+
+        try{
+            obj.put("team_name", newTeam.getName());
+            obj.put("team_description", newTeam.getDescription());
+            obj.put("team_max_capacity", newTeam.getCapacity());
+            obj.put("team_meet_date", newTeam.getDateAndTimeGoingGoing());
+            obj.put("team_resort", newTeam.getResort());
+        } catch (JSONException e) {
+            System.out.println(e);
+        }
+
+        AsyncTask asyncTask = new AsyncTask() {
+            @Override
+            protected Object doInBackground(Object[] objects) {
+                foo(url, obj);
+                return null;
+            }
+        };
+
+
     }
 
 
@@ -166,5 +220,30 @@ public class CreateGroupActivity extends AppCompatActivity {
         tagsMapList.put("familyFriendly", familyFriendlyTag);
 
         return tagsMapList;
+
+
+
+    }
+
+
+    // inspired by: https://stackoverflow.com/questions/40523965/sending-json-body-through-post-request-in-okhttp-in-android/40524159
+    public static void foo(String url, JSONObject json) {
+        JSONObject jsonObjectResp = null;
+        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+        OkHttpClient client = new OkHttpClient();
+
+        okhttp3.RequestBody body = RequestBody.create(JSON, json.toString());
+        okhttp3.Request request = new okhttp3.Request.Builder()
+                .url(url)
+                .post(body)
+                .addHeader("Content-Type", "application/x-www-form-urlencoded")
+                .build();
+
+        try {
+
+            okhttp3.Response response = client.newCall(request).execute();
+        } catch (Exception e) {
+            Log.i("PostError", e.toString());
+        }
     }
 }
