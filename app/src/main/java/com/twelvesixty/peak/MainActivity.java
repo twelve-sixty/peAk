@@ -80,7 +80,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .findFragmentById(R.id.map);
             dropWeather();
             dropResorts();
-            dropGroups();
 
             //Gets the recyclerview and sets it up to include data from DB
             resortList = findViewById(R.id.recycler_nav);
@@ -274,27 +273,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     textView.setVisibility(View.GONE);
                 } else {
                     // make textview visible and other dropdown's close
-                    findViewById(R.id.Filters).setVisibility(View.GONE);
                     findViewById(R.id.resortsInfo).setVisibility(View.GONE);
                    textView.setVisibility(View.VISIBLE);
 
-                }
-            }
-        });
-    }
-  
-//    Method that creates dropdown for groups
-    public void dropGroups() {
-        findViewById(R.id.groupsDrop).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                if (findViewById(R.id.Filters).getVisibility() == View.VISIBLE){
-                    Log.i("testing", "tests");
-                    findViewById(R.id.Filters).setVisibility(View.GONE);
-                }else{
-                    findViewById(R.id.weather).setVisibility(View.GONE);
-                    findViewById(R.id.resortsInfo).setVisibility(View.GONE);
-                    findViewById(R.id.Filters).setVisibility(View.VISIBLE);
                 }
             }
         });
@@ -311,12 +292,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     resortInfo.setVisibility(View.GONE);
                 }else {
                     findViewById(R.id.weather).setVisibility(View.GONE);
-                    findViewById(R.id.Filters).setVisibility(View.GONE);
                     resortInfo.setVisibility(View.VISIBLE);
+
+
                 }
             }
         });
     }
+
+
 
     public void goToSearchActivity(View v) {
         Intent goToSearch = new Intent(this, SearchActivity.class);
@@ -327,6 +311,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void GoToSignUpActivity(View v) {
         Intent signUpIntent = new Intent(this, Signup.class);
         startActivity(signUpIntent);
+    }
+
+    public void goToCreateGroup(View v) {
+        Intent goToCreate = new Intent(this, CreateGroupActivity.class);
+        startActivity(goToCreate);
     }
 
     public void performLogin(View v) {

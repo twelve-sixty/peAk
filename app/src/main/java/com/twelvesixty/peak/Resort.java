@@ -13,9 +13,9 @@ public class Resort {
 
     public Resort () {}
 
-    public Resort (long id, String name, double latitude, double longitude, String websiteUrl,
+
+    public Resort (String name, double latitude, double longitude, String websiteURL,
                    ArrayList<Team> teamsList, ResortAddress address) {
-        this.id = id;
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
