@@ -13,6 +13,7 @@ import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isClickable;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
@@ -74,6 +75,6 @@ public class CreateGroupTests {
         onView(withId(R.id.checkBox_DoubleBlackDiamonds)).check(matches(isDisplayed()));
         onView(withId(R.id.checkBox_DoubleBlackDiamonds)).perform(click());
 
-
+        onView(withId(R.id.button_CreateGroup)).check(matches(isClickable()));
     }
 }
