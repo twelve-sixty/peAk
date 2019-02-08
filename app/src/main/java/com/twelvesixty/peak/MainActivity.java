@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     RecyclerView resortList;
     RecyclerView teamList;
     SupportMapFragment mapView;
+    Resort[] resortData;
     double initialLat;
     double initialLong;
     private SharedPreferences preferences;
@@ -50,8 +51,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         preferences = getSharedPreferences("preferences", 0);
-
-        preferences.registerOnSharedPreferenceChangeListener(this);
 
         //TODO: Make this check shared prefs for a token instead
         if (!isLoggedIn) {
@@ -94,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             teamList.setLayoutManager(teamLayoutManager);
 
             // specify an adapter (see also next example)
-            Resort[] resortData =  gson.fromJson("[\n" +
+            resortData =  gson.fromJson("[\n" +
                     "    {\n" +
                     "        \"id\": 1,\n" +
                     "        \"name\": \"Crystal Mountain Resort\",\n" +
@@ -168,6 +167,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     "        ]\n" +
                     "    }\n" +
                     "]", Resort[].class);
+            preferences.edit().putFloat("latitude", (float) resortData[0].getLatitude()).putFloat("longitude", (float) resortData[0].getLongitude()).apply();
+            preferences.registerOnSharedPreferenceChangeListener(this);
             initialLat = resortData[0].getLatitude();
             initialLong = resortData[0].getLongitude();
             resortAdapter = new ResortAdapter(resortData);
