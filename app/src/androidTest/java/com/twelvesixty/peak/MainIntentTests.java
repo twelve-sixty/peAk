@@ -13,7 +13,7 @@ public class MainIntentTests {
     @Rule
     public IntentsTestRule<MainActivity> intentsTestRule =
             new IntentsTestRule<>(MainActivity.class);
-
+/////////////////////////////Have to be logged out for this test to work////////////////////
     @Test
     public void goToSignUpButtonTest() {
         onView(withId(R.id.GoToSignUpButton)).perform(click());

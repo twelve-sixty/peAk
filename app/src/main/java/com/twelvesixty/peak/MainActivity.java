@@ -26,7 +26,7 @@ import com.google.android.material.navigation.NavigationView;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawer;
     //Currently here for dev purposes
-    boolean isLoggedIn = false;
+    boolean isLoggedIn = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
