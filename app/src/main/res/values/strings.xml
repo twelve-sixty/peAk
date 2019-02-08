@@ -12,7 +12,7 @@
     <string name="nav_header_title">USERNAME</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="resortsInfoDrop">Resorts Information</string>
+    <string name="resortsInfoDrop">Resort Information</string>
     <string name="resortsInfo">Resorts Data</string>
     <string name="weatherDrop">Weather Forecast</string>
     <string name="weather">Weather Data</string>
@@ -53,5 +53,6 @@
     <string name="bio_powder_surfer">Bio: Powder Surfer</string>
     <string name="date_of_birth">Date Of Birth</string>
     <string name="CreateAGroup">Create A Group</string>
+    <string name="group">Group</string>
 
 </resources>

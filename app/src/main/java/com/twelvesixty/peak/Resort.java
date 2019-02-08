@@ -7,18 +7,19 @@ public class Resort {
     private String name;
     private double latitude;
     private double longitude;
-    private String websiteURL;
+    private String websiteUrl;
     private ArrayList<Team> teamsList;
     private ResortAddress address;
 
     public Resort () {}
+
 
     public Resort (String name, double latitude, double longitude, String websiteURL,
                    ArrayList<Team> teamsList, ResortAddress address) {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;
-        this.websiteURL = websiteURL;
+        this.websiteUrl = websiteUrl;
         this.teamsList = teamsList;
         this.address = address;
     }
@@ -41,8 +42,8 @@ public class Resort {
         return longitude;
     }
 
-    public String getWebsiteURL() {
-        return websiteURL;
+    public String getWebsiteUrl() {
+        return websiteUrl;
     }
 
     public ArrayList<Team> getTeamsList() {
@@ -71,8 +72,8 @@ public class Resort {
         this.longitude = longitude;
     }
 
-    public void setWebsiteURL(String websiteURL) {
-        this.websiteURL = websiteURL;
+    public void setWebsiteUrl(String websiteUrl) {
+        this.websiteUrl = websiteUrl;
     }
 
     public void setTeamsList(ArrayList<Team> teamsList) {
