@@ -181,6 +181,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
         LatLng coords = new LatLng(preferences.getFloat("latitude", 0), preferences.getFloat("longitude", 0));
+        map.clear();
         map.addMarker(new MarkerOptions().position(coords).title("Marker at resort location"));
         map.moveCamera(CameraUpdateFactory.newLatLng(coords));
         map.setMinZoomPreference(8);
