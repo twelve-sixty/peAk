@@ -41,11 +41,5 @@ public class SignUpTests {
         onView(withId(R.id.DOBSignUp)).check(matches(withText("12/12/2000")));
         onView(withId(R.id.EmailSignUp)).perform(typeText("guyMcGuyington@yes.com"));
         onView(withId(R.id.EmailSignUp)).check(matches(withText("guyMcGuyington@yes.com")));
-
-
-
-
-
-
     }
 }
