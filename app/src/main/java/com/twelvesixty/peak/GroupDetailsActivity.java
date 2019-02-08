@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.Gravity;
@@ -27,6 +29,9 @@ public class GroupDetailsActivity extends AppCompatActivity {
     LinearLayout defaultGroupLayout;
     LinearLayout editableGroupLayout;
     DrawerLayout drawers;
+    RecyclerView userList;
+    private RecyclerView.Adapter userAdapter;
+    private RecyclerView.LayoutManager userLayoutManager;
     private Gson gson = new Gson();
 
     @Override
@@ -35,6 +40,9 @@ public class GroupDetailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_group_details);
 
         drawers = findViewById(R.id.right_drawer_only);
+
+        TextView rightHandHeaderText = findViewById(R.id.rightSideTitle);
+        rightHandHeaderText.setText("Users");
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -54,34 +62,55 @@ public class GroupDetailsActivity extends AppCompatActivity {
                 "        {\n" +
                 "            \"id\": 1,\n" +
                 "            \"username\": \"NJCrain\",\n" +
-                "            \"name\": \"Nick\"\n" +
+                "            \"name\": \"Nick\",\n" +
+                "\t    \"bio\": \"About me\"\n" +
                 "        },\n" +
                 "        {\n" +
                 "            \"id\": 2,\n" +
                 "            \"username\": \"DarrinHowell\",\n" +
-                "            \"name\": \"Darrin\"\n" +
+                "            \"name\": \"Darrin\",\n" +
+                "\t    \"bio\": \"\"\n" +
                 "        },\n" +
                 "        {\n" +
                 "            \"id\": 3,\n" +
                 "            \"username\": \"jasonb315\",\n" +
-                "            \"name\": \"Jason\"\n" +
+                "            \"name\": \"Jason\",\n" +
+                "\t    \"bio\": \"About me About meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout me\"\n" +
                 "        }\n" +
                 "    ],\n" +
                 "    \"messagesList\": null\n" +
                 "}", Team.class);
 
-        TextView groupName = findViewById(R.id.groupName);
-        groupName.setText(team.getName());
+;
 
-        TextView rightHandHeaderText = findViewById(R.id.rightSideTitle);
-        rightHandHeaderText.setText("Users");
+        TextView groupNameTextView = findViewById(R.id.groupName);
+        TextView meetingDateAndTimeTextView = findViewById(R.id.dateLabel);
+        TextView resortTextView = findViewById(R.id.resortLabel);
+        TextView groupMaxCapacityTextView = findViewById(R.id.capacityLabel);
+        TextView groupDescriptionTextView = findViewById(R.id.descriptionLabel);
+        TextView groupStatusTextView = findViewById(R.id.stateLabel);
+        groupNameTextView.setText(team.getName());
+        meetingDateAndTimeTextView.setText("Meeting on: " + team.getDateAndTimeGoingGoing());
+        resortTextView.setText("Going to: " + "Resort Name");
+        groupMaxCapacityTextView.setText("Capacity: " + 0 + "/" + team.getCapacity());
+        groupDescriptionTextView.setText("Description: " + team.getDescription());
+        groupStatusTextView.setText("Status: " + team.getStatus());
 
-        TextView search = findViewById(R.id.searchOption);
-        search.setVisibility(View.GONE);
+
+
+        userList = findViewById(R.id.recycler_nav);
+        userList.setHasFixedSize(true);
+
+        userLayoutManager = new LinearLayoutManager(this);
+        userList.setLayoutManager(userLayoutManager);
+
+        userAdapter = new UserAdapter(team.getUserList());
+        userList.setAdapter(userAdapter);
+
         // find views by id
         editGroupButton = findViewById(R.id.editGroupButton);
         defaultGroupLayout = findViewById(R.id.LinearLayout_GroupDetails);
-        editableGroupLayout = findViewById(R.id.LinearLayout_GroupDetails);
+        editableGroupLayout = findViewById(R.id.LinearLayout_GroupEditable);
 
         // if this user is the group admin, show the edit button
 //        if(User.getOwnsGroup()){
