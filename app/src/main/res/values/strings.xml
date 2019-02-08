@@ -46,5 +46,7 @@
     <string name="fillerCapacity">1/4</string>
     <string name="secondLineFiller">Group Description / Resort Name</string>
     <string name="CreateAGroup">Create A Group</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
 
 </resources>
