@@ -54,22 +54,12 @@ public class UserProfileActivty extends AppCompatActivity {
             EditText bioFormEditView = findViewById(R.id.textView_Bio_Editable);
             String bioFormInput = bioFormEditView.getText().toString();
 
-            EditText favoriteResortEditView = findViewById(R.id.textView_favoriteResort_Editable);
-            String favoriteResortFormInput = favoriteResortEditView.getText().toString();
-
             TextView bioTextView = findViewById(R.id.textView_Bio);
-            TextView favoriteResortTextView = findViewById(R.id.textView_favoriteResort);
 
             // if users provide content, reset the text in the user profile
             if(!bioFormInput.equals("")) {
                 Log.i("bioFormInput", bioFormInput);
                 bioTextView.setText(bioFormInput);
-            }
-
-            // if users provide content for favresort, then update textview
-            if(!favoriteResortFormInput.equals("")) {
-                Log.i("favoriteResortInput", favoriteResortFormInput);
-                favoriteResortTextView.setText(favoriteResortFormInput);
             }
 
             flipToDefaultMode();
