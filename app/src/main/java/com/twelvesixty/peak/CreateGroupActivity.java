@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.RequestBody;
+
+import android.content.Intent;
 import android.os.AsyncTask;
 import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
@@ -106,12 +108,14 @@ public class CreateGroupActivity extends AppCompatActivity {
 
         final JSONObject obj = new JSONObject();
 
+        // some values hard coded for now
         try{
             obj.put("team_name", newTeam.getName());
             obj.put("team_description", newTeam.getDescription());
             obj.put("team_max_capacity", newTeam.getCapacity());
+            obj.put("team_administrator", 1);
+            obj.put("team_resort", 1);
             obj.put("team_meet_date", newTeam.getDateAndTimeGoingGoing());
-            obj.put("team_resort", newTeam.getResort());
         } catch (JSONException e) {
             System.out.println(e);
         }
@@ -123,6 +127,8 @@ public class CreateGroupActivity extends AppCompatActivity {
                 return null;
             }
         };
+
+        finish();
 
 
     }
@@ -231,12 +237,12 @@ public class CreateGroupActivity extends AppCompatActivity {
                 .post(body)
                 .addHeader("Content-Type", "application/x-www-form-urlencoded")
                 .build();
-
         try {
-
             okhttp3.Response response = client.newCall(request).execute();
         } catch (Exception e) {
             Log.i("PostError", e.toString());
         }
+
+
     }
 }
