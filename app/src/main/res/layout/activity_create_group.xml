@@ -63,7 +63,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:hint="Meeting on dd/mm/yyyy"
+            android:hint="Meeting on yyyy-mm-dd"
             android:inputType="date"
             android:textSize="10dp"/>
 

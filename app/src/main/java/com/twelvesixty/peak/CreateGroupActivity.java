@@ -3,28 +3,17 @@ package com.twelvesixty.peak;
 import androidx.appcompat.app.AppCompatActivity;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.RequestBody;
-import okhttp3.Response;
-
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.BoringLayout;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-
-import com.google.gson.Gson;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class CreateGroupActivity extends AppCompatActivity {
     // id variables for category names
@@ -74,9 +63,6 @@ public class CreateGroupActivity extends AppCompatActivity {
         String timeGoingFormInput = timeGoingEditText.getText().toString();
         String descriptionFormInput = descriptionEditText.getText().toString();
 
-        // date and time going should be in the proper format; we concatenate them here
-        String dateAndTimeGoing = dateGoingFormInput + " " + timeGoingFormInput;
-
         // for testing purposes only (will pull these data from logged in user)
         User fakeTeamLeader = new User();
         fakeTeamLeader.setName("Fake User");
@@ -102,7 +88,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         HashMap<String,Boolean> tagsMap = generateTagsList();
 
         // construct new Team object with user input data
-        Team newTeam = new Team(capacityFormInput, groupNameFormInput, dateAndTimeGoing,
+        Team newTeam = new Team(capacityFormInput, groupNameFormInput, timeGoingFormInput,
                 descriptionFormInput, tagsMap, fakeTeamLeader, fakeResort, "Active");
 
         // need HTTP request sent back to backend
@@ -125,7 +111,7 @@ public class CreateGroupActivity extends AppCompatActivity {
         AsyncTask asyncTask = new AsyncTask() {
             @Override
             protected Object doInBackground(Object[] objects) {
-                foo(url, obj);
+                createTeam(url, obj);
                 return null;
             }
         };
@@ -227,8 +213,7 @@ public class CreateGroupActivity extends AppCompatActivity {
 
 
     // inspired by: https://stackoverflow.com/questions/40523965/sending-json-body-through-post-request-in-okhttp-in-android/40524159
-    public static void foo(String url, JSONObject json) {
-        JSONObject jsonObjectResp = null;
+    public static void createTeam(String url, JSONObject json) {
         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
         OkHttpClient client = new OkHttpClient();
 
