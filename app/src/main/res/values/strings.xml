@@ -8,7 +8,7 @@
     <string name="meeting_on">Meeting on:</string>
     <string name="send_button">Send</string>
     <string name="enter_message">Enter message</string>
-    <string name="edit">Edit</string>
+    <string name="edit_group_button">Edit Group</string>
     <string name="nav_header_title">USERNAME</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -36,6 +36,13 @@
     <string name="myGroupsTitle">My Groups</string>
     <string name="myProfileTitle">My Profile</string>
     <string name="search">Search</string>
+    <string name="maximum_capacity">Maximum capacity</string>
+    <string name="date_mm_dd_yy">Date: MM/DD/YY</string>
+    <string name="time_mm_hh_am_pm">Time: mm:hh AM/PM</string>
+    <string name="resort">Resort</string>
+    <string name="descriptionInputField">Description</string>
+    <string name="statusInputField">Status</string>
+    <string name="name_input_field">Group name</string>
     <string name="fillerCapacity">1/4</string>
     <string name="secondLineFiller">Group Description / Resort Name</string>
     <string name="edit_profile">Edit Profile</string>
@@ -45,4 +52,6 @@
     <string name="username">Username</string>
     <string name="bio_powder_surfer">Bio: Powder Surfer</string>
     <string name="date_of_birth">Date Of Birth</string>
+    <string name="CreateAGroup">Create A Group</string>
+
 </resources>
