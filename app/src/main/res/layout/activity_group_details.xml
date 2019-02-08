@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".GroupDetailsActivity">
 
+    <include
+        layout="@layout/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
     <Button
         android:id="@+id/editGroupButton"
         android:layout_width="wrap_content"
