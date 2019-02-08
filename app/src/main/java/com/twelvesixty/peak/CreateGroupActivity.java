@@ -2,17 +2,23 @@ package com.twelvesixty.peak;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
+import android.content.Intent;
+import android.os.AsyncTask;
+import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
-import android.text.BoringLayout;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-
+import org.json.JSONException;
+import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class CreateGroupActivity extends AppCompatActivity {
     // id variables for category names
@@ -68,23 +74,66 @@ public class CreateGroupActivity extends AppCompatActivity {
         String timeGoingFormInput = timeGoingEditText.getText().toString();
         String descriptionFormInput = descriptionEditText.getText().toString();
 
-        // date and time going should be in the proper format; we concatenate them here
-        String dateAndTimeGoing = dateGoingFormInput + " " + timeGoingFormInput;
-
         // for testing purposes only (will pull these data from logged in user)
         User fakeTeamLeader = new User();
         fakeTeamLeader.setName("Fake User");
+        fakeTeamLeader.setId(1);
+        fakeTeamLeader.setUsername("faker999");
+        fakeTeamLeader.setDateOfBirth("1/1/2001");
+        fakeTeamLeader.setEmail("myEmail@gmail.com");
+        fakeTeamLeader.setBio("let's get it");
+
+        ArrayList<Team> teamList = new ArrayList<>();
+        ResortAddress fakeAddress = new ResortAddress();
+
+        fakeAddress.setLine1("111");
+        fakeAddress.setLine2("222");
+        fakeAddress.setZipcode(999);
+        fakeAddress.setState("WA");
+        fakeAddress.setCity("Skykomish");
+
+        Resort fakeResort = new Resort("ASUS", 47.062, 47.062, "https://www.google.com/", teamList,fakeAddress);
+
 
         // create list of tags based on checkbox onClick listener input
         HashMap<String,Boolean> tagsMap = generateTagsList();
 
         // construct new Team object with user input data
-        Team newTeam = new Team(capacityFormInput, groupNameFormInput, dateAndTimeGoing,
-                descriptionFormInput, tagsMap, fakeTeamLeader, new Resort(), "Active");
+        final Team newTeam = new Team(capacityFormInput, groupNameFormInput, dateGoingFormInput,
+                descriptionFormInput, tagsMap, fakeTeamLeader, fakeResort, "Active");
 
         // need HTTP request sent back to backend
         // need to then populate the new form with these data
         // need to add this user to the list of users in that team
+        final String url = "http://ec2-54-186-185-206.us-west-2.compute.amazonaws.com/api/v1/team";
+
+        final JSONObject obj = new JSONObject();
+
+        // some values hard coded for now
+        try{
+            obj.put("team_name", newTeam.getName());
+            obj.put("team_description", newTeam.getDescription());
+            obj.put("team_max_capacity", newTeam.getMaxCapacity());
+            obj.put("team_administrator", 1);
+            obj.put("team_resort", 1);
+            obj.put("team_meet_date", newTeam.getDateAndTimeGoingGoing());
+        } catch (JSONException e) {
+            System.out.println(e);
+        }
+
+        AsyncTask asyncTask = new AsyncTask() {
+            @Override
+            protected Object doInBackground(Object[] objects) {
+                createTeam(url, newTeam);
+                return null;
+            }
+        };
+
+        asyncTask.execute();
+
+        finish();
+
+
     }
 
 
@@ -174,5 +223,36 @@ public class CreateGroupActivity extends AppCompatActivity {
         tagsMapList.put("familyFriendly", familyFriendlyTag);
 
         return tagsMapList;
+
+
+
+    }
+
+
+    // inspired by: https://stackoverflow.com/questions/40523965/sending-json-body-through-post-request-in-okhttp-in-android/40524159
+    public static void createTeam(String url, Team team) {
+
+
+
+
+        OkHttpClient client = new OkHttpClient();
+
+        MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
+        String postContent = "team_name=" + team.getName() + "&team_description=" + team.getDescription()+ "&team_max_capacity=" + team.getMaxCapacity() + "&team_administrator=" + 1 + "&team_resort=" + 3 + "&team_meet_date=" + team.getDateAndTimeGoingGoing();
+        RequestBody body = RequestBody.create(mediaType, postContent);
+//        RequestBody body = RequestBody.create(mediaType, "team_name=surfNar&team_description=let's%20go&team_max_capacity=10&team_administrator=1&team_resort=3&team_meet_date=1990-11-09&undefined=");
+        Request request = new Request.Builder()
+                .url("http://ec2-54-186-185-206.us-west-2.compute.amazonaws.com/api/v1/team")
+                .addHeader("Content-Type", "application/x-www-form-urlencoded")
+                .post(body)
+                .build();
+        try {
+            okhttp3.Response response = client.newCall(request).execute();
+            Log.i("this is our response", response.toString());
+        } catch (Exception e) {
+            Log.i("PostError", e.toString());
+        }
+
+
     }
 }
