@@ -1,5 +1,21 @@
 package com.twelvesixty.peak;
 
+import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.google.gson.Gson;
+
+import java.io.IOException;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -7,22 +23,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.os.Bundle;
-import android.view.Gravity;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.TextView;
-
-import com.google.gson.Gson;
-
-import android.text.Layout;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class GroupDetailsActivity extends AppCompatActivity {
     Button editGroupButton;
@@ -50,51 +53,9 @@ public class GroupDetailsActivity extends AppCompatActivity {
         ActionBar bar = getSupportActionBar();
         bar.setDisplayHomeAsUpEnabled(true);
 
-        Team team = gson.fromJson("{\n" +
-                "    \"id\": 3,\n" +
-                "    \"name\": \"Team 2-2\",\n" +
-                "    \"description\": \"Descriptions are lame\",\n" +
-                "    \"capacity\": 3,\n" +
-                "    \"dateAndTimeGoing\": \"11/21/19 11:00AM\",\n" +
-                "    \"teamLeader\": null,\n" +
-                "    \"resort\": null,\n" +
-                "    \"userList\": [\n" +
-                "        {\n" +
-                "            \"id\": 1,\n" +
-                "            \"username\": \"NJCrain\",\n" +
-                "            \"name\": \"Nick\",\n" +
-                "\t    \"bio\": \"About me\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"id\": 2,\n" +
-                "            \"username\": \"DarrinHowell\",\n" +
-                "            \"name\": \"Darrin\",\n" +
-                "\t    \"bio\": \"\"\n" +
-                "        },\n" +
-                "        {\n" +
-                "            \"id\": 3,\n" +
-                "            \"username\": \"jasonb315\",\n" +
-                "            \"name\": \"Jason\",\n" +
-                "\t    \"bio\": \"About me About meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout meAbout me\"\n" +
-                "        }\n" +
-                "    ],\n" +
-                "    \"messagesList\": null\n" +
-                "}", Team.class);
-
-;
-
-        TextView groupNameTextView = findViewById(R.id.groupName);
-        TextView meetingDateAndTimeTextView = findViewById(R.id.dateLabel);
-        TextView resortTextView = findViewById(R.id.resortLabel);
-        TextView groupMaxCapacityTextView = findViewById(R.id.capacityLabel);
-        TextView groupDescriptionTextView = findViewById(R.id.descriptionLabel);
-        TextView groupStatusTextView = findViewById(R.id.stateLabel);
-        groupNameTextView.setText(team.getName());
-        meetingDateAndTimeTextView.setText("Meeting on: " + team.getDateAndTimeGoingGoing());
-        resortTextView.setText("Going to: " + "Resort Name");
-        groupMaxCapacityTextView.setText("Capacity: " + 0 + "/" + team.getCapacity());
-        groupDescriptionTextView.setText("Description: " + team.getDescription());
-        groupStatusTextView.setText("Status: " + team.getStatus());
+        Intent intent = getIntent();
+        long teamId = intent.getLongExtra("teamId", 1);
+        getTeamInfo.execute(teamId);
 
 
 
@@ -103,9 +64,6 @@ public class GroupDetailsActivity extends AppCompatActivity {
 
         userLayoutManager = new LinearLayoutManager(this);
         userList.setLayoutManager(userLayoutManager);
-
-        userAdapter = new UserAdapter(team.getUserList());
-        userList.setAdapter(userAdapter);
 
         // find views by id
         editGroupButton = findViewById(R.id.editGroupButton);
@@ -122,7 +80,7 @@ public class GroupDetailsActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.group, menu);
         return true;
     }
 
@@ -248,5 +206,57 @@ public class GroupDetailsActivity extends AppCompatActivity {
         defaultGroupLayout.setVisibility(View.VISIBLE);
     }
 
+    private void finishCreate(Team team) {
+        TextView groupNameTextView = findViewById(R.id.groupName);
+        TextView meetingDateAndTimeTextView = findViewById(R.id.dateLabel);
+        TextView resortTextView = findViewById(R.id.resortLabel);
+        TextView groupMaxCapacityTextView = findViewById(R.id.capacityLabel);
+        TextView groupDescriptionTextView = findViewById(R.id.descriptionLabel);
+        TextView groupStatusTextView = findViewById(R.id.stateLabel);
+        groupNameTextView.setText(team.getName());
+        meetingDateAndTimeTextView.setText("Meeting on: " + team.getDateAndTimeGoingGoing());
+        resortTextView.setText("Going to: " + "Resort Name");
+        groupMaxCapacityTextView.setText("Capacity: " + team.getCurrentCapacity() + "/" + team.getMaxCapacity());
+        groupDescriptionTextView.setText("Description: " + team.getDescription());
+        groupStatusTextView.setText("Status: " + team.getStatus());
+    }
 
+    //Asynctask to grab the detailed information for the team
+    AsyncTask getTeamInfo = new AsyncTask() {
+        @Override
+        protected Object doInBackground(Object[] objects) {
+            OkHttpClient client = new OkHttpClient();
+
+            Request request = new Request.Builder()
+                    .url("http://ec2-54-186-185-206.us-west-2.compute.amazonaws.com/api/v1/team/" + objects[0])
+                    .get()
+                    .build();
+
+            try {
+                Response response = client.newCall(request).execute();
+                Team t = gson.fromJson(response.body().string(), Team.class);
+                return t;
+            } catch (IOException e) {
+                Log.e("GETTEAMINFO", e.toString());
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            super.onPostExecute(o);
+            Team t = (Team)o;
+            if (t == null) {
+                TextView groupNameTextView = findViewById(R.id.groupName);
+                groupNameTextView.setText("Could not get team info");
+
+            }else {
+                if (t.getUserList() != null) {
+                    userAdapter = new UserAdapter(t.getUserList());
+                    userList.setAdapter(userAdapter);
+                }
+                finishCreate(t);
+            }
+        }
+    };
 }

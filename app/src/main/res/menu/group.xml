@@ -5,7 +5,7 @@
     <!--This is where items for the toolbar go-->
     <item
         android:id="@+id/action_openRight"
-        android:icon="@android:drawable/ic_dialog_map"
+        android:icon="@android:drawable/ic_menu_myplaces"
         android:orderInCategory="100"
         android:title="Open Right Drawer"
         app:showAsAction="ifRoom" />
