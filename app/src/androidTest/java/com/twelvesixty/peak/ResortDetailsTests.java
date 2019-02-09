@@ -23,24 +23,16 @@ public class ResortDetailsTests {
     public ActivityTestRule<MainActivity> mActivityRule =
             new ActivityTestRule<>(MainActivity.class);
 
-    @Test
-    public void testDropDownForWeather() {
-        onView(withId(R.id.weatherDrop)).check(matches(isDisplayed()));
-        onView(withId(R.id.weather)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
-        onView(withId(R.id.weatherDrop)).perform(click());
-        onView(withId(R.id.weather)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
-        onView(withId(R.id.weatherDrop)).perform(click());
-        onView(withId(R.id.weather)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
-    }
+
 
     @Test
     public void testDropDownForResorts() {
         onView(withId(R.id.resortsInfoDrop)).check(matches(isDisplayed()));
-        onView(withId(R.id.resortsInfo)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
-        onView(withId(R.id.resortsInfoDrop)).perform(click());
         onView(withId(R.id.resortsInfo)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
         onView(withId(R.id.resortsInfoDrop)).perform(click());
         onView(withId(R.id.resortsInfo)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
+        onView(withId(R.id.resortsInfoDrop)).perform(click());
+        onView(withId(R.id.resortsInfo)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
     }
 
     @Test

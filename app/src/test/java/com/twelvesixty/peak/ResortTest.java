@@ -42,16 +42,9 @@ public class ResortTest {
 
     @Test
     public void getSetWebsiteURLTest() {
-        r.setWebsiteURL("https://www.google.com/");
+        r.setWebsiteUrl("https://www.google.com/");
 
-        assertEquals(r.getWebsiteURL(), "https://www.google.com/");
-    }
-
-    @Test
-    public void getSetAddress() {
-        ResortAddress fakeAddress = new ResortAddress();
-        r.setAddress(fakeAddress);
-        assertEquals(r.getAddress(), fakeAddress);
+        assertEquals(r.getWebsiteUrl(), "https://www.google.com/");
     }
 
     @Test
@@ -64,9 +57,10 @@ public class ResortTest {
         assertEquals(fakeResort.getName(), "ASUS");
         assertEquals(fakeResort.getLatitude(), 47.062, 0);
         assertEquals(fakeResort.getLongitude(), 47.062, 0);
-        assertEquals(fakeResort.getWebsiteURL(), "https://www.google.com/");
+        assertEquals(fakeResort.getWebsiteUrl(), "https://www.google.com/");
         assertEquals(fakeResort.getTeams(), teamList);
-        assertEquals(fakeResort.getAddress(), fakeAddress);
+        assertEquals(fakeResort.getAddress(), "null\n" +
+                "null, null 0");
 
 
 
