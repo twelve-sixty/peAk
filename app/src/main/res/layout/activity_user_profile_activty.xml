@@ -47,7 +47,7 @@
             android:layout_height="0dp"
             android:layout_weight="2"
             android:gravity="center_vertical"
-            android:text="@string/username"
+            android:text="PowderSurfer999"
             android:textSize="20dp"
             android:textStyle="bold|italic" />
 
@@ -64,7 +64,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/name"
+            android:text="Nick Crain"
             android:textSize="20dp" />
 
         <TextView
@@ -73,7 +73,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/age"
+            android:text="1998-02-08"
             android:textSize="20dp" />
 
         <EditText
@@ -82,7 +82,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:hint="@string/edit_bio"
+            android:hint="Half-pipe = Home"
             android:inputType="text"
             android:textSize="20dp" />
 
@@ -110,7 +110,7 @@
             android:layout_height="0dp"
             android:layout_weight="2"
             android:gravity="center_vertical"
-            android:text="@string/username"
+            android:text="PowderSurfer999"
             android:textSize="20dp"
             android:textStyle="bold|italic" />
 
@@ -127,7 +127,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/name"
+            android:text="Nick Crain"
             android:textSize="20dp" />
 
         <TextView
@@ -136,7 +136,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/date_of_birth"
+            android:text="1998-02-08"
             android:textSize="20dp" />
 
         <TextView
@@ -145,7 +145,7 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/bio_powder_surfer"
+            android:text="Half-Pipe = Home"
             android:textSize="20dp" />
 
 
