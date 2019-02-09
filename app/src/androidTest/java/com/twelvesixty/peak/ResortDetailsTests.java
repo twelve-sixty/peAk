@@ -45,7 +45,7 @@ public class ResortDetailsTests {
 
     @Test
     public void mapDisplayTest() {
-        onView(withId(R.id.mapView)).check(matches(isDisplayed()));
+        onView(withId(R.id.map)).check(matches(isDisplayed()));
     }
 
 }
