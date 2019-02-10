@@ -2,15 +2,30 @@
 
 ```
 Code Fellows; seattle-ja-401d2
-Android frontend contributors: Pablo Rosales, Kevin Rosales, Darrin Howell, Nick Crain, Jason Burns
+Project manager: Jason Burns
+Android frontend contributors: Pablo Rosales, Kevin Rosales, Darrin Howell, Nick Crain
 Python backend contributors: Fangyuan Huang, Scott Currie, Roger Huba
 ```
 
 ### Target Demographic:
-Snowboarders and skiers who want to consolidate their trip planning and intragroup communcation to one place.
+Snowboarders and skiers who want to consolidate their trip planning and intra group communication to one place.
 
-### Preliminary Vision:
-The app that we plan to develop is called peAK. This iteration of our applciation will be a mobile, Android app. Within peAk, app users will have the ability to host ski / snowboard meetups from an assortment of ski resorts saved to our databse. Each ski resort saved to our system will display weather reports, snofall levels, and a map to provide users with a visual reference of the resort. With our mobile iteration of this app, we intend give users the abilty to also search mountain resorts and add new destinations to our database so that app users nationwide can connect in different regions. Additionally, peAk will allow users to chat with one another across their android devices, both by posting in group chat portals and by sending direct messages to one another to coordinate last minute meetup details. peAk will also feature user profiles for each user. We envision users uplaoding profile pictures to the app so that other skiers and snowboarders can recognize them on the slopes. These profiles will be visible to other users on group detail pages for reference. Overall, we envision peAk being an application that will allow users to connect, plan ski / snowboard trips at specific resorts, and coordinate meetup logistics in real time. 
+### Overview:
+peAK is an Android application developed to facilitate snowboard  / ski meetups at alpine resorts on 
+the West Coast of the United States. Within peAk, users can browse through a small collection of 
+resorts served by our custom python API. Within each resort page, app users can also browse meetups 
+posted to that specific resort. Trip details can be viewed after clicking on meetups stored in the 
+recycler views of each resort detail page. peAk users can also establish their own meetups by filling 
+out a form and creating a new meetup post at a specific resort. <br/>
+
+To date, our team was only able to develop the aforementioned features. In subsequent iterations of 
+our project, we envision users having the essential capabilities to 1) signup and login, 2) to post 
+new meetups to any resort stored in our database (currently, we have only established the logic to 
+post meetups to Badger Mountain via form submission), 3) to join groups created by other app users, 
+4) to post messages to a group message board to coordinate trip logistics, and 5) to view one's 
+collection of future trips in a My Groups page. 
+
+### Libraries and Dependencies:
 
 ### Instructions for Setting Up Build Environment: 
 * (Details pending)
