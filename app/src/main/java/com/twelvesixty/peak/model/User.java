@@ -1,5 +1,6 @@
-package com.twelvesixty.peak;
+package com.twelvesixty.peak.model;
 
+//Class to model a User object
 public class User {
     private long id;
     private String name;

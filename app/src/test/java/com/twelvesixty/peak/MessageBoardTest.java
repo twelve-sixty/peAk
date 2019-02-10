@@ -1,5 +1,8 @@
 package com.twelvesixty.peak;
 
+import com.twelvesixty.peak.model.MessageBoard;
+import com.twelvesixty.peak.model.Team;
+
 import org.junit.Test;
 
 import static org.junit.Assert.*;

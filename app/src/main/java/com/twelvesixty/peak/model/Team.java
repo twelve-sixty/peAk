@@ -1,8 +1,9 @@
-package com.twelvesixty.peak;
+package com.twelvesixty.peak.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
+//Class to model a team object
 public class Team {
     private long id;
     private int maxCapacity;

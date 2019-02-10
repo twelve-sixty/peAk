@@ -1,4 +1,4 @@
-package com.twelvesixty.peak;
+package com.twelvesixty.peak.activity;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.google.gson.Gson;
+import com.twelvesixty.peak.R;
+import com.twelvesixty.peak.adapter.MyGroupAdapter;
+import com.twelvesixty.peak.model.Team;
 
 public class MyGroupsActivity extends AppCompatActivity {
     RecyclerView groupList;
@@ -21,12 +24,15 @@ public class MyGroupsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_groups);
 
+        //Setup the toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Enable the back arrow on the toolbar
         ActionBar bar = getSupportActionBar();
         bar.setDisplayHomeAsUpEnabled(true);
 
+        //Currently builds the list from dummy JSON, as there is not yet a route to get this info
         Team[] groups = gson.fromJson("[\n" +
                 "    {\n" +
                 "        \"id\": 1,\n" +
@@ -85,6 +91,7 @@ public class MyGroupsActivity extends AppCompatActivity {
                 "    }\n" +
                 "]", Team[].class);
 
+        //Grab the RecyclerView and set its content
         groupList = findViewById(R.id.groupsList);
         groupList.setHasFixedSize(true);
 

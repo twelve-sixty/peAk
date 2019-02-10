@@ -1,4 +1,4 @@
-package com.twelvesixty.peak;
+package com.twelvesixty.peak.activity;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -13,6 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.twelvesixty.peak.R;
+import com.twelvesixty.peak.adapter.UserAdapter;
+import com.twelvesixty.peak.model.Team;
 
 import java.io.IOException;
 
@@ -42,23 +45,29 @@ public class GroupDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group_details);
 
+        //grab drawerLayout to handle various events for opening/closing it
         drawers = findViewById(R.id.right_drawer_only);
 
+        //Set drawer header text to match what will be displayed there
         TextView rightHandHeaderText = findViewById(R.id.rightSideTitle);
         rightHandHeaderText.setText("Users");
 
+        //Setup the toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        //Enable the back arrow on the toolbar
         ActionBar bar = getSupportActionBar();
         bar.setDisplayHomeAsUpEnabled(true);
 
+        //Get the id for the team selected to view details of, make the call to get the data for that ID
         Intent intent = getIntent();
         long teamId = intent.getLongExtra("teamId", 1);
         getTeamInfo.execute(teamId);
 
 
 
+        //Setup userList Recycler and display data (currently none as backend doesn't send users)
         userList = findViewById(R.id.recycler_nav);
         userList.setHasFixedSize(true);
 
@@ -70,7 +79,7 @@ public class GroupDetailsActivity extends AppCompatActivity {
         defaultGroupLayout = findViewById(R.id.LinearLayout_GroupDetails);
         editableGroupLayout = findViewById(R.id.LinearLayout_GroupEditable);
 
-        // if this user is the group admin, show the edit button
+        // if this user is the group admin, show the edit button. Currently not usable at this time
 //        if(User.getOwnsGroup()){
 //          editGroupButton.setVisibility(View.VISIBLE);
 //        }
@@ -102,6 +111,7 @@ public class GroupDetailsActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        //Close the userList if it is open
         if (drawers.isDrawerOpen(GravityCompat.END)) {
             drawers.closeDrawer(GravityCompat.END);
         } else {
@@ -110,6 +120,7 @@ public class GroupDetailsActivity extends AppCompatActivity {
     }
 
     // Method shows users details about a group and can provide editable content for the owner to update
+    //Currently not in use at the moment, but can be setup for use later easily
     public void onEditGroupButtonClick(View view) {
 
         String buttonText = editGroupButton.getText().toString().toLowerCase();
@@ -207,12 +218,14 @@ public class GroupDetailsActivity extends AppCompatActivity {
     }
 
     private void finishCreate(Team team) {
+        //Grabs all the text views and sets their text with relevant team info
         TextView groupNameTextView = findViewById(R.id.groupName);
         TextView meetingDateAndTimeTextView = findViewById(R.id.dateLabel);
         TextView resortTextView = findViewById(R.id.resortLabel);
         TextView groupMaxCapacityTextView = findViewById(R.id.capacityLabel);
         TextView groupDescriptionTextView = findViewById(R.id.descriptionLabel);
         TextView groupStatusTextView = findViewById(R.id.stateLabel);
+
         groupNameTextView.setText(team.getName());
         meetingDateAndTimeTextView.setText("Meeting on: " + team.getDateAndTimeGoingGoing());
         resortTextView.setText("Going to: " + "Resort Name");
@@ -245,6 +258,8 @@ public class GroupDetailsActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Object o) {
             super.onPostExecute(o);
+            //Takes in the team retrieved from the API to display the info
+            //If the team is null, let the user know something went wrong
             Team t = (Team)o;
             if (t == null) {
                 TextView groupNameTextView = findViewById(R.id.groupName);
@@ -252,6 +267,7 @@ public class GroupDetailsActivity extends AppCompatActivity {
 
             }else {
                 if (t.getUserList() != null) {
+                    //Only create an adapter for users if they exist (only an issue with current API state)
                     userAdapter = new UserAdapter(t.getUserList());
                     userList.setAdapter(userAdapter);
                 }

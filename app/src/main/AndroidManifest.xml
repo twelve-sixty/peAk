@@ -3,12 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.twelvesixty.peak">
 
-    <!--
-         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
-         Google Maps Android API v2, but you must specify either coarse or fine
-         location permissions for the 'MyLocation' functionality.
-    -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -35,26 +29,26 @@
 
         <uses-library android:name="org.apache.http.legacy" android:required="false" />
 
-        <activity android:name=".CreateGroupActivity"
+        <activity android:name=".activity.CreateGroupActivity"
             android:label="@string/CreateAGroup"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".activity.MainActivity"/>
         <activity
-            android:name=".UserProfileActivty"
+            android:name=".activity.UserProfileActivty"
             android:label="@string/myProfileTitle"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".Signup" />
+            android:parentActivityName=".activity.MainActivity" />
+        <activity android:name=".activity.Signup" />
         <activity
-            android:name=".SearchActivity"
+            android:name=".activity.SearchActivity"
             android:label="@string/search"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".GroupDetailsActivity"
+            android:parentActivityName=".activity.MainActivity" />
+        <activity android:name=".activity.GroupDetailsActivity"
             android:label="@string/group"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".activity.MainActivity"/>
         <activity
-            android:name=".MyGroupsActivity"
+            android:name=".activity.MyGroupsActivity"
             android:label="@string/myGroupsTitle"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".MainActivity">
+            android:parentActivityName=".activity.MainActivity" />
+        <activity android:name=".activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

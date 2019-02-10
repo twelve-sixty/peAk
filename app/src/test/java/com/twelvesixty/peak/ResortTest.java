@@ -1,5 +1,8 @@
 package com.twelvesixty.peak;
 
+import com.twelvesixty.peak.model.Resort;
+import com.twelvesixty.peak.model.Team;
+
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -51,8 +54,7 @@ public class ResortTest {
     public void getSetConstructorTest() {
         teamList.add(t);
         teamList.add(e);
-        ResortAddress fakeAddress = new ResortAddress();
-        Resort fakeResort = new Resort("ASUS", 47.062, 47.062, "https://www.google.com/", teamList,fakeAddress);
+        Resort fakeResort = new Resort("ASUS", 47.062, 47.062, "https://www.google.com/", teamList);
 
         assertEquals(fakeResort.getName(), "ASUS");
         assertEquals(fakeResort.getLatitude(), 47.062, 0);

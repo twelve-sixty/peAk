@@ -1,4 +1,4 @@
-package com.twelvesixty.peak;
+package com.twelvesixty.peak.model;
 
 import java.util.ArrayList;
 
@@ -19,7 +19,7 @@ public class Resort {
 
 
     public Resort (String name, double latitude, double longitude, String websiteUrl,
-                   ArrayList<Team> teams, ResortAddress address) {
+                   ArrayList<Team> teams) {
         this.name = name;
         this.latitude = latitude;
         this.longitude = longitude;

@@ -1,10 +1,11 @@
-package com.twelvesixty.peak;
+package com.twelvesixty.peak.model;
 
 public class Messages {
     private long id;
     private MessageBoard messageBoard;
     private User messageAuthor;
 
+    //This class would be to model a specific message, but that currently isn't available
     public Messages () {}
 
     public Messages (MessageBoard messageBoard, User messageAuthor) {
