@@ -1,24 +1,23 @@
 package com.twelvesixty.peak;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-
 import android.content.Intent;
 import android.os.AsyncTask;
-import androidx.appcompat.widget.Toolbar;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import org.json.JSONException;
-import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
 public class CreateGroupActivity extends AppCompatActivity {
     // id variables for category names
@@ -106,21 +105,6 @@ public class CreateGroupActivity extends AppCompatActivity {
         // need to then populate the new form with these data
         // need to add this user to the list of users in that team
         final String url = "http://ec2-54-186-185-206.us-west-2.compute.amazonaws.com/api/v1/team";
-
-        final JSONObject obj = new JSONObject();
-
-        // some values hard coded for now
-//        try{
-//            obj.put("team_name", newTeam.getName());
-//            obj.put("team_description", newTeam.getDescription());
-//            obj.put("team_max_capacity", newTeam.getMaxCapacity());
-//            obj.put("team_administrator", 1);
-//            obj.put("team_resort", 1);//        RequestBody body = RequestBody.create(mediaType, "team_name=surfNar&team_description=let's%20go&team_max_capacity=10&team_administrator=1&team_resort=3&team_meet_date=1990-11-09&undefined=");
-
-//            obj.put("team_meet_date", newTeam.getDateAndTimeGoingGoing());
-//        } catch (JSONException e) {
-//            System.out.println(e);
-//        }
 
         AsyncTask asyncTask = new AsyncTask() {
             @Override

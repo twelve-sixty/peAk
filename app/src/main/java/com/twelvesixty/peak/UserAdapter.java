@@ -1,11 +1,8 @@
 package com.twelvesixty.peak;
 
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -17,15 +14,12 @@ class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> {
     private List<User> mDataset;
 
     // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
     public  class MyViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
         public TextView usernameText;
         public TextView bioText;
         public MyViewHolder(View v) {
             super(v);
-            //This is where more views get set to be accessed as neeeed
+            //Set pointers to specific parts of the viewHolder
             usernameText = v.findViewById(R.id.lineOne);
             bioText = v.findViewById(R.id.lineTwo);
         }
@@ -43,7 +37,6 @@ class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> {
         // create a new view from the provided layout file
         ConstraintLayout v = (ConstraintLayout) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.two_line_list_item, parent, false);
-        //Sets an on click listener to the layout
         MyViewHolder vh = new MyViewHolder(v);
         return vh;
     }

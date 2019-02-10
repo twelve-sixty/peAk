@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 
+//Will be user for the search activity when that becomes available
 public class SearchActivity extends AppCompatActivity {
 
     @Override

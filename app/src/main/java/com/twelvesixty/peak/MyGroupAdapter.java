@@ -13,16 +13,13 @@ class MyGroupAdapter extends RecyclerView.Adapter<MyGroupAdapter.MyViewHolder> {
     private Team[] mDataset;
 
     // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
     public  class MyViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
         public TextView teamName;
         public TextView teamCapactiy;
         public TextView resortName;
         public MyViewHolder(View v) {
             super(v);
-            //This is where more views get set to be accessed as neeeed
+            //Set pointers to specific parts of the viewHolder
             teamName = v.findViewById(R.id.groupName);
             teamCapactiy = v.findViewById(R.id.groupCapacity);
             resortName = v.findViewById(R.id.secondLine);;
@@ -45,7 +42,7 @@ class MyGroupAdapter extends RecyclerView.Adapter<MyGroupAdapter.MyViewHolder> {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Find what LinearLayout was clicked, get it's info from the dataset, and log it
+                //Find what group was clicked, start groupDetailActivity with that groups id as data
                 RecyclerView parent = (RecyclerView) v.getParent();
                 int position = parent.getChildLayoutPosition(v);
                 Intent goToGroupDetail = new Intent(parent.getContext(), GroupDetailsActivity.class);

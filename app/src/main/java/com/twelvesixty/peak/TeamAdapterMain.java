@@ -15,16 +15,13 @@ public class TeamAdapterMain extends RecyclerView.Adapter<TeamAdapterMain.MainTe
     private List<Team> mDataset;
 
     // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
     public  class MainTeamViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
         public TextView teamName;
         public TextView teamCapactiy;
         public TextView teamDescription;
         public MainTeamViewHolder(View v) {
             super(v);
-            //This is where more views get set to be accessed as neeeed
+            //Set pointers to specific parts of the viewHolder
             teamName = v.findViewById(R.id.groupName);
             teamCapactiy = v.findViewById(R.id.groupCapacity);
             teamDescription = v.findViewById(R.id.secondLine);

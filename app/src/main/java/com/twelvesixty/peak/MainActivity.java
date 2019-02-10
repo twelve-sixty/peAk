@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             //Show user main menu screen
             setContentView(R.layout.activity_main);
 
+            //Setup the toolbar
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
 
