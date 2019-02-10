@@ -26,17 +26,6 @@ public class ResortDetailsTests {
             new ActivityTestRule<>(MainActivity.class);
 
 
-
-    @Test
-    public void testDropDownForResorts() {
-        onView(withId(R.id.resortsInfoDrop)).check(matches(isDisplayed()));
-        onView(withId(R.id.resortsInfo)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
-        onView(withId(R.id.resortsInfoDrop)).perform(click());
-        onView(withId(R.id.resortsInfo)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)));
-        onView(withId(R.id.resortsInfoDrop)).perform(click());
-        onView(withId(R.id.resortsInfo)).check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)));
-    }
-
     @Test
     public void mapDisplayTest() {
         onView(withId(R.id.map)).check(matches(isDisplayed()));
