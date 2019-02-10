@@ -1,4 +1,4 @@
-package com.twelvesixty.peak;
+package com.twelvesixty.peak.activity;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -7,6 +7,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+
+import com.twelvesixty.peak.R;
+import com.twelvesixty.peak.model.Resort;
+import com.twelvesixty.peak.model.Team;
+import com.twelvesixty.peak.model.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,10 +1,14 @@
-package com.twelvesixty.peak;
+package com.twelvesixty.peak.adapter;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.twelvesixty.peak.R;
+import com.twelvesixty.peak.activity.GroupDetailsActivity;
+import com.twelvesixty.peak.model.Team;
 
 import java.util.List;
 

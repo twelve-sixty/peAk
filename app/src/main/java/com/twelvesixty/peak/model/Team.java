@@ -1,4 +1,4 @@
-package com.twelvesixty.peak;
+package com.twelvesixty.peak.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;

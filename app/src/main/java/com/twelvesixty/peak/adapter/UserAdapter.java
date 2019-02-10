@@ -1,16 +1,19 @@
-package com.twelvesixty.peak;
+package com.twelvesixty.peak.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.twelvesixty.peak.R;
+import com.twelvesixty.peak.model.User;
+
 import java.util.List;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> {
+public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> {
     private List<User> mDataset;
 
     // Provide a reference to the views for each data item

@@ -1,4 +1,4 @@
-package com.twelvesixty.peak;
+package com.twelvesixty.peak.activity;
 
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -13,6 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.twelvesixty.peak.R;
+import com.twelvesixty.peak.adapter.UserAdapter;
+import com.twelvesixty.peak.model.Team;
 
 import java.io.IOException;
 

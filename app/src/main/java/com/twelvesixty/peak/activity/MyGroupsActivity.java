@@ -1,4 +1,4 @@
-package com.twelvesixty.peak;
+package com.twelvesixty.peak.activity;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.google.gson.Gson;
+import com.twelvesixty.peak.R;
+import com.twelvesixty.peak.adapter.MyGroupAdapter;
+import com.twelvesixty.peak.model.Team;
 
 public class MyGroupsActivity extends AppCompatActivity {
     RecyclerView groupList;

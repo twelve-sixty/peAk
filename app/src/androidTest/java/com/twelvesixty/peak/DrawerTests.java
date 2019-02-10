@@ -2,6 +2,8 @@ package com.twelvesixty.peak;
 
 import android.view.Gravity;
 
+import com.twelvesixty.peak.activity.MainActivity;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;

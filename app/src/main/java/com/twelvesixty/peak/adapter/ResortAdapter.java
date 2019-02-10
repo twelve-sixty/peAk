@@ -1,4 +1,4 @@
-package com.twelvesixty.peak;
+package com.twelvesixty.peak.adapter;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.twelvesixty.peak.R;
+import com.twelvesixty.peak.activity.MainActivity;
+import com.twelvesixty.peak.model.Resort;
+import com.twelvesixty.peak.model.Team;
 
 import java.io.IOException;
 import java.util.HashMap;

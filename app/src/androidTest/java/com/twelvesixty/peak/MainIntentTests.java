@@ -1,9 +1,11 @@
 package com.twelvesixty.peak;
 
+import com.twelvesixty.peak.activity.MainActivity;
+
 import org.junit.Rule;
-import org.junit.Test;
+
 import androidx.test.espresso.intent.rule.IntentsTestRule;
-import static androidx.test.espresso.Espresso.onView;
+
 import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.intent.Intents.intended;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;

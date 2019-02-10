@@ -1,8 +1,10 @@
-package com.twelvesixty.peak;
+package com.twelvesixty.peak.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.twelvesixty.peak.R;
 
 public class Signup extends AppCompatActivity {
 

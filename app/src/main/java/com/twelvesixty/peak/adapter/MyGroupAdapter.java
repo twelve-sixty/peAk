@@ -1,4 +1,4 @@
-package com.twelvesixty.peak;
+package com.twelvesixty.peak.adapter;
 
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -6,10 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.twelvesixty.peak.R;
+import com.twelvesixty.peak.activity.GroupDetailsActivity;
+import com.twelvesixty.peak.model.Team;
+
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
-class MyGroupAdapter extends RecyclerView.Adapter<MyGroupAdapter.MyViewHolder> {
+public class MyGroupAdapter extends RecyclerView.Adapter<MyGroupAdapter.MyViewHolder> {
     private Team[] mDataset;
 
     // Provide a reference to the views for each data item

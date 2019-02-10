@@ -1,5 +1,8 @@
 package com.twelvesixty.peak;
 
+import com.twelvesixty.peak.model.Resort;
+import com.twelvesixty.peak.model.Team;
+
 import org.junit.Test;
 
 import java.util.ArrayList;
