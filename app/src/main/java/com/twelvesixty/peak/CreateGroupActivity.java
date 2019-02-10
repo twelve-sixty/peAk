@@ -45,11 +45,18 @@ public class CreateGroupActivity extends AppCompatActivity {
     boolean terrainParkTag = false;
     boolean familyFriendlyTag = false;
 
+    //int to know which resortId the group will be added to
+    long resortId;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_group);
+
+        Intent data = getIntent();
+        resortId = data.getLongExtra("resortId",  1);
+        Log.i("RESORTID", Long.toString(resortId));
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -84,15 +91,8 @@ public class CreateGroupActivity extends AppCompatActivity {
         fakeTeamLeader.setBio("let's get it");
 
         ArrayList<Team> teamList = new ArrayList<>();
-        ResortAddress fakeAddress = new ResortAddress();
 
-        fakeAddress.setLine1("111");
-        fakeAddress.setLine2("222");
-        fakeAddress.setZipcode(999);
-        fakeAddress.setState("WA");
-        fakeAddress.setCity("Skykomish");
-
-        Resort fakeResort = new Resort("ASUS", 47.062, 47.062, "https://www.google.com/", teamList,fakeAddress);
+        Resort fakeResort = new Resort("ASUS", 47.062, 47.062, "https://www.google.com/", teamList);
 
 
         // create list of tags based on checkbox onClick listener input
@@ -110,21 +110,22 @@ public class CreateGroupActivity extends AppCompatActivity {
         final JSONObject obj = new JSONObject();
 
         // some values hard coded for now
-        try{
-            obj.put("team_name", newTeam.getName());
-            obj.put("team_description", newTeam.getDescription());
-            obj.put("team_max_capacity", newTeam.getMaxCapacity());
-            obj.put("team_administrator", 1);
-            obj.put("team_resort", 1);
-            obj.put("team_meet_date", newTeam.getDateAndTimeGoingGoing());
-        } catch (JSONException e) {
-            System.out.println(e);
-        }
+//        try{
+//            obj.put("team_name", newTeam.getName());
+//            obj.put("team_description", newTeam.getDescription());
+//            obj.put("team_max_capacity", newTeam.getMaxCapacity());
+//            obj.put("team_administrator", 1);
+//            obj.put("team_resort", 1);//        RequestBody body = RequestBody.create(mediaType, "team_name=surfNar&team_description=let's%20go&team_max_capacity=10&team_administrator=1&team_resort=3&team_meet_date=1990-11-09&undefined=");
+
+//            obj.put("team_meet_date", newTeam.getDateAndTimeGoingGoing());
+//        } catch (JSONException e) {
+//            System.out.println(e);
+//        }
 
         AsyncTask asyncTask = new AsyncTask() {
             @Override
             protected Object doInBackground(Object[] objects) {
-                createTeam(url, newTeam);
+                createTeam(url, newTeam, resortId);
                 return null;
             }
         };
@@ -230,19 +231,15 @@ public class CreateGroupActivity extends AppCompatActivity {
 
 
     // inspired by: https://stackoverflow.com/questions/40523965/sending-json-body-through-post-request-in-okhttp-in-android/40524159
-    public static void createTeam(String url, Team team) {
-
-
-
+    public static void createTeam(String url, Team team, long resortId) {
 
         OkHttpClient client = new OkHttpClient();
 
         MediaType mediaType = MediaType.parse("application/x-www-form-urlencoded");
-        String postContent = "team_name=" + team.getName() + "&team_description=" + team.getDescription()+ "&team_max_capacity=" + team.getMaxCapacity() + "&team_administrator=" + 1 + "&team_resort=" + 3 + "&team_meet_date=" + team.getDateAndTimeGoingGoing();
+        String postContent = "team_name=" + team.getName() + "&team_description=" + team.getDescription()+ "&team_max_capacity=" + team.getMaxCapacity() + "&team_administrator=" + 1 + "&team_resort=" + resortId + "&team_meet_date=" + team.getDateAndTimeGoingGoing();
         RequestBody body = RequestBody.create(mediaType, postContent);
-//        RequestBody body = RequestBody.create(mediaType, "team_name=surfNar&team_description=let's%20go&team_max_capacity=10&team_administrator=1&team_resort=3&team_meet_date=1990-11-09&undefined=");
         Request request = new Request.Builder()
-                .url("http://ec2-54-186-185-206.us-west-2.compute.amazonaws.com/api/v1/team")
+                .url(url)
                 .addHeader("Content-Type", "application/x-www-form-urlencoded")
                 .post(body)
                 .build();

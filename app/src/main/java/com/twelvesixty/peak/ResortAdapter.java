@@ -1,6 +1,5 @@
 package com.twelvesixty.peak;
 
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,14 +24,11 @@ public class ResortAdapter extends RecyclerView.Adapter<ResortAdapter.ResortView
     private Resort[] mDataset;
 
     // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
     public  class ResortViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
         public TextView resortName;
         public ResortViewHolder(View v) {
             super(v);
-            //This is where more views get set to be accessed as neeeed
+            //Set pointers to specific parts of the viewHolder
             resortName = v.findViewById(R.id.singleLine);
         }
     }
@@ -53,14 +49,23 @@ public class ResortAdapter extends RecyclerView.Adapter<ResortAdapter.ResortView
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Find what Layout was clicked, get it's info from the dataset, and log it
+                //Find what Layout was clicked
                 RecyclerView parent = (RecyclerView) v.getParent();
                 int position = parent.getChildLayoutPosition(v);
                 View root = v.getRootView();
+
+                //Update shared prefs so the map will be updated
                 root.getContext().getSharedPreferences("preferences", 0).edit().putFloat("latitude", (float) mDataset[position].getLatitude()).putFloat("longitude", (float) mDataset[position].getLongitude()).apply();
                 RecyclerView teamList = root.findViewById(R.id.filteredList);
-//                teamList.setAdapter(new TeamAdapterMain(mDataset[position].getTeams()));
+
+                //Let MainActivity know what resort is now being displayed.
+                MainActivity.resortId = mDataset[position].getId();
+
+                //Create a new AsyncTask to get selected resorts teams.
+                //Passing in the selected Resort and a pointer to the teamList Recycler
                 getTeams().execute(mDataset[position], teamList);
+
+                //Get and set data about resort on textViews
                 String name = mDataset[position].getName();
                 String address = mDataset[position].getAddress();
                 String website = mDataset[position].getWebsiteUrl();
@@ -94,12 +99,12 @@ public class ResortAdapter extends RecyclerView.Adapter<ResortAdapter.ResortView
 
     //method to create an asynctask to be run for getting a resorts teams
     private AsyncTask getTeams() {
-        //Task used to get teams whenever a new resort is selected. Don't look too closely, you might damage your eyes
+        //Task used to get teams whenever a new resort is selected.
         return new AsyncTask() {
             @Override
             protected Object doInBackground(Object[] objects) {
 
-                //Normal setup for getting the data
+                //Setup get request to server, just like in MainActivity
                 OkHttpClient client = new OkHttpClient();
 
                 Request request = new Request.Builder()
@@ -110,12 +115,13 @@ public class ResortAdapter extends RecyclerView.Adapter<ResortAdapter.ResortView
                     Response response = client.newCall(request).execute();
                     Resort r = gson.fromJson(response.body().string(), Resort.class);
                     HashMap<String, Object> map = new HashMap<>();
-                    //Need a way to reference the list of teams returned and the recyclerview...
+                    //Need a way to reference the list of teams returned and the recyclerview
                     map.put("teamsList", objects[1]);
                     map.put("teams", r.getTeams());
                     return map;
                 } catch (IOException e) {
-
+                    Log.e("GETTEAMS", e.toString());
+                    //This would probably also ideally do something to notify the user the list couldn't be retrieved
                 }
                 return null;
             }
