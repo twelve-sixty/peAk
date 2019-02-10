@@ -50,4 +50,5 @@ The app that we plan to develop is called peAK. This iteration of our applciatio
 ![group detail activity](./assets/peakScreenshot_GroupDetail.png)
 
 ### Attributions: 
-* (Details pending)
+* Background image for screenshot pics: macOs Mojave version 10.14.2 "El Capitan 2"
+* Default profile picture image: Photo by Viktor Vasicsek on Unsplash
