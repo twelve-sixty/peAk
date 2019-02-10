@@ -15,5 +15,39 @@ The app that we plan to develop is called peAK. This iteration of our applciatio
 ### Instructions for Setting Up Build Environment: 
 * (Details pending)
 
+### Screenshots
+
+##### Resort Detail Activity
+
+![home view](./assets/peakScreenshot_ResortDetail.png)
+
+##### Nav Drawer Opened
+
+![home view with nav drawer opened](./assets/peakScreenshot_NavDrawerOpened.png)
+
+##### User Profile Activity
+
+![user profile activity](./assets/peakScreenshot_ProfileActivity.png)
+
+##### My Groups Activity
+
+![my groups activity](./assets/peakScreenshot_MyGroupsActivity.png)
+
+##### Resort Activity with Resorts Drawer Opened
+
+![home view with resorts drawer opened](./assets/peakScreenshot_ResortsDrawerOpen.png)
+
+##### Create Group Activity
+
+![create group activity](./assets/peakScreenshot_CreateGroupFormFilledOut.png)
+
+##### New Group Added, Resort Detail Activity
+
+![home view with new group added](./assets/peakScreenshot_ResortDetailWithGroupAdded.png)
+
+##### Group Detail Activity
+
+![group detail activity](./assets/peakScreenshot_GroupDetail.png)
+
 ### Attributions: 
 * (Details pending)
