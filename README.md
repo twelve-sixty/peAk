@@ -55,7 +55,7 @@ collection of future trips in our app's "My Groups" page.
 ### Instructions for Setting Up Build Environment: 
 * (Details pending)
 
-### Screenshots
+### Screenshots:
 
 ##### Resort Detail Activity
 
