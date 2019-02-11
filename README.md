@@ -1,7 +1,7 @@
 # peAk
 
 ```
-Code Fellows; seattle-ja-401d2
+Code Fellows; seattle-java-401d2
 Project manager: Jason Burns
 Android frontend contributors: Pablo Rosales, Kevin Rosales, Darrin Howell, Nick Crain
 Python backend contributors: Fangyuan Huang, Scott Currie, Roger Huba
