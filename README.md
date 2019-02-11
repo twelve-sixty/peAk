@@ -15,7 +15,7 @@ peAK is an Android application developed to facilitate snowboard  / ski meetups 
 the West Coast of the United States. Within peAk, users can browse through a small collection of 
 resorts served by our custom python API. Within each resort page, app users can also browse meetups 
 posted to that specific resort. Trip details can be viewed after clicking on meetups stored in the 
-recycler views of each resort detail page. peAk users can also establish their own meetups by filling 
+recycler view of each resort detail page. peAk users can also establish their own meetups by filling 
 out a form and creating a new meetup at a specific resort. <br/>
 
 To date, our team was only able to develop the aforementioned features. In subsequent iterations of 
