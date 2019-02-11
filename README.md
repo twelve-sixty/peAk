@@ -92,3 +92,8 @@ collection of future trips in our app's "My Groups" page.
 ### Attributions: 
 * Background image for screenshot pics: macOs Mojave version 10.14.2 "El Capitan 2"
 * Default profile picture image: Photo by Viktor Vasicsek on Unsplash
+* Patterns for building Espresso tests: https://developer.android.com/training/testing/espresso/cheat-sheet
+* Hiding and showing a linear layout: https://stackoverflow.com/questions/14313732/hide-and-show-linearlayout/19806319
+* Ideas for storing date inputs from edit texts: https://stackoverflow.com/questions/10028211/how-can-i-get-the-date-from-the-edittext-and-then-store-it-in-database-in-androi
+* Pattern for sending data via post body, okhttp3: https://stackoverflow.com/questions/40523965/sending-json-body-through-post-request-in-okhttp-in-android/40524159
+* Android Checkbox front end views: https://developer.android.com/guide/topics/ui/controls/checkbox
