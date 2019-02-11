@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateGroupActivity">
+    tools:context=".activity.CreateGroupActivity">
 
     <include
         layout="@layout/app_bar"
@@ -44,7 +44,7 @@
                 android:gravity="center"
                 android:hint="Capacity"
                 android:inputType="text"
-                android:textSize="10dp" />
+                android:textSize="14sp" />
 
             <EditText
                 android:id="@+id/editText_groupName"
@@ -54,7 +54,7 @@
                 android:gravity="center"
                 android:hint="Group Name"
                 android:inputType="text"
-                android:textSize="10dp" />
+                android:textSize="14sp" />
         </LinearLayout>
 
 
@@ -66,15 +66,15 @@
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="8dp">
 
-            <EditText
-                android:id="@+id/editText_groupDateGoing"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:hint="Meeting on dd/mm/yyyy"
-                android:inputType="date"
-                android:textSize="10dp" />
+        <EditText
+            android:id="@+id/editText_groupDateGoing"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hint="Meeting on yyyy-mm-dd"
+            android:inputType="date"
+            android:textSize="14sp"/>
 
             <EditText
                 android:id="@+id/editText_groupTimeMeeting"
@@ -84,7 +84,7 @@
                 android:gravity="center"
                 android:hint="Meeting at 00:00 am/pm"
                 android:inputType="time"
-                android:textSize="10dp" />
+                android:textSize="14sp" />
 
         </LinearLayout>
 
@@ -96,7 +96,7 @@
             android:gravity="center"
             android:hint="Group Description (140 char limit)"
             android:inputType="textMultiLine"
-            android:textSize="10dp" />
+            android:textSize="14sp" />
 
         <LinearLayout
             android:id="@+id/linearLayout_checkBoxHolders"
@@ -119,7 +119,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="Group Categories"
-                    android:textSize="15dp" />
+                    android:textSize="14sp" />
 
                 <CheckBox
                     android:id="@+id/checkBox_PartyHardy"
@@ -168,7 +168,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:text="Trail Difficulties"
-                    android:textSize="15dp" />
+                    android:textSize="14sp" />
 
                 <CheckBox
                     android:id="@+id/checkBox_GreenCircle"

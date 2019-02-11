@@ -1,5 +1,10 @@
 package com.twelvesixty.peak;
 
+import com.twelvesixty.peak.model.Messages;
+import com.twelvesixty.peak.model.Resort;
+import com.twelvesixty.peak.model.Team;
+import com.twelvesixty.peak.model.User;
+
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,11 +19,11 @@ public class TeamUnitTests {
         Team fakeTeam = new Team();
 
         // team capacity getters and setters
-        fakeTeam.setCapacity(10);
-        assertEquals(fakeTeam.getCapacity(), 10);
+        fakeTeam.setMaxCapacity(10);
+        assertEquals(fakeTeam.getMaxCapacity(), 10);
 
         // dateGoing getters and setters
-        fakeTeam.setDateAndTimeGoing("02/07/2019 08:00 a");
+        fakeTeam.setMeetDate("02/07/2019 08:00 a");
         assertEquals(fakeTeam.getDateAndTimeGoingGoing(), "02/07/2019 08:00 a");
 
         // description getters and setters
@@ -90,7 +95,7 @@ public class TeamUnitTests {
         Team fakeTeam2 = new Team(4, "Fly boys", "02/07/2019 08:00 a",
                 "Park Junkies", fakeTagsMap, fakeTeamLeader2, fakeResort2, "Active");
 
-        assertEquals(fakeTeam2.getCapacity(), 4);
+        assertEquals(fakeTeam2.getMaxCapacity(), 4);
 
         assertEquals(fakeTeam2.getName(), "Fly boys");
 

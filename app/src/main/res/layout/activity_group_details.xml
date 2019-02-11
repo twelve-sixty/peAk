@@ -9,7 +9,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".GroupDetailsActivity">
+        tools:context=".activity.GroupDetailsActivity">
 
         <include
             layout="@layout/app_bar"
@@ -88,7 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginTop="8dp"
-                android:text="@string/capacity"
+                android:text="@string/maxCapacity"
                 android:textAlignment="center"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"

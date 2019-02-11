@@ -1,5 +1,8 @@
 package com.twelvesixty.peak;
 
+import com.twelvesixty.peak.model.Resort;
+import com.twelvesixty.peak.model.Team;
+
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -42,31 +45,24 @@ public class ResortTest {
 
     @Test
     public void getSetWebsiteURLTest() {
-        r.setWebsiteURL("https://www.google.com/");
+        r.setWebsiteUrl("https://www.google.com/");
 
-        assertEquals(r.getWebsiteURL(), "https://www.google.com/");
-    }
-
-    @Test
-    public void getSetAddress() {
-        ResortAddress fakeAddress = new ResortAddress();
-        r.setAddress(fakeAddress);
-        assertEquals(r.getAddress(), fakeAddress);
+        assertEquals(r.getWebsiteUrl(), "https://www.google.com/");
     }
 
     @Test
     public void getSetConstructorTest() {
         teamList.add(t);
         teamList.add(e);
-        ResortAddress fakeAddress = new ResortAddress();
-        Resort fakeResort = new Resort("ASUS", 47.062, 47.062, "https://www.google.com/", teamList,fakeAddress);
+        Resort fakeResort = new Resort("ASUS", 47.062, 47.062, "https://www.google.com/", teamList);
 
         assertEquals(fakeResort.getName(), "ASUS");
         assertEquals(fakeResort.getLatitude(), 47.062, 0);
         assertEquals(fakeResort.getLongitude(), 47.062, 0);
-        assertEquals(fakeResort.getWebsiteURL(), "https://www.google.com/");
-        assertEquals(fakeResort.getTeamsList(), teamList);
-        assertEquals(fakeResort.getAddress(), fakeAddress);
+        assertEquals(fakeResort.getWebsiteUrl(), "https://www.google.com/");
+        assertEquals(fakeResort.getTeams(), teamList);
+        assertEquals(fakeResort.getAddress(), "null\n" +
+                "null, null 0");
 
 
 
