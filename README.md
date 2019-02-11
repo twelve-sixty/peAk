@@ -38,7 +38,7 @@ collection of future trips in our app's "My Groups" page.
 * implementation 'com.squareup.okhttp3:okhttp:3.12.1'
 * implementation 'com.google.code.gson:gson:2.8.5'
 * testImplementation 'junit:junit:4.12'
-* androidTestImplementation 'androidx.test`:runner:`1.1.2-alpha01'
+* androidTestImplementation 'androidx.test:<zero-width space>runner:1.1.2-alpha01'
 * androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.2-alpha01'
 * androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.1.2-alpha01'
 * androidTestImplementation 'androidx.test:core:1.1.0'
