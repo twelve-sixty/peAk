@@ -53,7 +53,12 @@ collection of future trips in our app's "My Groups" page.
 * PostgreSQL
 
 ### Instructions for Setting Up Build Environment: 
-* (Details pending)
+* Clone the repo into a directory on your machine
+* Open the root folder of the repo in Android Studio (Or other preferred IDE)
+* Import the gradle project to get the needed dependencies for the project
+* Ensure the app can build and compile (sometimes issues can arise with certain versions of Android Studio)
+* Code to your hearts desire
+* When testing the app, be sure to run it on and Android device, virtual or physical, running the Android API version 21 or later
 
 ### Screenshots:
 
@@ -97,3 +102,7 @@ collection of future trips in our app's "My Groups" page.
 * Ideas for storing date inputs from edit texts: https://stackoverflow.com/questions/10028211/how-can-i-get-the-date-from-the-edittext-and-then-store-it-in-database-in-androi
 * Pattern for sending data via post body, okhttp3: https://stackoverflow.com/questions/40523965/sending-json-body-through-post-request-in-okhttp-in-android/40524159
 * Android Checkbox front end views: https://developer.android.com/guide/topics/ui/controls/checkbox
+* Image used for My Groups icon: http://www.gingercreek.org/groups/small-groups-icon/
+
+### Installation
+To install the app on an Android device, ensure the device is at least running android 5.0 or later, and then download the APK from https://drive.google.com/file/d/1uPNymakok1iKaGDxd50xTvk5hxmITn35/view. You will have to ensure that your phone will allow installing apps from other sources, and then select the file to proceed with the installation.
