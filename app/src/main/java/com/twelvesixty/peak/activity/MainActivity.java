@@ -344,26 +344,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
-    //    Method that creates dropdown for resorts
-    // Currently not in use due to time restrictions, may be used at a later time
-    public void dropResorts() {
-        findViewById(R.id.resortsInfoDrop).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                ConstraintLayout resortInfo = findViewById(R.id.resortsInfo);
-
-                if (resortInfo.getVisibility() == View.VISIBLE) {
-                    resortInfo.setVisibility(View.GONE);
-                }else {
-                    findViewById(R.id.weather).setVisibility(View.GONE);
-                    resortInfo.setVisibility(View.VISIBLE);
-
-
-                }
-            }
-        });
-    }
-
     //Cut search functionality due to time constraints, can still be added at a later date.
     public void goToSearchActivity(View v) {
         Intent goToSearch = new Intent(this, SearchActivity.class);
