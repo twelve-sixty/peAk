@@ -48,7 +48,9 @@ collection of future trips in our app's "My Groups" page.
 * implementation 'com.google.code.gson:gson:2.8.5'
 
 ##### python backend technologies
-* \>= Python 3.6, Django, PostgreSQL
+* \>= Python 3.6
+* Django
+* PostgreSQL
 
 ### Instructions for Setting Up Build Environment: 
 * (Details pending)
