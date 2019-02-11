@@ -47,7 +47,7 @@ collection of future trips in our app's "My Groups" page.
 * implementation 'com.squareup.okhttp3:okhttp:3.12.1'
 * implementation 'com.google.code.gson:gson:2.8.5'
 
-##### python backend technologies
+##### Python backend technologies
 * \>= Python 3.6
 * Django
 * PostgreSQL
