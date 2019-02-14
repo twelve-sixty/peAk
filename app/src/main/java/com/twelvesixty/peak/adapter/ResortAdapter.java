@@ -23,6 +23,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
+// Entire class is borrowed heavily from https://developer.android.com/guide/topics/ui/layout/recyclerview without citation
 public class ResortAdapter extends RecyclerView.Adapter<ResortAdapter.ResortViewHolder> {
     Gson gson = new Gson();
     private Resort[] mDataset;
@@ -83,6 +84,7 @@ public class ResortAdapter extends RecyclerView.Adapter<ResortAdapter.ResortView
                 resortWebsite.setText(website);
             }
         });
+        // could just return new ResortViewHolder(v);
         ResortViewHolder vh = new ResortViewHolder(v);
         return vh;
     }

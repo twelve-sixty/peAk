@@ -33,6 +33,7 @@ public class GroupDetails {
         onView(withId(R.id.capacityLabel)).check(matches(isDisplayed()));
         onView(withId(R.id.descriptionLabel)).check(matches(isDisplayed()));
         onView(withId(R.id.stateLabel)).check(matches(isDisplayed()));
+        // This is failing because that button isn't displayed.
         onView(withId(R.id.sendButton)).check(matches(isDisplayed()));
         onView(withId(R.id.sendButton)).check(matches(isClickable()));
     }

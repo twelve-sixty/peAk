@@ -1,5 +1,6 @@
 package com.twelvesixty.peak.model;
 
+// I'm surprised that you defined models for code that never worked.
 public class Messages {
     private long id;
     private MessageBoard messageBoard;
