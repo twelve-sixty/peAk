@@ -33,6 +33,7 @@ public class SignUpTests {
         onView(withId(R.id.DOBSignUp)).check(matches(withHint("Date Of Birth")));
         onView(withId(R.id.EmailSignUp)).check(matches(withHint("Email")));
         onView(withId(R.id.Button)).check(matches(withText("Sign Up")));
+        // This test fails because this textview isn't editable.
         onView(withId(R.id.UserSignUp)).perform(typeText("KevinRosales"));
         onView(withId(R.id.UserSignUp)).check(matches(withText("KevinRosales")));
         onView(withId(R.id.PasswordSignUp)).perform(typeText("123one"));

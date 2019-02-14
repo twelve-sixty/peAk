@@ -31,6 +31,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class GroupDetailsActivity extends AppCompatActivity {
+    // why are some of these private, and some not? Feels random.
     Button editGroupButton;
     LinearLayout defaultGroupLayout;
     LinearLayout editableGroupLayout;
@@ -50,6 +51,7 @@ public class GroupDetailsActivity extends AppCompatActivity {
 
         //Set drawer header text to match what will be displayed there
         TextView rightHandHeaderText = findViewById(R.id.rightSideTitle);
+        // untranslated string
         rightHandHeaderText.setText("Users");
 
         //Setup the toolbar
@@ -227,6 +229,7 @@ public class GroupDetailsActivity extends AppCompatActivity {
         TextView groupStatusTextView = findViewById(R.id.stateLabel);
 
         groupNameTextView.setText(team.getName());
+        // all of this is also untranslated text! You should use R.strings here to avoid this problem.
         meetingDateAndTimeTextView.setText("Meeting on: " + team.getDateAndTimeGoingGoing());
         resortTextView.setText("Going to: " + "Resort Name");
         groupMaxCapacityTextView.setText("Capacity: " + team.getCurrentCapacity() + "/" + team.getMaxCapacity());
@@ -234,6 +237,8 @@ public class GroupDetailsActivity extends AppCompatActivity {
         groupStatusTextView.setText("Status: " + team.getStatus());
     }
 
+    // why is this instance variable at the bottom of the class definition?!?
+    // this is very confusing.
     //Asynctask to grab the detailed information for the team
     AsyncTask getTeamInfo = new AsyncTask() {
         @Override

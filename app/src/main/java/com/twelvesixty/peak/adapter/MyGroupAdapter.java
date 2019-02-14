@@ -47,6 +47,7 @@ public class MyGroupAdapter extends RecyclerView.Adapter<MyGroupAdapter.MyViewHo
             @Override
             public void onClick(View v) {
                 //Find what group was clicked, start groupDetailActivity with that groups id as data
+                // this is giving an incorrect group
                 RecyclerView parent = (RecyclerView) v.getParent();
                 int position = parent.getChildLayoutPosition(v);
                 Intent goToGroupDetail = new Intent(parent.getContext(), GroupDetailsActivity.class);

@@ -10,10 +10,11 @@ import java.util.ArrayList;
 import static org.junit.Assert.*;
 
 public class ResortTest {
+    // To keep your tests independent, these variables should be set in an @Before method.
     Resort r = new Resort();
     Team t = new Team();
     Team e = new Team();
-    ArrayList<Team> teamList = new ArrayList<Team>();
+    ArrayList<Team> teamList = new ArrayList<>();
 
 
     @Test
@@ -52,6 +53,7 @@ public class ResortTest {
 
     @Test
     public void getSetConstructorTest() {
+        // Since you only use the teamList variable here, you can declare it locally.
         teamList.add(t);
         teamList.add(e);
         Resort fakeResort = new Resort("ASUS", 47.062, 47.062, "https://www.google.com/", teamList);

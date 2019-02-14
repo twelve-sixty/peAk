@@ -62,7 +62,8 @@ public class CreateGroupActivity extends AppCompatActivity {
         resortId = data.getLongExtra("resortId",  1);
         Log.i("RESORTID", Long.toString(resortId));
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        // cast to Toolbar unnecessary if you're saving it in a variable
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         ActionBar bar = getSupportActionBar();
@@ -136,6 +137,8 @@ public class CreateGroupActivity extends AppCompatActivity {
         // Check which checkbox was clicked
         switch(view.getId()) {
             case partyHardyID:
+                // this can be simplified to
+                // partyHardyTag = checked;
                 if (checked)
                     partyHardyTag = true;
                 else
@@ -170,6 +173,7 @@ public class CreateGroupActivity extends AppCompatActivity {
 
         // Check which checkbox was clicked
         switch (view.getId()) {
+            // same here
             case greenCircleID:
                 if (checked)
                     greenCircleTag = true;

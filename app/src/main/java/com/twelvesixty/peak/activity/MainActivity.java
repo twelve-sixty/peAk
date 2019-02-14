@@ -39,6 +39,7 @@ import com.twelvesixty.peak.adapter.TeamAdapterMain;
 import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback, SharedPreferences.OnSharedPreferenceChangeListener {
+    // why is this variable static? It's still particular to one instance of MainActivity.
     public static long resortId;
 
     //Pointers to views that will need updating/setting data
@@ -117,6 +118,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             resortList.setLayoutManager(resortLayoutManager);
             teamList.setLayoutManager(teamLayoutManager);
 
+            // Given that this resort info doesn't change much from app open to app open,
+            // this data should be cached locally on device for users who are offline.
+            // Going into a service-less part of a mountain shouldn't stop me from seeing
+            // resort info I've seen a dozen times before.
             getResorts.execute();
 
             TextView rightHandHeaderText = findViewById(R.id.rightSideTitle);
@@ -128,7 +133,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     //Called after the app has received resort data from the backend, meaning it can successfully draw the starting view
     private void finishCreate() {
         //Edit sharedprefs to ensure map will always change when a new resort it selected, then setup the listener to handle new resort selection
+        // feels like this line should come after you define initialLat and initialLong.
         preferences.edit().putFloat("latitude", (float) resortData[0].getLatitude()).putFloat("longitude", (float) resortData[0].getLongitude()).apply();
+        // could register the change listener before the request finishes
         preferences.registerOnSharedPreferenceChangeListener(this);
         initialLat = resortData[0].getLatitude();
         initialLong = resortData[0].getLongitude();
@@ -169,6 +176,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         map.setMinZoomPreference(8);
     }
 
+    // Uncited code from https://stackoverflow.com/questions/26691790/menu-click-item-event
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -206,7 +214,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     //What do when a navigation item is clicked
-    @SuppressWarnings("StatementWithEmptyBody")
+    // you don't have this warning here; why are you suppressing it?
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -309,6 +317,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Log.e("GETEAMS", e.toString());
                 //Maybe a way to display to user there was an issue getting team data?
                 //Would make it easier to understand if there's no teams there or an error occurred
+                // sure would! Error handling is important!
             }
             return null;
         }
